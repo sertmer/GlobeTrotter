@@ -1,9 +1,17 @@
 import React from 'react';
-import { Text } from 'react-native';
+import { Text, View } from 'react-native';
 
-const TripPreview = () => {
+const TripPreview = ({item}) => {
+  const { name, startDate, endDate, originAbbrev, finalDestinationAbbrev} = item;
+
   return (
-    <Text>TripPreview</Text>
+    <View>
+      <Text>{name}</Text>
+      <Text>{originAbbrev}</Text>
+      <Text>{finalDestinationAbbrev}</Text>
+      <Text>{startDate}</Text>
+      <Text>{endDate}</Text>
+    </View>
   )
 }
 
