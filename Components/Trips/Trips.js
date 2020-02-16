@@ -32,6 +32,76 @@ const mockPreviews = [
     finalDestination: 'Tokyo, Japan',
     originAbbrev: 'DEN',
     finalDestinationAbbrev: 'TOK'
+  },
+  {
+    id: 3,
+    name: 'Winter Trip',
+    startDate: '11-05-2020',
+    endDate: '12-05-2020',
+    origin: 'denver, co, usa',
+    finalDestination: 'Tokyo, Japan',
+    originAbbrev: 'DEN',
+    finalDestinationAbbrev: 'TOK'
+  },
+  {
+    id: 3,
+    name: 'Winter Trip',
+    startDate: '11-05-2020',
+    endDate: '12-05-2020',
+    origin: 'denver, co, usa',
+    finalDestination: 'Tokyo, Japan',
+    originAbbrev: 'DEN',
+    finalDestinationAbbrev: 'TOK'
+  },
+  {
+    id: 3,
+    name: 'Winter Trip',
+    startDate: '11-05-2020',
+    endDate: '12-05-2020',
+    origin: 'denver, co, usa',
+    finalDestination: 'Tokyo, Japan',
+    originAbbrev: 'DEN',
+    finalDestinationAbbrev: 'TOK'
+  },
+  {
+    id: 3,
+    name: 'Winter Trip',
+    startDate: '11-05-2020',
+    endDate: '12-05-2020',
+    origin: 'denver, co, usa',
+    finalDestination: 'Tokyo, Japan',
+    originAbbrev: 'DEN',
+    finalDestinationAbbrev: 'TOK'
+  },
+  {
+    id: 3,
+    name: 'Winter Trip',
+    startDate: '11-05-2020',
+    endDate: '12-05-2020',
+    origin: 'denver, co, usa',
+    finalDestination: 'Tokyo, Japan',
+    originAbbrev: 'DEN',
+    finalDestinationAbbrev: 'TOK'
+  },
+  {
+    id: 3,
+    name: 'Winter Trip',
+    startDate: '11-05-2020',
+    endDate: '12-05-2020',
+    origin: 'denver, co, usa',
+    finalDestination: 'Tokyo, Japan',
+    originAbbrev: 'DEN',
+    finalDestinationAbbrev: 'TOK'
+  },
+  {
+    id: 3,
+    name: 'Winter Trip',
+    startDate: '11-05-2020',
+    endDate: '12-05-2020',
+    origin: 'denver, co, usa',
+    finalDestination: 'Tokyo, Japan',
+    originAbbrev: 'DEN',
+    finalDestinationAbbrev: 'TOK'
   }
 ];
 
