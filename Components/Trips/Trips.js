@@ -109,9 +109,15 @@ const Trips = () => {
   return (
     <View>
       <Text>hey</Text>
-      <FlatList 
+      <FlatList
         data={mockPreviews}
-        renderItem={({item}) => (<TripPreview item={item} key={item.id} />)}
+        renderItem={({item}) => (
+          <TripPreview
+            item={item}
+            key={item.id}
+
+          />
+        )}
       />
     </View>
   )
