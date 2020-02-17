@@ -1,11 +1,11 @@
 import React from 'react';
-import { Text, View, FlatList } from 'react-native';
+import { Text, View, ScrollView, StyleSheet } from 'react-native';
 import TripPreview from '../TripPreview/TripPreview';
 
 const mockPreviews = [
   {
     id: 1,
-    name: 'spring break',
+    name: 'Spring break',
     startDate: '03-05-2020',
     endDate: '04-05-2020',
     origin: 'denver, co, usa',
@@ -107,20 +107,29 @@ const mockPreviews = [
 
 const Trips = () => {
   return (
-    <View>
-      <Text>hey</Text>
-      <FlatList
-        data={mockPreviews}
-        renderItem={({item}) => (
-          <TripPreview
-            item={item}
-            key={item.id}
-
-          />
-        )}
-      />
+    <View style={styles.scrollView}>
+      <ScrollView>
+        {
+          mockPreviews.map((preview, index) =>
+            <TripPreview
+              item={preview}
+              key={preview.id}
+            />
+          )
+        }
+      </ScrollView>
     </View>
   )
 }
+
+const styles = StyleSheet.create({
+  scrollView: {
+    height: 500,
+    marginBottom: 20,
+    marginTop: 30,
+    textAlign: 'center',
+    width: 180
+  },
+});
 
 export default Trips;
