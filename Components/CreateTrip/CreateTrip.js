@@ -12,7 +12,7 @@ export const CreateTrip = () => {
         <Text style={{fontSize: 20, marginLeft: 33}}>
           New Trip
         </Text>
-        <Text style={{color: 'white', marginRight: 1}}>
+        <Text style={{color: '#96CDEC', marginRight: 1}}>
           placehold
         </Text>
       </View>
@@ -67,39 +67,43 @@ export default CreateTrip;
 const styles = StyleSheet.create({
   container: {
     alignItems: 'center',
+    backgroundColor: '#96cdec',
     borderRadius: 4,
     borderWidth: 1.5,
     borderColor: 'black',
     height: 500,
     justifyContent: 'space-around',
-    width: 220,
+    width: 250,
   },
   header: {
+    backgroundColor: '#96cdec',
     borderBottomWidth: 1.5,
     borderBottomColor: 'black',
     fontSize: 30,
     flexDirection: 'row',
     justifyContent: 'space-between',
-    marginTop: 3,
     paddingBottom: 10,
-    shadowColor: 'white',
-    shadowOpacity: 0.2,
-    shadowRadius: 10,
   },
   image: {
     height: 36,
     width: 36,
   },
   input: {
+    backgroundColor: '#EEF6F7',
     borderRadius: 4,
     borderWidth: 0.5,
     borderColor: '#d6d7da',
     height: 30,
     paddingVertical: 0,
+    shadowColor: '#000',
+    shadowOffset: { width: 1, height: 2 },
+    shadowOpacity: 0.8,
+    shadowRadius: 4,
     textIndent: 5,
   },
   legContainer: {
     alignItems: 'center',
+    backgroundColor: 'white',
     borderRadius: 4,
     borderWidth: 1.5,
     borderColor: 'black',
@@ -112,7 +116,7 @@ const styles = StyleSheet.create({
   },
   buttonLeg: {
     alignItems: 'center',
-    backgroundColor: '#BAE0BD',
+    backgroundColor: '#96CDEC',
     borderRadius: 4,
     borderWidth: .5,
     borderColor: 'black',
@@ -124,7 +128,7 @@ const styles = StyleSheet.create({
   },
   buttonDestination: {
     alignItems: 'center',
-    backgroundColor: '#96CDEC',
+    backgroundColor: '#BAE0BD',
     borderRadius: 4,
     borderWidth: .5,
     borderColor: 'black',
