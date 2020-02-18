@@ -32,8 +32,7 @@ const styles = StyleSheet.create({
   input: {
     flex: 1,
     height: 40,
-    borderColor: '#ddd',
-    paddingVertical: 0,
-    
+    borderColor: '#ddd'
+
   }
 })
