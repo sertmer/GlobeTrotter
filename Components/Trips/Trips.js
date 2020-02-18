@@ -108,6 +108,9 @@ const mockPreviews = [
 const Trips = () => {
   return (
     <View style={styles.scrollView}>
+      <Text style={styles.header}>
+        Trips
+      </Text>
       <ScrollView>
         {
           mockPreviews.map((preview, index) =>
@@ -124,12 +127,25 @@ const Trips = () => {
 
 const styles = StyleSheet.create({
   scrollView: {
+    alignItems: 'center',
+    backgroundColor: '#96CDEC',
+    borderWidth: 1.5,
+    borderColor: 'black',
     height: 500,
-    marginBottom: 20,
     marginTop: 30,
     textAlign: 'center',
-    width: 180
+    width: 200
   },
+
+  header: {
+    borderBottomWidth: 1.5,
+    borderBottomColor: 'black',
+    fontSize: 30,
+    shadowColor: 'white',
+    shadowOpacity: 0.2,
+    shadowRadius: 10,
+    width: 200
+  }
 });
 
 export default Trips;

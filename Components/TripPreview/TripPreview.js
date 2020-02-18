@@ -17,9 +17,17 @@ const TripPreview = ({item}) => {
 
 const styles = StyleSheet.create({
   container: {
+    backgroundColor: '#c0cfdb',
     borderRadius: 4,
     borderWidth: 0.5,
     borderColor: '#d6d7da',
+    marginBottom: 15,
+    marginTop: 25,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.8,
+    shadowRadius: 20,
+    width: 195,
   },
 });
 
