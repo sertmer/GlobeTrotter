@@ -1,8 +1,8 @@
 import React from 'react';
 import { Text, View, StyleSheet } from 'react-native';
 
-const TripPreview = ({item}) => {
-  const { name, startDate, endDate, originAbbrev, finalDestinationAbbrev} = item;
+export const TripPreview = ({ route }) => {
+  const { name, startDate, endDate, originAbbrev, finalDestinationAbbrev, description } = route.params;
 
   return (
     <View style={styles.container}>
@@ -14,6 +14,9 @@ const TripPreview = ({item}) => {
       <View style={styles.cities}>
         <Text style={styles.startDate}>{startDate}</Text>
         <Text style={styles.endDate}>{endDate}</Text>
+      </View>
+      <View style={styles.description}>
+        <Text>Notes: {description}</Text>
       </View>
     </View>
   )
@@ -40,5 +43,9 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'row',
     justifyContent: 'space-between',
+  },
+  description: {
+    margin: 'auto',
+
   }
 })

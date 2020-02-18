@@ -106,8 +106,8 @@ const mockPreviews = [
   {
     id: '10',
     name: 'Winter Trip',
-    startDate: '11-05-2020',
-    endDate: '12-05-2020',
+    startDate: '11-05-2025',
+    endDate: '12-05-2025',
     origin: 'denver, co, usa',
     finalDestination: 'Tokyo, Japan',
     originAbbrev: 'DEN',
@@ -116,14 +116,14 @@ const mockPreviews = [
   }
 ];
 
-const Trips = () => {
+const Trips = ({ navigation }) => {
   return (
     <View style={globalStyles.container}>
       <ScrollView>
         {mockPreviews.map(item => {
           return (
             <View key={item.id}>
-              <TouchableOpacity>
+              <TouchableOpacity onPress={() => navigation.navigate('Trip Preview', item)}>
                 <View style={styles.container}>
                   <Text style={styles.name}>{item.name}</Text>
                   <View style={styles.cities}>

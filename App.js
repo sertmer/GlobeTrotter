@@ -2,27 +2,31 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import Trips from './Components/Trips/Trips';
 import CreateTrip from './Components/CreateTrip/CreateTrip';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import TripPreview from './Components/TripPreview/TripPreview';
 
-export const App = () => {
+export const App = ({ navigation }) => {
+  const Stack = createStackNavigator();
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <Trips />
-      <CreateTrip />
-    </View>
-  );
+    <NavigationContainer>
+      <Stack.Navigator
+        initialRouteName='Trips'
+        screenOptions={{ gestureEnabled: false }}
+      >
+        <Stack.Screen
+          name='Trips'
+          component={Trips}
+          options={{ title: 'Globe Trotter' }}
+        />
+        <Stack.Screen
+          name='Trip Preview'
+          component={TripPreview}
+        />
+      </Stack.Navigator>
+    </NavigationContainer>
+  )
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: .3,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-    padding: 24,
-    marginTop: 100,
-    width: '100%',
-  },
-});
 
 export default App;
