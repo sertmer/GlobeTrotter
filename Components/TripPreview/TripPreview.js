@@ -1,24 +1,22 @@
 import React from 'react';
 import { Text, View, StyleSheet } from 'react-native';
 
-const TripPreview = ({item}) => {
-  const { name, startDate, endDate, originAbbrev, finalDestinationAbbrev} = item;
+const TripPreview = ({ route }) => {
+  const { name, startDate, endDate, originAbbrev, finalDestinationAbbrev, description} = route.params;
 
   return (
     <View style={styles.container}>
-      <View>
-        <Text style={{width: 80, textAlign: 'left'}}>
-          {name}
-        </Text>
+      <Text style={styles.name}>{name}</Text>
+      <View style={styles.cities}>
+        <Text style={styles.origin}>{originAbbrev}</Text>
+        <Text style={styles.destination}>{finalDestinationAbbrev}</Text>
       </View>
-      <View style={styles.travelDetails}>
-        <View style={styles.destinations}>
-          <Text>{originAbbrev}</Text>
-          <Text>-</Text>
-          <Text>{finalDestinationAbbrev}</Text>
-        </View>
-        <Text>{startDate}</Text>
-        <Text>{endDate}</Text>
+      <View style={styles.cities}>
+        <Text style={styles.startDate}>{startDate}</Text>
+        <Text style={styles.endDate}>{endDate}</Text>
+      </View>
+      <View style={styles.description}>
+        <Text>Notes: {description}</Text>
       </View>
     </View>
   )
@@ -26,30 +24,28 @@ const TripPreview = ({item}) => {
 
 const styles = StyleSheet.create({
   container: {
-    justifyContent: 'space-around',
-    alignItems: 'center',
-    backgroundColor: '#eff6f7',
-    borderRadius: 8,
-    borderWidth: 0.5,
-    borderColor: '#d6d7da',
-    flexDirection: 'row',
-    marginBottom: 15,
-    marginTop: 25,
-    shadowColor: '#000',
-    shadowOffset: { width: 1, height: 2 },
-    shadowOpacity: 0.8,
-    shadowRadius: 4,
-    width: 275,
+    borderColor: 'black',
+    borderRadius: 5,
+    borderWidth: 1,
+    marginTop: 10,
+    padding: 10
   },
-  destinations: {
-    flexDirection: 'row',
-    justifyContent: 'space-around',
-  },
-  travelDetails: {
+  name: {
     alignItems: 'center',
-    justifyContent: 'center',
-  }
-});
+    fontSize: 20,
+    fontWeight: 'bold',
+    margin: 'auto',
+    marginBottom: 5
+  },
+  cities: {
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
+  description: {
+    margin: 'auto',
 
+  }
+})
 
 export default TripPreview;
