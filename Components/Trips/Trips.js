@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, View, ScrollView, StyleSheet } from 'react-native';
+import { Text, Image, View, ScrollView, StyleSheet } from 'react-native';
 import TripPreview from '../TripPreview/TripPreview';
 
 const mockPreviews = [
@@ -108,9 +108,15 @@ const mockPreviews = [
 const Trips = () => {
   return (
     <View style={styles.scrollView}>
-      <Text style={styles.header}>
-        Trips
-      </Text>
+      <View  style={styles.header}>
+        <Image
+          style={styles.image}
+          source={{uri: 'https://img.icons8.com/officel/40/000000/globe.png'}}
+        />
+        <Text style={{fontSize: 30, marginLeft: 33}}>
+          Trips
+        </Text>
+      </View>
       <ScrollView>
         {
           mockPreviews.map((preview, index) =>
@@ -136,15 +142,22 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     width: 200
   },
-
   header: {
     borderBottomWidth: 1.5,
     borderBottomColor: 'black',
     fontSize: 30,
+    flexDirection: 'row',
+    marginTop: 3,
+    paddingBottom: 10,
     shadowColor: 'white',
     shadowOpacity: 0.2,
     shadowRadius: 10,
     width: 200
+  },
+  image: {
+    height: 36,
+    marginLeft: 3,
+    width: 36,
   }
 });
 
