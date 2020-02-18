@@ -141,7 +141,6 @@ const styles = StyleSheet.create({
     borderWidth: 1.5,
     borderColor: 'black',
     height: 500,
-    marginTop: 30,
     textAlign: 'center',
     width: 300
   },
