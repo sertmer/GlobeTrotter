@@ -22,20 +22,18 @@ export const TripPreview = ({ route }) => {
   )
 }
 
-export default TripPreview;
-
 const styles = StyleSheet.create({
   container: {
-    borderColor: '#ddd',
-    borderWidth: 1,
+    borderColor: 'black',
     borderRadius: 5,
+    borderWidth: 1,
     marginTop: 10,
     padding: 10
   },
   name: {
+    alignItems: 'center',
     fontSize: 20,
     fontWeight: 'bold',
-    alignItems: 'center',
     margin: 'auto',
     marginBottom: 5
   },
@@ -46,6 +44,7 @@ const styles = StyleSheet.create({
   },
   description: {
     margin: 'auto',
-
   }
 })
+
+export default TripPreview;

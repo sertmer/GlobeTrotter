@@ -24,9 +24,22 @@ export const App = ({ navigation }) => {
           name='Trip Preview'
           component={TripPreview}
         />
+        <Stack.Screen
+          name='Create Trip'
+          component={CreateTrip}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   )
 }
+
+const styles = StyleSheet.create({
+  container: {
+    alignItems: 'center',
+    backgroundColor: '#c9e2ef',
+    flex: 1,
+    justifyContent: 'center',
+  },
+});
 
 export default App;
