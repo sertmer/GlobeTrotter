@@ -102,7 +102,6 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 1, height: 2 },
     shadowOpacity: 0.8,
     shadowRadius: 4,
-    textIndent: 5,
   },
   legContainer: {
     alignItems: 'center',
