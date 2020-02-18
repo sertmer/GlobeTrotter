@@ -108,13 +108,16 @@ const mockPreviews = [
 const Trips = () => {
   return (
     <View style={styles.scrollView}>
-      <View  style={styles.header}>
+      <View style={styles.header}>
         <Image
           style={styles.image}
           source={{uri: 'https://img.icons8.com/officel/40/000000/globe.png'}}
         />
         <Text style={{fontSize: 30, marginLeft: 33}}>
           Trips
+        </Text>
+        <Text style={{color: '#96CDEC', marginRight: 1}}>
+          placehold
         </Text>
       </View>
       <ScrollView>
@@ -140,23 +143,23 @@ const styles = StyleSheet.create({
     height: 500,
     marginTop: 30,
     textAlign: 'center',
-    width: 200
+    width: 300
   },
   header: {
     borderBottomWidth: 1.5,
     borderBottomColor: 'black',
     fontSize: 30,
     flexDirection: 'row',
+    justifyContent: 'space-between',
     marginTop: 3,
     paddingBottom: 10,
     shadowColor: 'white',
     shadowOpacity: 0.2,
     shadowRadius: 10,
-    width: 200
+    width: 290
   },
   image: {
     height: 36,
-    marginLeft: 3,
     width: 36,
   }
 });
