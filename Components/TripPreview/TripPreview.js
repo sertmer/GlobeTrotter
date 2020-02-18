@@ -1,8 +1,8 @@
 import React from 'react';
 import { Text, View, StyleSheet } from 'react-native';
 
-const TripPreview = ({ route }) => {
-  const { name, startDate, endDate, originAbbrev, finalDestinationAbbrev, description} = route.params;
+export const TripPreview = ({ route }) => {
+  const { name, startDate, endDate, originAbbrev, finalDestinationAbbrev, description } = route.params;
 
   return (
     <View style={styles.container}>
@@ -44,7 +44,6 @@ const styles = StyleSheet.create({
   },
   description: {
     margin: 'auto',
-
   }
 })
 

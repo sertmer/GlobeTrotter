@@ -1,5 +1,8 @@
 import React from 'react';
-import { Text, Image, View, ScrollView, StyleSheet, TouchableOpacity } from 'react-native';
+
+import { Text, View, FlatList, StyleSheet, ScrollView, TouchableOpacity, Image } from 'react-native';
+import TripPreview from '../TripPreview/TripPreview';
+
 import { globalStyles } from '../../styles/global';
 
 const mockPreviews = [
