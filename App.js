@@ -2,14 +2,31 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import Trips from './Components/Trips/Trips';
 import CreateTrip from './Components/CreateTrip/CreateTrip';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import TripPreview from './Components/TripPreview/TripPreview';
 
-export const App = () => {
+export const App = ({ navigation }) => {
+  const Stack = createStackNavigator();
+
   return (
-    <View style={styles.container}>
-      <Trips />
-      <CreateTrip />
-    </View>
-  );
+    <NavigationContainer>
+      <Stack.Navigator
+        initialRouteName='Trips'
+        screenOptions={{ gestureEnabled: false }}
+      >
+        <Stack.Screen
+          name='Trips'
+          component={Trips}
+          options={{ title: 'Globe Trotter' }}
+        />
+        <Stack.Screen
+          name='Trip Preview'
+          component={TripPreview}
+        />
+      </Stack.Navigator>
+    </NavigationContainer>
+  )
 }
 
 const styles = StyleSheet.create({
@@ -17,8 +34,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#c9e2ef',
     flex: 1,
-    flexDirection: 'row',
-    justifyContent: 'space-evenly',
+    justifyContent: 'center',
   },
 });
 
