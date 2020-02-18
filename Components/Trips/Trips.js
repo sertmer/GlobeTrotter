@@ -126,7 +126,7 @@ const Trips = ({navigation}) => {
         <Text style={{fontSize: 30, marginLeft: 33}}>
           Trips
         </Text>
-        <TouchableOpacity onPress={() => navigation.navigate('Create Trip', item)}>
+        <TouchableOpacity onPress={() => navigation.navigate('Create Trip')}>
           <View style={styles.addTrip}>
             <Text style={{fontSize: 12}}>Add Trip: </Text>
             <Image

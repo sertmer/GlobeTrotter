@@ -1,7 +1,7 @@
 import React from 'react';
 import { Image, StyleSheet, Text, View, TextInput, TouchableOpacity } from 'react-native';
 
-export const CreateTrip = () => {
+export const CreateTrip = ({ route }) => {
   return (
     <View style={styles.container}>
       <View style={styles.header}>
@@ -62,7 +62,7 @@ export const CreateTrip = () => {
   )
 }
 
-export default CreateTrip;
+
 
 const styles = StyleSheet.create({
   container: {
@@ -71,9 +71,11 @@ const styles = StyleSheet.create({
     borderRadius: 4,
     borderWidth: 1.5,
     borderColor: 'black',
-    height: 500,
+    flex: 1,
+    height: '100%',
     justifyContent: 'space-around',
-    width: 250,
+    padding: 20,
+    width: '100%'
   },
   header: {
     backgroundColor: '#96cdec',
@@ -83,6 +85,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     paddingBottom: 10,
+    width: '100%'
   },
   image: {
     height: 36,
@@ -137,3 +140,6 @@ const styles = StyleSheet.create({
     padding: 5,
   }
 })
+
+
+export default CreateTrip;
