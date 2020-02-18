@@ -11,7 +11,7 @@ const TripPreview = ({item}) => {
           {name}
         </Text>
       </View>
-      <View>
+      <View style={styles.travelDetails}>
         <View style={styles.destinations}>
           <Text>{originAbbrev}</Text>
           <Text>-</Text>
@@ -44,6 +44,10 @@ const styles = StyleSheet.create({
   destinations: {
     flexDirection: 'row',
     justifyContent: 'space-around',
+  },
+  travelDetails: {
+    alignItems: 'center',
+    justifyContent: 'center',
   }
 });
 
