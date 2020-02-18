@@ -1,6 +1,5 @@
 import React from 'react';
 import { Text, Image, View, ScrollView, StyleSheet, TouchableOpacity } from 'react-native';
-import TripPreview from '../TripPreview/TripPreview';
 import { globalStyles } from '../../styles/global';
 
 const mockPreviews = [
@@ -127,9 +126,15 @@ const Trips = ({navigation}) => {
         <Text style={{fontSize: 30, marginLeft: 33}}>
           Trips
         </Text>
-        <Text style={{color: '#96CDEC', marginRight: 1}}>
-          placehold
-        </Text>
+        <TouchableOpacity onPress={() => navigation.navigate('Create Trip', item)}>
+          <View style={styles.addTrip}>
+            <Text style={{fontSize: 12}}>Add Trip: </Text>
+            <Image
+              style={styles.image}
+              source={{uri: 'https://img.icons8.com/office/80/000000/plus.png'}}
+            />
+          </View>
+        </TouchableOpacity>
       </View>
       <ScrollView>
         {mockPreviews.map(item => {
@@ -197,10 +202,15 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.8,
     shadowRadius: 10,
   },
+  addTrip: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    flexDirection: 'row',
+  },
   name: {
+    alignItems: 'center',
     fontSize: 20,
     fontWeight: 'bold',
-    alignItems: 'center',
     margin: 'auto',
     marginBottom: 5
   },
