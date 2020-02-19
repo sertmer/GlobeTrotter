@@ -5,6 +5,7 @@ import CreateTrip from './Components/CreateTrip/CreateTrip';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import TripPreview from './Components/TripPreview/TripPreview';
+import DatePicker from './Components/DatePicker/DatePicker';
 
 export const App = ({ navigation }) => {
   const Stack = createStackNavigator();
@@ -27,6 +28,10 @@ export const App = ({ navigation }) => {
         <Stack.Screen
           name='Create Trip'
           component={CreateTrip}
+        />
+        <Stack.Screen
+          name='Calendar'
+          component={DatePicker}
         />
       </Stack.Navigator>
     </NavigationContainer>
