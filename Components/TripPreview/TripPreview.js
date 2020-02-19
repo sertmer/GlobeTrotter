@@ -1,25 +1,26 @@
 import React from 'react';
-import { Text, View, StyleSheet } from 'react-native';
+import { Text, View, StyleSheet, TouchableOpacity } from 'react-native';
 
 export const TripPreview = ({ route }) => {
   const { name, startDate, endDate, originAbbrev, finalDestinationAbbrev, description, destinations } = route.params;
 
   let displayDestinations = destinations.map(destination => {
     return (
-      <View styles={styles.destination}>
-        <Text style={{ fontSize: 40 }}>{destination.location}</Text>
-        <Text>{destination.startDate}</Text>
-        <Text>{destination.endDate}</Text>
-      </View>
+      <TouchableOpacity onPress={() => console.log('hi')}>
+        <View style={styles.destination}>
+          <Text style={{ fontSize: 40 }}>{destination.location}</Text>
+          <View style={styles.destinationDates}>
+            <Text>{destination.startDate}</Text>
+            <Text>{destination.endDate}</Text>
+          </View>
+        </View>
+      </TouchableOpacity>
     )
   })
 
   return (
     <View style={styles.container}>
       <Text style={styles.name}>{name}</Text>
-      <View style={styles.description}>
-        <Text>Notes: {description}</Text>
-      </View>
       <View style={styles.tripOverview}>
         <View style={styles.cityContainer}>
           <Text style={{ fontSize: 40 }}>{originAbbrev}</Text>
@@ -31,7 +32,10 @@ export const TripPreview = ({ route }) => {
           <Text>{endDate}</Text>
         </View>
       </View>
-      <View styles={styles.destinationsContainer}>
+      <View style={styles.description}>
+        <Text>Notes: {description}</Text>
+      </View>
+      <View style={styles.destinationsContainer}>
         {
           destinations.length ?
             displayDestinations :
@@ -48,13 +52,14 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingBottom: 40,
     backgroundColor: '#c9e2ef',
-    justifyContent: 'flex-start'
+    justifyContent: 'flex-start',
+    alignItems: 'center'
   },
   tripOverview: {
-    flex: 1,
     flexDirection: 'row',
     justifyContent: 'space-around',
-    alignItems: 'center'
+    alignItems: 'center',
+    width: '100%'
   },
   name: {
     alignItems: 'center',
@@ -79,8 +84,14 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-around'
   },
-  destination: {
-    alignItems: 'center'
+  destinationDates: {
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'space-around'
+  },
+  destinationContainer: {
+    height: '100%',
+    justifyContent: 'space-around'
   }
 })
 
