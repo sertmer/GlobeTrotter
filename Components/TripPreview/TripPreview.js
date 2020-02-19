@@ -6,7 +6,7 @@ export const TripPreview = ({ route }) => {
 
   let displayDestinations = destinations.map(destination => {
     return (
-      <View styles={styles.cityContainer}>
+      <View styles={styles.destination}>
         <Text style={{ fontSize: 40 }}>{destination.location}</Text>
         <Text>{destination.startDate}</Text>
         <Text>{destination.endDate}</Text>
@@ -17,6 +17,9 @@ export const TripPreview = ({ route }) => {
   return (
     <View style={styles.container}>
       <Text style={styles.name}>{name}</Text>
+      <View style={styles.description}>
+        <Text>Notes: {description}</Text>
+      </View>
       <View style={styles.tripOverview}>
         <View style={styles.cityContainer}>
           <Text style={{ fontSize: 40 }}>{originAbbrev}</Text>
@@ -28,14 +31,13 @@ export const TripPreview = ({ route }) => {
           <Text>{endDate}</Text>
         </View>
       </View>
-      <View style={styles.description}>
-        <Text>Notes: {description}</Text>
+      <View styles={styles.destinationsContainer}>
+        {
+          destinations.length ?
+            displayDestinations :
+            <Text>No Other Destinations</Text>
+        }
       </View>
-      {
-        destinations.length ?
-          displayDestinations :
-          <Text>No Other Destinations</Text>
-      }
     </View>
   )
 }
@@ -76,6 +78,9 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'row',
     justifyContent: 'space-around'
+  },
+  destination: {
+    alignItems: 'center'
   }
 })
 
