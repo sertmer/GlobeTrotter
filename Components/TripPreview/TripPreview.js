@@ -8,10 +8,10 @@ export const TripPreview = ({ route }) => {
     <View style={styles.container}>
       <Text style={styles.name}>{name}</Text>
       <View style={styles.cities}>
-        <Text style={styles.origin}>{originAbbrev}</Text>
-        <Text style={styles.destination}>{finalDestinationAbbrev}</Text>
+        <Text style={{fontSize: 40}}>{originAbbrev}</Text>
+        <Text style={{fontSize: 40}}>{finalDestinationAbbrev}</Text>
       </View>
-      <View style={styles.cities}>
+      <View style={styles.dates} >
         <Text style={styles.startDate}>{startDate}</Text>
         <Text style={styles.endDate}>{endDate}</Text>
       </View>
@@ -24,26 +24,33 @@ export const TripPreview = ({ route }) => {
 
 const styles = StyleSheet.create({
   container: {
-    borderColor: 'black',
-    borderRadius: 5,
-    borderWidth: 1,
-    marginTop: 10,
-    padding: 10
+    padding: 10,
+    flex: 1,
+    paddingBottom: 40,
+    backgroundColor: '#c9e2ef'
   },
   name: {
     alignItems: 'center',
-    fontSize: 20,
+    fontSize: 40,
     fontWeight: 'bold',
     margin: 'auto',
-    marginBottom: 5
+    marginBottom: 20
   },
   cities: {
     flex: 1,
     flexDirection: 'row',
-    justifyContent: 'space-between',
+    justifyContent: 'space-around',
+    marginBottom: -200
   },
   description: {
     margin: 'auto',
+    justifyContent: 'center',
+    fontSize: 10
+  },
+  dates: {
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'space-around'
   }
 })
 
