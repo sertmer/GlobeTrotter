@@ -1,7 +1,19 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Image, StyleSheet, Text, View, TextInput, TouchableOpacity } from 'react-native';
+import { postNewTrip } from '../../apiCalls';
 
 export const CreateTrip = ({ route }) => {
+
+  let [tripName, setTripName] = useState('');
+  let [location, setLocation] = useState({});
+  let [destination, setDestination] = useState('');
+  let [error, setError] = useState('');
+
+
+  const formatNewTrip = () => {
+
+  }
+
   return (
     <View style={styles.container}>
       <View style={styles.header}>
