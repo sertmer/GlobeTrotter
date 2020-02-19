@@ -131,7 +131,7 @@ const mockPreviews = [
     originAbbrev: 'DEN',
     finalDestinationAbbrev: 'TOK',
     description: 'Lorem Ipsum something de lor',
-    
+    destinations: []
   },
   {
     id: '7',
@@ -143,7 +143,7 @@ const mockPreviews = [
     originAbbrev: 'DEN',
     finalDestinationAbbrev: 'TOK',
     description: 'Lorem Ipsum something de lor',
-    
+    destinations: []
   },
   {
     id: '8',
@@ -155,7 +155,7 @@ const mockPreviews = [
     originAbbrev: 'DEN',
     finalDestinationAbbrev: 'TOK',
     description: 'Lorem Ipsum something de lor',
-    
+    destinations: []
   },
   {
     id: '9',
@@ -167,7 +167,7 @@ const mockPreviews = [
     originAbbrev: 'DEN',
     finalDestinationAbbrev: 'TOK',
     description: 'Lorem Ipsum something de lor',
-    
+    destinations: []
   },
   {
     id: '10',
@@ -178,7 +178,8 @@ const mockPreviews = [
     finalDestination: 'Tokyo, Japan',
     originAbbrev: 'DEN',
     finalDestinationAbbrev: 'TOK',
-    description: 'Lorem Ipsum something de lor'
+    description: 'Lorem Ipsum something de lor',
+    destinations: []
   }
 ];
 

@@ -2,22 +2,40 @@ import React from 'react';
 import { Text, View, StyleSheet } from 'react-native';
 
 export const TripPreview = ({ route }) => {
-  const { name, startDate, endDate, originAbbrev, finalDestinationAbbrev, description } = route.params;
+  const { name, startDate, endDate, originAbbrev, finalDestinationAbbrev, description, destinations } = route.params;
+
+  let displayDestinations = destinations.map(destination => {
+    return (
+      <View styles={styles.cityContainer}>
+        <Text style={{ fontSize: 40 }}>{destination.location}</Text>
+        <Text>{destination.startDate}</Text>
+        <Text>{destination.endDate}</Text>
+      </View>
+    )
+  })
 
   return (
     <View style={styles.container}>
       <Text style={styles.name}>{name}</Text>
-      <View style={styles.cities}>
-        <Text style={{fontSize: 40}}>{originAbbrev}</Text>
-        <Text style={{fontSize: 40}}>{finalDestinationAbbrev}</Text>
-      </View>
-      <View style={styles.dates} >
-        <Text style={styles.startDate}>{startDate}</Text>
-        <Text style={styles.endDate}>{endDate}</Text>
+      <View style={styles.tripOverview}>
+        <View style={styles.cityContainer}>
+          <Text style={{ fontSize: 40 }}>{originAbbrev}</Text>
+          <Text>{startDate}</Text>
+        </View>
+        <Text style={{ fontSize: 20 }}>to</Text>
+        <View style={styles.cityContainer}>
+          <Text style={{ fontSize: 40 }}>{finalDestinationAbbrev}</Text>
+          <Text>{endDate}</Text>
+        </View>
       </View>
       <View style={styles.description}>
         <Text>Notes: {description}</Text>
       </View>
+      {
+        destinations.length ?
+          displayDestinations :
+          <Text>No Other Destinations</Text>
+      }
     </View>
   )
 }
@@ -27,7 +45,14 @@ const styles = StyleSheet.create({
     padding: 10,
     flex: 1,
     paddingBottom: 40,
-    backgroundColor: '#c9e2ef'
+    backgroundColor: '#c9e2ef',
+    justifyContent: 'flex-start'
+  },
+  tripOverview: {
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    alignItems: 'center'
   },
   name: {
     alignItems: 'center',
@@ -36,11 +61,11 @@ const styles = StyleSheet.create({
     margin: 'auto',
     marginBottom: 20
   },
-  cities: {
+  citiesContainer: {
     flex: 1,
     flexDirection: 'row',
     justifyContent: 'space-around',
-    marginBottom: -200
+    alignItems: 'center'
   },
   description: {
     margin: 'auto',
