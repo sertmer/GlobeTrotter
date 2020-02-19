@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Calendar } from 'react-native-calendars';
+import moment from 'moment';
 
 export const DatePicker = () => {
   const [ markedDates, setMarkedDates ] = useState({});
@@ -9,26 +10,27 @@ export const DatePicker = () => {
   const [ endDate, setEndDate ] = useState('');
 
   const onDayPress = day => {
+    console.log('hey')
     if (startPicked == false) {
       let datesMarked = {};
-      markedDates[day.dateString] = { startingDay: true, color: '#ddd', textColor: '#FFFFFF'};
+      markedDates[day.dateString] = { startingDay: true, color: '#00B0BF', textColor: '#FFFFFF'};
       setMarkedDates(datesMarked);
       setStartPicked(true);
       setStartDate(day.dateString)
     } else {
       setEndDate(day.dateString);
       let datesMarked = markedDates;
-      let start = startDate
-      let end = endDate
-      // let range = end.diff(start, 'days');
-      let range = 2
-      console.log('start: ', start)
-      console.log('end: ', end)
+      let start = moment(startDate)
+      let end = moment(endDate)
+      let range = end.diff(start, 'days');
+      console.log(range)
+      console.log('start: ', startDate)
+      console.log('end: ', endDate)
 
       if (range > 0) {
         for (let i = 1; i <= range; i++) {
-          let tempDate = startDate.add(1, 'day');
-          tempDate = tempDate.form('YYYY-MM-DD')
+          let tempDate = start.add(1, 'day');
+          tempDate = moment(tempDate).format('YYYY-MM-DD')
           if ( i < range ) {
             datesMarked[tempDate] = { color: '#00B0BF', textColor: '#FFFFFF' };
           } else {
@@ -45,46 +47,7 @@ export const DatePicker = () => {
     }
   }
 
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  // const [ startDate, setStartDate ] = useState('');
-  // const [ endDate, setEndDate ] = useState('');
-
-  // const onDayPress = (day) => {
-  //   setStartDate(day.dateString)
-    
-  // }
-
-  // const onDayLongPress = (day) => {
-  //   setEndDate(day.dateString);
-  //   fillCalendar()
-  // }
-
-  // const fillCalendar = () => {
-  //   console.log('start: ', startDate)
-  //   console.log('end: ', endDate);
-  // }
-
   return (
-    // <Calendar 
-    //   current={Date()}
-    //   minDate={Date()}
-    //   maxDate={'2025-12-31'}
-    //   onDayPress={onDayPress}
-    //   markedDates={{
-        
-    //   }}
-    // />
     <Calendar
       // style={styles.calendar}
       current={Date()}
