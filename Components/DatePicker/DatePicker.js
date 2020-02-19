@@ -10,24 +10,18 @@ export const DatePicker = () => {
   const [ endDate, setEndDate ] = useState('');
 
   const onDayPress = day => {
-    console.log('hey')
     if (startPicked === false) {
       let datesMarked = {};
       datesMarked[day.dateString] = { startingDay: true, color: '#00B0BF', textColor: '#FFFFFF'};
       setMarkedDates(datesMarked);
       setStartPicked(true);
       setStartDate(day.dateString)
-      console.log('status; ', startPicked)
-      console.log('start: ', startDate)
-      
     } else {
       setEndDate(day.dateString);
       let datesMarked = markedDates;
       let start = moment(startDate)
-      let end = moment(endDate)
+      let end = moment(day.dateString)
       let range = end.diff(start, 'days');
-      console.log(range)
-      console.log('end: ', endDate)
 
       if (range > 0) {
         for (let i = 1; i <= range; i++) {
@@ -42,7 +36,6 @@ export const DatePicker = () => {
         setMarkedDates(datesMarked);
         setStartPicked(false);
         setEndPicked(true);
-        setStartDate('');
       } else {
         alert('Select an upcoming date!')
       }
@@ -51,10 +44,8 @@ export const DatePicker = () => {
 
   return (
     <Calendar
-      // style={styles.calendar}
       current={Date()}
       minDate={Date()}
-      // displayLoadingIndicator
       markingType={'period'}
       onDayPress={onDayPress}
       theme={{
@@ -66,8 +57,7 @@ export const DatePicker = () => {
         monthTextColor: 'white',
         indicatorColor: 'white',
         selectedDayBackgroundColor: '#333248',
-        arrowColor: 'blue',
-        // textDisabledColor: 'red',
+        arrowColor: 'white',
         'stylesheet.calendar.header': {
           week: {
             marginTop: 5,
