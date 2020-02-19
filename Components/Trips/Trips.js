@@ -15,7 +15,19 @@ const mockPreviews = [
     finalDestination: 'paris, france',
     originAbbrev: 'DEN',
     finalDestinationAbbrev: 'PAR',
-    description: 'Spring Break Lorem Ipsum something de lor'
+    description: 'Spring Break Lorem Ipsum something de lor',
+    destinations: [
+      {
+        location: 'New York, NY',
+        startDate: '03-02-10',
+        endDate: '05-05-50'
+      },
+      {
+        location: 'pittsburgh, PA ',
+        startDate: '06-02-10',
+        endDate: '07-05-50'
+      }
+    ]
   },
   {
     id: '2',
@@ -26,7 +38,19 @@ const mockPreviews = [
     finalDestination: 'Barcelona, spain',
     originAbbrev: 'DEN',
     finalDestinationAbbrev: 'BRC',
-    description: 'Summer Roadtrip Lorem Ipsum something de lor'
+    description: 'Summer Roadtrip Lorem Ipsum something de lor',
+    destinations: [
+      {
+        location: 'New York, NY',
+        startDate: '03-02-10',
+        endDate: '05-05-50'
+      },
+      {
+        location: 'pittsburgh, PA ',
+        startDate: '06-02-10',
+        endDate: '07-05-50'
+      }
+    ]
   },
   {
     id: '3',
@@ -37,7 +61,19 @@ const mockPreviews = [
     finalDestination: 'Tokyo, Japan',
     originAbbrev: 'DEN',
     finalDestinationAbbrev: 'TOK',
-    description: ' Winter Lorem Ipsum something de lor'
+    description: ' Winter Lorem Ipsum something de lor',
+    destinations: [
+      {
+        location: 'New York, NY',
+        startDate: '03-02-10',
+        endDate: '05-05-50'
+      },
+      {
+        location: 'pittsburgh, PA ',
+        startDate: '06-02-10',
+        endDate: '07-05-50'
+      }
+    ]
   },
   {
     id: '4',
@@ -48,7 +84,19 @@ const mockPreviews = [
     finalDestination: 'Tokyo, Japan',
     originAbbrev: 'DEN',
     finalDestinationAbbrev: 'TOK',
-    description: 'Lorem Ipsum something de lor'
+    description: 'Lorem Ipsum something de lor',
+    destinations: [
+      {
+        location: 'New York, NY',
+        startDate: '03-02-10',
+        endDate: '05-05-50'
+      },
+      {
+        location: 'pittsburgh, PA ',
+        startDate: '06-02-10',
+        endDate: '07-05-50'
+      }
+    ]
   },
   {
     id: '5',
@@ -59,7 +107,19 @@ const mockPreviews = [
     finalDestination: 'Tokyo, Japan',
     originAbbrev: 'DEN',
     finalDestinationAbbrev: 'TOK',
-    description: 'Lorem Ipsum something de lor'
+    description: 'Lorem Ipsum something de lor',
+    destinations: [
+      {
+        location: 'New York, NY',
+        startDate: '03-02-10',
+        endDate: '05-05-50'
+      },
+      {
+        location: 'pittsburgh, PA ',
+        startDate: '06-02-10',
+        endDate: '07-05-50'
+      }
+    ]
   },
   {
     id: '6',
@@ -70,7 +130,8 @@ const mockPreviews = [
     finalDestination: 'Tokyo, Japan',
     originAbbrev: 'DEN',
     finalDestinationAbbrev: 'TOK',
-    description: 'Lorem Ipsum something de lor'
+    description: 'Lorem Ipsum something de lor',
+    destinations: []
   },
   {
     id: '7',
@@ -81,7 +142,8 @@ const mockPreviews = [
     finalDestination: 'Tokyo, Japan',
     originAbbrev: 'DEN',
     finalDestinationAbbrev: 'TOK',
-    description: 'Lorem Ipsum something de lor'
+    description: 'Lorem Ipsum something de lor',
+    destinations: []
   },
   {
     id: '8',
@@ -92,7 +154,8 @@ const mockPreviews = [
     finalDestination: 'Tokyo, Japan',
     originAbbrev: 'DEN',
     finalDestinationAbbrev: 'TOK',
-    description: 'Lorem Ipsum something de lor'
+    description: 'Lorem Ipsum something de lor',
+    destinations: []
   },
   {
     id: '9',
@@ -103,7 +166,8 @@ const mockPreviews = [
     finalDestination: 'Tokyo, Japan',
     originAbbrev: 'DEN',
     finalDestinationAbbrev: 'TOK',
-    description: 'Lorem Ipsum something de lor'
+    description: 'Lorem Ipsum something de lor',
+    destinations: []
   },
   {
     id: '10',
@@ -114,7 +178,8 @@ const mockPreviews = [
     finalDestination: 'Tokyo, Japan',
     originAbbrev: 'DEN',
     finalDestinationAbbrev: 'TOK',
-    description: 'Lorem Ipsum something de lor'
+    description: 'Lorem Ipsum something de lor',
+    destinations: []
   }
 ];
 
