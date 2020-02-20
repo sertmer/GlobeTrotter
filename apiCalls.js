@@ -1,30 +1,13 @@
 export const getAllTrips = () => {
-  const body = {
-    id: '1',
-    name: ' Spring Break',
-    origin: 'Denver, CO, USA',
-    originAbbrev: 'DEN',
-    originLat: '39.7392',
-    originLong: '104.9903',
-    startData: '2020-03-16',
-    endDate: '2020-03-23',
-    user: {
-      id: '1',
-      name: 'John',
-      email: 'John@gmail.com'
-    },
-    destination: [
-      {
+  const query = {
+    "query": "{ allTrips(userApiKey: \"b9aead4b955bccb5c57ef830580f3de5\") {id name origin originAbbrev originLat originLong startDate endDate user {id name email} } }"
+    };
 
-      }
-    ]
-  };
   const options = {
     method: 'POST',
-    body: JSON.stringify(body),
+    body: JSON.stringify(query),
     headers: {
       'Content-Type': 'application/json',
-      'api_key': 'b9aead4b955bccb5c57ef830580f3de5',
     }
   }
 
@@ -35,15 +18,21 @@ export const getAllTrips = () => {
       }
       return response.json()
     })
-}
+};
 
-export const postNewTrip = (newTrip) => {
+//postNewTrip will involve a -mutation- rather than a query, and just the values for the sent properties
+export const postNewTrip = () => {
+  //argument needs to precisely formatted so that (maybe) it can be interpolated within the mutation string
+  const mutation =   {
+    "mutation": "{ allTrips(userApiKey: \"b9aead4b955bccb5c57ef830580f3de5\") {id name origin originAbbrev originLat originLong startDate endDate user {id name email} } }"
+    };
+    //Mutation will include edits within the same parens? as the APIKEY
+
   const options = {
     method: 'POST',
-    body: JSON.stringify(newTrip),
+    body: JSON.stringify(mutation),
     headers: {
       'Content-Type': 'application/json',
-      'api_key': 'b9aead4b955bccb5c57ef830580f3de5',
     }
   }
 
@@ -55,3 +44,45 @@ export const postNewTrip = (newTrip) => {
       return response.json()
     })
 }
+
+
+// Notes / Developments
+//QUERIES & MUTATIONS
+//Delete is a mutation
+//mutation{
+//   deleteTrip(id:_)
+// }
+//Activities mutations for adding a mutation
+// Yelp API interactions will be RESTFUL, will include info for rating, a url for the image, etc
+// tripDestinations: [
+//   {
+//     startDate,
+//     endDate,
+//     destination: {
+//       id,
+//       location,
+//       lat,
+//       long,
+//     },
+//     activities: [
+//       {
+//         id,
+//         name,
+//         category,
+//         date
+//       }
+//     ]
+//   }
+// ]
+
+
+// https://blog.apollographql.com/4-simple-ways-to-call-a-graphql-api-a6807bcdb355
+  // require('isomorphic-fetch');
+  //
+  // fetch('https://1jzxrj179.lp.gql.zone/graphql', {
+  //   method: 'POST',
+  //   headers: { 'Content-Type': 'application/json' },
+  //   body: JSON.stringify({ query: '{ posts { title } }' }),
+  // })
+  //   .then(res => res.json())
+  //   .then(res => console.log(res.data));
