@@ -28,7 +28,7 @@ export const getAllTrips = () => {
     }
   }
 
-  return fetch('', options)
+  return fetch('https://globe-trotter-api.herokuapp.com/graphql/', options)
     .then(response => {
       if (!response.ok) {
         throw Error('error retrieving trips data')
@@ -44,11 +44,10 @@ export const postNewTrip = (newTrip) => {
     headers: {
       'Content-Type': 'application/json',
       'api_key': 'b9aead4b955bccb5c57ef830580f3de5',
-      //Possible that the key name may be in camelCase
     }
   }
 
-  return fetch('', options)
+  return fetch('https://globe-trotter-api.herokuapp.com/graphql/', options)
     .then(response => {
       if (!response.ok) {
         throw Error('error posting new trip')

@@ -1,7 +1,5 @@
 import { getAllTrips, postNewTrip } from './apiCalls';
 
-//mockresponses may need to be polished in case BE format is misrepresented
-
 describe('apiCalls', () => {
 
   describe('getTrips', () => {
@@ -73,7 +71,7 @@ describe('apiCalls', () => {
     it('should call fetch with the correct URL & options', () => {
       getAllTrips(mockTrip);
 
-      expect(window.fetch).toHaveBeenCalledWith('', mockOptions);
+      expect(window.fetch).toHaveBeenCalledWith('https://globe-trotter-api.herokuapp.com/graphql/', mockOptions);
     });
 
     it('should return an object containing all trip objects', () => {
@@ -179,7 +177,7 @@ describe('apiCalls', () => {
     it('should call fetch with the correct URL & options', () => {
       postNewTrip(mockTrip);
 
-      expect(window.fetch).toHaveBeenCalledWith('', mockOptions);
+      expect(window.fetch).toHaveBeenCalledWith('https://globe-trotter-api.herokuapp.com/graphql/', mockOptions);
     });
 
     it('should return an array of trip objects', () => {
