@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Calendar } from 'react-native-calendars';
 import moment from 'moment';
+import Maps from '../Maps/Maps';
 
 export const DatePicker = () => {
   const [ markedDates, setMarkedDates ] = useState({});
@@ -43,6 +44,7 @@ export const DatePicker = () => {
   }
 
   return (
+    <>
     <Calendar
       current={Date()}
       minDate={Date()}
@@ -68,6 +70,8 @@ export const DatePicker = () => {
       }}
       markedDates={markedDates}
     />
+    <Maps />
+    </>
   )
 }
 
