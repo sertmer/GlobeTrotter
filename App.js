@@ -15,10 +15,10 @@ export const App = ({ navigation }) => {
   const handleTripsFetch = async () => {
     await getAllTrips()
       .then(data => {
-        setAllTrips(data)
+         setAllTrips(data.allTrips)
       })
       .catch(error => {
-        return `error: ${error}`
+        console.log(`error: ${error}`)
       })
   }
 

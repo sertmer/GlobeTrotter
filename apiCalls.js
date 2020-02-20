@@ -9,7 +9,7 @@ export const getAllTrips = () => {
     headers: {
       'Content-Type': 'application/json',
     }
-  }
+  };
 
   return fetch('https://globe-trotter-api.herokuapp.com/graphql/', options)
     .then(response => {
@@ -20,7 +20,7 @@ export const getAllTrips = () => {
     })
 };
 
-//postNewTrip will involve a -mutation- rather than a query, and just the values for the sent properties
+//postNewTrip will involve a -mutation- rather than a query
 export const postNewTrip = () => {
   //argument needs to precisely formatted so that (maybe) it can be interpolated within the mutation string
   const mutation =   {
