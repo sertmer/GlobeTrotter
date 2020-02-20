@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Image, StyleSheet, Text, View, TextInput, TouchableOpacity } from 'react-native';
+import { postNewTrip } from '../../apiCalls';
 
 
 export const CreateTrip = ({ navigation }) => {
@@ -44,7 +45,7 @@ export const CreateTrip = ({ navigation }) => {
       <TouchableOpacity style={styles.buttonDestination}>
         <Text>Add destination</Text>
       </TouchableOpacity>
-      
+
     </View>
   )
 }
