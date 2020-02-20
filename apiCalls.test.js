@@ -2,42 +2,29 @@ import { getAllTrips, postNewTrip } from './apiCalls';
 
 describe('apiCalls', () => {
 
-  describe('getTrips', () => {
-    let mockResponse, mockOptions, mockTrip;
+  describe('getAllTrips', () => {
+    let mockResponse, mockOptions, mockBody;
 
     beforeEach(() => {
-      mockTrip = {
-        id: '1',
-        name: ' Spring Break',
-        origin: 'Denver, CO, USA',
-        originAbbrev: 'DEN',
-        originLat: '39.7392',
-        originLong: '104.9903',
-        startData: '2020-03-16',
-        endDate: '2020-03-23',
-        user: {
-          id: '1',
-          name: 'John',
-          email: 'John@gmail.com'
-        },
-        destination: [
-          {
-
-          }
-        ]
+      mockBody = {
+        "query":
+          "{ allTrips(userApiKey: \"b9aead4b955bccb5c57ef830580f3de5\")
+            {
+              id name origin originAbbrev originLat originLong startDate endDate
+              user {id name email}
+            }
+          }"
       };
 
       mockOptions = {
         method: 'POST',
-        body: JSON.stringify(mockTrip),
+        body: JSON.stringify(mockBody),
         headers: {
           'Content-Type': 'application/json',
-          'api_key': 'b9aead4b955bccb5c57ef830580f3de5',
         }
       };
 
-      mockResponse = {
-        allTrips: [
+      mockResponse = [
           {
             id: '1',
             name: ' Spring Break',
@@ -58,8 +45,8 @@ describe('apiCalls', () => {
               }
             ]
           },
-        ]
-      };
+      ];
+
       window.fetch = jest.fn().mockImplementation(() => {
         return Promise.resolve({
           ok: true,
@@ -69,13 +56,13 @@ describe('apiCalls', () => {
     });
 
     it('should call fetch with the correct URL & options', () => {
-      getAllTrips(mockTrip);
+      getAllTrips();
 
       expect(window.fetch).toHaveBeenCalledWith('https://globe-trotter-api.herokuapp.com/graphql/', mockOptions);
     });
 
     it('should return an object containing all trip objects', () => {
-      expect(getAllTrips(mockTrip)).resolves.toEqual(mockResponse);
+      expect(getAllTrips()).resolves.toEqual(mockResponse);
     });
 
     it('should return an error message if Promise is rejected', () => {
@@ -83,7 +70,7 @@ describe('apiCalls', () => {
         return Promise.resolve({ ok: false });
       });
 
-      expect(getAllTrips(mockTrip)).rejects.toEqual(Error('error retrieving trips data'));
+      expect(getAllTrips()).rejects.toEqual(Error('error retrieving trips data'));
     });
   });
 
@@ -138,7 +125,7 @@ describe('apiCalls', () => {
               name: 'John',
               email: 'John@gmail.com'
             },
-            destination: [
+            destinations: [
               {
 
               }
@@ -157,12 +144,7 @@ describe('apiCalls', () => {
               id: '1',
               name: 'John',
               email: 'John@gmail.com'
-            },
-            destination: [
-              {
-
-              }
-            ]
+            }
           }
         ]
       };
