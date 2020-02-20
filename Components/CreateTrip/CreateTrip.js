@@ -2,18 +2,8 @@ import React, { useState } from 'react';
 import { Image, StyleSheet, Text, View, TextInput, TouchableOpacity } from 'react-native';
 import { postNewTrip } from '../../apiCalls';
 
-export const CreateTrip = ({ route }) => {
 
-  let [tripName, setTripName] = useState('');
-  let [location, setLocation] = useState({});
-  let [destination, setDestination] = useState('');
-  let [error, setError] = useState('');
-
-
-  const formatNewTrip = () => {
-
-  }
-
+export const CreateTrip = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <View style={styles.header}>
@@ -46,30 +36,16 @@ export const CreateTrip = ({ route }) => {
           placeholder='e.g. trip destination'
         />
       </View>
-      <View style={styles.legContainer}>
-        <View style={styles.calendars}>
-          <View style={{textAlign: 'center'}}>
-            <Text>Start:</Text>
-            <Image
-              style={{height: 60, width: 60}}
-              source={{uri: 'https://img.icons8.com/plasticine/200/000000/calendar.png'}}
-            />
-          </View>
-          <View style={{textAlign: 'center'}}>
-            <Text>End:</Text>
-            <Image
-              style={{height: 60, width: 60}}
-              source={{uri: 'https://img.icons8.com/plasticine/200/000000/calendar.png'}}
-            />
-          </View>
-        </View>
-        <TouchableOpacity style={styles.buttonLeg}>
-          <Text>Add Trip Leg</Text>
-        </TouchableOpacity>
-      </View>
+      <TouchableOpacity onPress={() => navigation.navigate('Calendar')}>
+        <Image
+          style={{height: 60, width: 60}}
+          source={{uri: 'https://img.icons8.com/plasticine/200/000000/calendar.png'}}
+        />
+      </TouchableOpacity>
       <TouchableOpacity style={styles.buttonDestination}>
         <Text>Add destination</Text>
       </TouchableOpacity>
+
     </View>
   )
 }
