@@ -1,5 +1,5 @@
 import React from 'react';
-import plus from '../../assets/plus.svg'
+import plus from '../../assets/001-plus.svg'
 
 import { Text, View, FlatList, StyleSheet, ScrollView, TouchableOpacity, Image } from 'react-native';
 import TripPreview from '../TripPreview/TripPreview';
