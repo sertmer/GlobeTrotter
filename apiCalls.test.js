@@ -11,7 +11,7 @@ describe('apiCalls', () => {
         };
       mockOptions = {
         method: 'POST',
-        body: JSON.stringify(mockBody),
+        body: JSON.stringify(mockQuery),
         headers: {
           'Content-Type': 'application/json',
         }
