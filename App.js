@@ -14,11 +14,12 @@ export const App = ({ navigation }) => {
 
   const handleTripsFetch = async () => {
     await getAllTrips()
-      .then(data => {
-         setAllTrips(data.allTrips)
+      .then(fetchedData => {
+        console.log(fetchedData);
+        setAllTrips(fetchedData.data.allTrips)
       })
       .catch(error => {
-        console.log(`error: ${error}`)
+        console.log(error)
       })
   }
 
