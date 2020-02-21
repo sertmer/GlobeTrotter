@@ -4,119 +4,16 @@ exports[`renders correctly 1`] = `
 <View
   style={
     Object {
-      "backgroundColor": "#96CDEC",
-      "borderColor": "black",
-      "borderWidth": 1.5,
+      "backgroundColor": "#1E88E5",
       "flex": 1,
       "height": 3000,
       "justifyContent": "center",
-      "padding": 20,
+      "paddingLeft": 15,
+      "paddingRight": 15,
       "width": "100%",
     }
   }
 >
-  <View
-    style={
-      Object {
-        "borderBottomColor": "black",
-        "borderBottomWidth": 3.5,
-        "flexDirection": "row",
-        "fontSize": 30,
-        "justifyContent": "space-between",
-        "marginTop": 3,
-        "paddingBottom": 10,
-        "width": "100%",
-      }
-    }
-  >
-    <Image
-      source={
-        Object {
-          "uri": "https://img.icons8.com/officel/40/000000/globe.png",
-        }
-      }
-      style={
-        Object {
-          "height": 36,
-          "shadowColor": "#000",
-          "shadowOffset": Object {
-            "height": 3,
-            "width": 2,
-          },
-          "shadowOpacity": 0.8,
-          "shadowRadius": 1,
-          "width": 36,
-        }
-      }
-    />
-    <Text
-      style={
-        Object {
-          "fontSize": 30,
-          "marginLeft": 33,
-        }
-      }
-    >
-      Trips
-    </Text>
-    <View
-      accessible={true}
-      focusable={true}
-      isTVSelectable={true}
-      onClick={[Function]}
-      onResponderGrant={[Function]}
-      onResponderMove={[Function]}
-      onResponderRelease={[Function]}
-      onResponderTerminate={[Function]}
-      onResponderTerminationRequest={[Function]}
-      onStartShouldSetResponder={[Function]}
-      style={
-        Object {
-          "opacity": 1,
-        }
-      }
-    >
-      <View
-        style={
-          Object {
-            "alignItems": "center",
-            "flexDirection": "row",
-            "justifyContent": "center",
-          }
-        }
-      >
-        <Text
-          style={
-            Object {
-              "fontSize": 12,
-            }
-          }
-        >
-          Add Trip: 
-        </Text>
-        <Image
-          source={
-            Object {
-              "uri": "https://img.icons8.com/office/80/000000/plus.png",
-            }
-          }
-          style={
-            Object {
-              "height": 36,
-              "shadowColor": "#000",
-              "shadowOffset": Object {
-                "height": 3,
-                "width": 2,
-              },
-              "shadowOpacity": 0.8,
-              "shadowRadius": 1,
-              "width": 36,
-            }
-          }
-        />
-      </View>
-    </View>
-  </View>
   <RCTScrollView>
     <View>
       <View>
@@ -141,17 +38,15 @@ exports[`renders correctly 1`] = `
             style={
               Object {
                 "backgroundColor": "#eff6f7",
-                "borderColor": "#d6d7da",
                 "borderRadius": 5,
-                "borderWidth": 3,
                 "marginTop": 20,
                 "padding": 10,
-                "shadowColor": "#000",
+                "shadowColor": "#0D47A1",
                 "shadowOffset": Object {
-                  "height": 2,
+                  "height": 1,
                   "width": 1,
                 },
-                "shadowOpacity": 0.8,
+                "shadowOpacity": 0.9,
                 "shadowRadius": 10,
               }
             }
@@ -226,17 +121,15 @@ exports[`renders correctly 1`] = `
             style={
               Object {
                 "backgroundColor": "#eff6f7",
-                "borderColor": "#d6d7da",
                 "borderRadius": 5,
-                "borderWidth": 3,
                 "marginTop": 20,
                 "padding": 10,
-                "shadowColor": "#000",
+                "shadowColor": "#0D47A1",
                 "shadowOffset": Object {
-                  "height": 2,
+                  "height": 1,
                   "width": 1,
                 },
-                "shadowOpacity": 0.8,
+                "shadowOpacity": 0.9,
                 "shadowRadius": 10,
               }
             }
@@ -311,17 +204,15 @@ exports[`renders correctly 1`] = `
             style={
               Object {
                 "backgroundColor": "#eff6f7",
-                "borderColor": "#d6d7da",
                 "borderRadius": 5,
-                "borderWidth": 3,
                 "marginTop": 20,
                 "padding": 10,
-                "shadowColor": "#000",
+                "shadowColor": "#0D47A1",
                 "shadowOffset": Object {
-                  "height": 2,
+                  "height": 1,
                   "width": 1,
                 },
-                "shadowOpacity": 0.8,
+                "shadowOpacity": 0.9,
                 "shadowRadius": 10,
               }
             }
@@ -396,17 +287,15 @@ exports[`renders correctly 1`] = `
             style={
               Object {
                 "backgroundColor": "#eff6f7",
-                "borderColor": "#d6d7da",
                 "borderRadius": 5,
-                "borderWidth": 3,
                 "marginTop": 20,
                 "padding": 10,
-                "shadowColor": "#000",
+                "shadowColor": "#0D47A1",
                 "shadowOffset": Object {
-                  "height": 2,
+                  "height": 1,
                   "width": 1,
                 },
-                "shadowOpacity": 0.8,
+                "shadowOpacity": 0.9,
                 "shadowRadius": 10,
               }
             }
@@ -481,17 +370,15 @@ exports[`renders correctly 1`] = `
             style={
               Object {
                 "backgroundColor": "#eff6f7",
-                "borderColor": "#d6d7da",
                 "borderRadius": 5,
-                "borderWidth": 3,
                 "marginTop": 20,
                 "padding": 10,
-                "shadowColor": "#000",
+                "shadowColor": "#0D47A1",
                 "shadowOffset": Object {
-                  "height": 2,
+                  "height": 1,
                   "width": 1,
                 },
-                "shadowOpacity": 0.8,
+                "shadowOpacity": 0.9,
                 "shadowRadius": 10,
               }
             }
@@ -566,17 +453,15 @@ exports[`renders correctly 1`] = `
             style={
               Object {
                 "backgroundColor": "#eff6f7",
-                "borderColor": "#d6d7da",
                 "borderRadius": 5,
-                "borderWidth": 3,
                 "marginTop": 20,
                 "padding": 10,
-                "shadowColor": "#000",
+                "shadowColor": "#0D47A1",
                 "shadowOffset": Object {
-                  "height": 2,
+                  "height": 1,
                   "width": 1,
                 },
-                "shadowOpacity": 0.8,
+                "shadowOpacity": 0.9,
                 "shadowRadius": 10,
               }
             }
@@ -651,17 +536,15 @@ exports[`renders correctly 1`] = `
             style={
               Object {
                 "backgroundColor": "#eff6f7",
-                "borderColor": "#d6d7da",
                 "borderRadius": 5,
-                "borderWidth": 3,
                 "marginTop": 20,
                 "padding": 10,
-                "shadowColor": "#000",
+                "shadowColor": "#0D47A1",
                 "shadowOffset": Object {
-                  "height": 2,
+                  "height": 1,
                   "width": 1,
                 },
-                "shadowOpacity": 0.8,
+                "shadowOpacity": 0.9,
                 "shadowRadius": 10,
               }
             }
@@ -736,17 +619,15 @@ exports[`renders correctly 1`] = `
             style={
               Object {
                 "backgroundColor": "#eff6f7",
-                "borderColor": "#d6d7da",
                 "borderRadius": 5,
-                "borderWidth": 3,
                 "marginTop": 20,
                 "padding": 10,
-                "shadowColor": "#000",
+                "shadowColor": "#0D47A1",
                 "shadowOffset": Object {
-                  "height": 2,
+                  "height": 1,
                   "width": 1,
                 },
-                "shadowOpacity": 0.8,
+                "shadowOpacity": 0.9,
                 "shadowRadius": 10,
               }
             }
@@ -821,17 +702,15 @@ exports[`renders correctly 1`] = `
             style={
               Object {
                 "backgroundColor": "#eff6f7",
-                "borderColor": "#d6d7da",
                 "borderRadius": 5,
-                "borderWidth": 3,
                 "marginTop": 20,
                 "padding": 10,
-                "shadowColor": "#000",
+                "shadowColor": "#0D47A1",
                 "shadowOffset": Object {
-                  "height": 2,
+                  "height": 1,
                   "width": 1,
                 },
-                "shadowOpacity": 0.8,
+                "shadowOpacity": 0.9,
                 "shadowRadius": 10,
               }
             }
@@ -906,17 +785,15 @@ exports[`renders correctly 1`] = `
             style={
               Object {
                 "backgroundColor": "#eff6f7",
-                "borderColor": "#d6d7da",
                 "borderRadius": 5,
-                "borderWidth": 3,
                 "marginTop": 20,
                 "padding": 10,
-                "shadowColor": "#000",
+                "shadowColor": "#0D47A1",
                 "shadowOffset": Object {
-                  "height": 2,
+                  "height": 1,
                   "width": 1,
                 },
-                "shadowOpacity": 0.8,
+                "shadowOpacity": 0.9,
                 "shadowRadius": 10,
               }
             }
@@ -971,5 +848,55 @@ exports[`renders correctly 1`] = `
       </View>
     </View>
   </RCTScrollView>
+  <View
+    accessible={true}
+    focusable={true}
+    isTVSelectable={true}
+    onClick={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      Object {
+        "alignItems": "center",
+        "bottom": 50,
+        "height": 100,
+        "justifyContent": "center",
+        "opacity": 1,
+        "position": "absolute",
+        "right": 100,
+        "width": 10,
+      }
+    }
+  >
+    <View
+      style={
+        Object {
+          "padding": 100,
+        }
+      }
+    >
+      <Image
+        accessibilityLabel="Add Trip"
+        source={1}
+        style={
+          Object {
+            "height": 80,
+            "shadowColor": "#0D47A1",
+            "shadowOffset": Object {
+              "height": 1,
+              "width": 1,
+            },
+            "shadowOpacity": 0.5,
+            "shadowRadius": 0.5,
+            "width": 80,
+          }
+        }
+      />
+    </View>
+  </View>
 </View>
 `;

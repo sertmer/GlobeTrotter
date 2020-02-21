@@ -184,7 +184,7 @@ const mockPreviews = [
   }
 ];
 
-const Trips = ({navigation}) => {
+const Trips = ({ navigation }) => {
   return (
     <View style={styles.trips}>
       <ScrollView>
@@ -208,13 +208,15 @@ const Trips = ({navigation}) => {
           )
         })}
       </ScrollView>
-      <TouchableOpacity activeOpacity={.9} style={styles.addTrip}onPress={() => navigation.navigate('Create Trip')}>
-            <Image
-              style={styles.image}
-              source={plus}
-              accessibilityLabel='Add Trip'
-            />
-        </TouchableOpacity>
+      <TouchableOpacity activeOpacity={.9} style={styles.addTrip} onPress={() => navigation.navigate('Create Trip')}>
+        <View style={styles.plusContainer}>
+          <Image
+            style={styles.image}
+            source={plus}
+            accessibilityLabel='Add Trip'
+          />
+        </View>
+      </TouchableOpacity>
     </View>
   )
 }
@@ -240,10 +242,10 @@ const styles = StyleSheet.create({
   },
   image: {
     height: 80,
-    shadowColor: '#CFD8DC0',
+    shadowColor: '#0D47A1',
     shadowOffset: { width: 1, height: 1 },
-    shadowOpacity: 0.9,
-    shadowRadius: 1.25,
+    shadowOpacity: 0.5,
+    shadowRadius: .5,
     width: 80,
   },
   container: {
@@ -251,11 +253,11 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     marginTop: 20,
     padding: 10,
-    shadowColor: '#CFD8DC0',
-    shadowOffset: { width: 1, height: 1},
-    shadowOpacity: .7,
+    shadowColor: '#0D47A1',
+    shadowOffset: { width: 1, height: 1 },
+    shadowOpacity: .9,
     shadowRadius: 10
-  }, 
+  },
   addTrip: {
     position: 'absolute',
     width: 10,
@@ -276,6 +278,9 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'row',
     justifyContent: 'space-between',
+  },
+  plusContainer: {
+    padding: 100
   }
 });
 
