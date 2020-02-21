@@ -1,4 +1,5 @@
 import React from 'react';
+import plus from '../../assets/plus.svg'
 
 import { Text, View, FlatList, StyleSheet, ScrollView, TouchableOpacity, Image } from 'react-native';
 import TripPreview from '../TripPreview/TripPreview';
@@ -186,29 +187,11 @@ const mockPreviews = [
 const Trips = ({navigation}) => {
   return (
     <View style={styles.trips}>
-      <View style={styles.header}>
-        <Image
-          style={styles.image}
-          source={{uri: 'https://img.icons8.com/officel/40/000000/globe.png'}}
-        />
-        <Text style={{fontSize: 30, marginLeft: 33}}>
-          Trips
-        </Text>
-        <TouchableOpacity onPress={() => navigation.navigate('Create Trip')}>
-          <View style={styles.addTrip}>
-            <Text style={{fontSize: 12}}>Add Trip: </Text>
-            <Image
-              style={styles.image}
-              source={{uri: 'https://img.icons8.com/office/80/000000/plus.png'}}
-            />
-          </View>
-        </TouchableOpacity>
-      </View>
       <ScrollView>
         {mockPreviews.map(item => {
           return (
             <View key={item.id}>
-              <TouchableOpacity onPress={() => navigation.navigate('Trip Preview', item)}>
+              <TouchableOpacity activeOpacity={.8} onPress={() => navigation.navigate('Trip Preview', item)}>
                 <View style={styles.container}>
                   <Text style={styles.name}>{item.name}</Text>
                   <View style={styles.cities}>
@@ -225,23 +208,28 @@ const Trips = ({navigation}) => {
           )
         })}
       </ScrollView>
+      <TouchableOpacity activeOpacity={.9} style={styles.addTrip}onPress={() => navigation.navigate('Create Trip')}>
+            <Image
+              style={styles.image}
+              source={plus}
+              accessibilityLabel='Add Trip'
+            />
+        </TouchableOpacity>
     </View>
   )
 }
 
 const styles = StyleSheet.create({
   trips: {
-    backgroundColor: '#96CDEC',
-    borderWidth: 1.5,
-    borderColor: 'black',
+    backgroundColor: '#1E88E5',
     flex: 1,
     height: 3000,
     justifyContent: 'center',
-    padding: 20,
+    paddingLeft: 15,
+    paddingRight: 15,
     width: '100%'
   },
   header: {
-    borderBottomWidth: 3.5,
     borderBottomColor: 'black',
     fontSize: 30,
     flexDirection: 'row',
@@ -251,29 +239,31 @@ const styles = StyleSheet.create({
     width: '100%'
   },
   image: {
-    height: 36,
-    shadowColor: '#000',
-    shadowOffset: { width: 2, height: 3 },
-    shadowOpacity: 0.8,
-    shadowRadius: 1,
-    width: 36,
+    height: 80,
+    shadowColor: '#CFD8DC0',
+    shadowOffset: { width: 1, height: 1 },
+    shadowOpacity: 0.9,
+    shadowRadius: 1.25,
+    width: 80,
   },
   container: {
     backgroundColor: '#eff6f7',
-    borderColor: '#d6d7da',
-    borderWidth: 3,
     borderRadius: 5,
     marginTop: 20,
     padding: 10,
-    shadowColor: '#000',
-    shadowOffset: { width: 1, height: 2 },
-    shadowOpacity: 0.8,
-    shadowRadius: 10,
-  },
+    shadowColor: '#CFD8DC0',
+    shadowOffset: { width: 1, height: 1},
+    shadowOpacity: .7,
+    shadowRadius: 10
+  }, 
   addTrip: {
+    position: 'absolute',
+    width: 10,
+    height: 100,
     alignItems: 'center',
     justifyContent: 'center',
-    flexDirection: 'row',
+    right: 100,
+    bottom: 50,
   },
   name: {
     alignItems: 'center',
