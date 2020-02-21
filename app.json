@@ -25,10 +25,12 @@
     ],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "globeTrotter"
+      "bundleIdentifier": "globeTrotter",
+      "buildNumber": "1.0.0"
     },
     "android": {
       "package": "com.globeTrotter.globeTrotter",
+      "versionCode": 1,
       "config": {
         "googleMaps": {
           "apiKey": ""
