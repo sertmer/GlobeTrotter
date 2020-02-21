@@ -3200,7 +3200,7 @@ exports[`renders correctly 1`] = `
         }
       >
         <View
-          accessibilityLabel=" Friday February 21 "
+          accessibilityLabel="today Friday February 21 "
           accessibilityRole="button"
           accessible={true}
           focusable={true}
@@ -3272,6 +3272,9 @@ exports[`renders correctly 1`] = `
                   "width": 38,
                 },
                 Object {
+                  "backgroundColor": undefined,
+                },
+                Object {
                   "borderRadius": 17,
                 },
               ]
@@ -3288,6 +3291,10 @@ exports[`renders correctly 1`] = `
                     "fontSize": 16,
                     "fontWeight": "300",
                     "marginTop": 7,
+                  },
+                  Object {
+                    "color": "white",
+                    "fontWeight": "500",
                   },
                   Object {},
                 ]
