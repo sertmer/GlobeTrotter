@@ -1,9 +1,9 @@
-import React from 'react';
-
+import React, { useState, useEffect } from 'react';
 import { Text, View, FlatList, StyleSheet, ScrollView, TouchableOpacity, Image } from 'react-native';
 import TripPreview from '../TripPreview/TripPreview';
-
 import { globalStyles } from '../../styles/global';
+import { getAllTrips } from '../../apiCalls';
+
 
 const mockPreviews = [
   {
@@ -184,6 +184,55 @@ const mockPreviews = [
 ];
 
 const Trips = ({navigation}) => {
+
+  let [allTrips, setAllTrips] = useState([]);
+  let [tripsWithFinalDest, setTripsWithFinalDest] = useState([]);
+
+  const findFinalDestination = (destinationSet) => {
+    let copiedData = [...destinationSet];
+    copiedData.reverse();
+    console.log(copiedData[0].destination.abbrev);
+    return copiedData[0].destination.abbrev
+  }
+
+  const addFinalDestinations = (copiedTrips) => {
+    console.log(copiedTrips);
+      copiedTrips.forEach(trip => {
+        trip.finalDestinationAbbrev = findFinalDestination(trip.tripdestinationSet)
+      })
+      console.log(copiedTrips);
+      setTripsWithFinalDest(copiedTrips)
+  };
+
+  const handleTripsFetch = async () => {
+    await getAllTrips()
+      .then(fetchedData => {
+        console.log(fetchedData);
+        setAllTrips(fetchedData.data.allTrips);
+        addFinalDestinations(fetchedData.data.allTrips);
+      })
+      .catch(error => {
+        console.log(error)
+      })
+  }
+
+  useEffect(() => handleTripsFetch(), []);
+
+  // const generateDestinations = (tripObject) => {
+  //   tripObject.tripdestinationSet.map(place => {
+  //     return (
+  //       <View style={styles.cities}>
+  //         <Text style={styles.destination}>{place.destination.abbrev}</Text>
+  //       </View>
+  //       <View style={styles.cities}>
+  //         <Text style={styles.startDate}>{place.destination}</Text>
+  //         <Text style={styles.endDate}></Text>
+  //       </View>
+  //     )
+  //   })
+  // }
+
+
   return (
     <View style={styles.trips}>
       <View style={styles.header}>
@@ -194,7 +243,7 @@ const Trips = ({navigation}) => {
         <Text style={{fontSize: 30, marginLeft: 33}}>
           Trips
         </Text>
-        <TouchableOpacity onPress={() => navigation.navigate('Create Trip')}>
+        <TouchableOpacity onPress={() => navigation.navigate('Create Trip', {allTrips})}>
           <View style={styles.addTrip}>
             <Text style={{fontSize: 12}}>Add Trip: </Text>
             <Image
@@ -213,7 +262,7 @@ const Trips = ({navigation}) => {
                   <Text style={styles.name}>{item.name}</Text>
                   <View style={styles.cities}>
                     <Text style={styles.origin}>{item.originAbbrev}</Text>
-                    <Text style={styles.destination}>{item.finalDestinationAbbrev}</Text>
+                    <Text style={styles.origin}>{item.finalDestinationAbbrev}</Text>
                   </View>
                   <View style={styles.cities}>
                     <Text style={styles.startDate}>{item.startDate}</Text>
