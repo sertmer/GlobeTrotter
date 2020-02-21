@@ -185,8 +185,18 @@ const mockPreviews = [
 
 const Trips = ({navigation}) => {
 
-  let [allTrips, setAllTrips] = useState([]);
-  let [tripsWithFinalDest, setTripsWithFinalDest] = useState([]);
+  let [reformattedTrips, setReformattedTrips] = useState([]);
+
+  const handleTripsFetch = async () => {
+    await getAllTrips()
+      .then(fetchedData => {
+        console.log(fetchedData);
+        reformatTripsData(fetchedData.data.allTrips);
+      })
+      .catch(error => {
+        console.log(error)
+      })
+  }
 
   const findFinalDestination = (destinationSet) => {
     let copiedData = [...destinationSet];
@@ -195,26 +205,30 @@ const Trips = ({navigation}) => {
     return copiedData[0].destination.abbrev
   }
 
-  const addFinalDestinations = (copiedTrips) => {
+  const findEndDate = (destinationSet) => {
+    let copiedData = [...destinationSet];
+    copiedData.reverse();
+    console.log(copiedData[0].endDate);
+    return copiedData[0].endDate
+  }
+
+  const findStartDate = (destinationSet) => {
+    let copiedData = [...destinationSet];
+    console.log(copiedData[0].startDate);
+    return copiedData[0].startDate
+  }
+
+  const reformatTripsData = (fetchedData) => {
+    let copiedTrips = [...fetchedData];
     console.log(copiedTrips);
       copiedTrips.forEach(trip => {
-        trip.finalDestinationAbbrev = findFinalDestination(trip.tripdestinationSet)
+        trip.finalDestinationAbbrev = findFinalDestination(trip.tripdestinationSet);
+        trip.startDate = findStartDate(trip.tripdestinationSet);
+        trip.endDate = findEndDate(trip.tripdestinationSet)
       })
       console.log(copiedTrips);
-      setTripsWithFinalDest(copiedTrips)
+      setReformattedTrips(copiedTrips)
   };
-
-  const handleTripsFetch = async () => {
-    await getAllTrips()
-      .then(fetchedData => {
-        console.log(fetchedData);
-        setAllTrips(fetchedData.data.allTrips);
-        addFinalDestinations(fetchedData.data.allTrips);
-      })
-      .catch(error => {
-        console.log(error)
-      })
-  }
 
   useEffect(() => handleTripsFetch(), []);
 
