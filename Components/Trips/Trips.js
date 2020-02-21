@@ -224,7 +224,8 @@ const Trips = ({navigation}) => {
       copiedTrips.forEach(trip => {
         trip.finalDestinationAbbrev = findFinalDestination(trip.tripdestinationSet);
         trip.startDate = findStartDate(trip.tripdestinationSet);
-        trip.endDate = findEndDate(trip.tripdestinationSet)
+        trip.endDate = findEndDate(trip.tripdestinationSet);
+        trip.description = 'Placeholder text'
       })
       console.log(copiedTrips);
       setReformattedTrips(copiedTrips)
@@ -257,7 +258,7 @@ const Trips = ({navigation}) => {
         <Text style={{fontSize: 30, marginLeft: 33}}>
           Trips
         </Text>
-        <TouchableOpacity onPress={() => navigation.navigate('Create Trip', {allTrips})}>
+        <TouchableOpacity onPress={() => navigation.navigate('Create Trip')}>
           <View style={styles.addTrip}>
             <Text style={{fontSize: 12}}>Add Trip: </Text>
             <Image
@@ -268,7 +269,7 @@ const Trips = ({navigation}) => {
         </TouchableOpacity>
       </View>
       <ScrollView>
-        {mockPreviews.map(item => {
+        {reformattedTrips.map(item => {
           return (
             <View key={item.id}>
               <TouchableOpacity onPress={() => navigation.navigate('Trip Preview', item)}>
