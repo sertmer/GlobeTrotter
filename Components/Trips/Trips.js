@@ -187,8 +187,8 @@ const Trips = ({navigation}) => {
 
   let [reformattedTrips, setReformattedTrips] = useState([]);
 
-  const handleTripsFetch = async () => {
-    await getAllTrips()
+  const handleTripsFetch = () => {
+    getAllTrips()
       .then(fetchedData => {
         console.log(fetchedData);
         reformatTripsData(fetchedData.data.allTrips);
