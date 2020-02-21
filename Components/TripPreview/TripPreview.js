@@ -2,13 +2,13 @@ import React from 'react';
 import { Text, View, StyleSheet, TouchableOpacity } from 'react-native';
 
 export const TripPreview = ({ route }) => {
-  const { name, startDate, endDate, originAbbrev, finalDestinationAbbrev, description, destinations } = route.params;
+  const { name, startDate, endDate, originAbbrev, finalDestinationAbbrev, description, tripdestinationSet } = route.params;
 
-  let displayDestinations = destinations.map(destination => {
+  let displayDestinations = tripdestinationSet.map(destination => {
     return (
       <TouchableOpacity onPress={() => console.log('hi')}>
-        <View style={styles.destination}>
-          <Text style={{ fontSize: 40 }}>{destination.location}</Text>
+        <View style={styles.abbrevStyling}>
+          <Text style={styles.abbrevStyling}>{destination.destination.location}</Text>
           <View style={styles.destinationDates}>
             <Text>{destination.startDate}</Text>
             <Text>{destination.endDate}</Text>
@@ -37,7 +37,7 @@ export const TripPreview = ({ route }) => {
       </View>
       <View style={styles.destinationsContainer}>
         {
-          destinations.length ?
+          tripdestinationSet.length ?
             displayDestinations :
             <Text>No Other Destinations</Text>
         }
@@ -92,6 +92,11 @@ const styles = StyleSheet.create({
   destinationContainer: {
     height: '100%',
     justifyContent: 'space-around'
+  },
+  abbrevStyling: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    fontSize: 40
   }
 })
 
