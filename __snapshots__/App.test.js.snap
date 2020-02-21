@@ -266,7 +266,7 @@ exports[`renders correctly 1`] = `
                                 }
                               }
                             >
-                              Add Trip:
+                              Add Trip: 
                             </Text>
                             <Image
                               source={
