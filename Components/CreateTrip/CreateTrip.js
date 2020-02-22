@@ -18,8 +18,11 @@ export const CreateTrip = ({ navigation }) => {
       <View style={styles.inputContainer}>
         <TextInput style={styles.input} />
       </View>
-      <TouchableOpacity style={styles.addDestination}>
-        <Text style={{color: '#fff', fontSize: 20}}>Add A Destination</Text>
+      <TouchableOpacity activeOpacity={.8} style={styles.addDestination}>
+        <Text style={{color: '#0D47A1', fontSize: 20, fontWeight: 'bold'}}>Add A Destination</Text>
+      </TouchableOpacity>
+      <TouchableOpacity activeOpacity={.8} style={styles.submitDestination}>
+        <Text style={{color: '#0D47A1', fontSize: 20, fontWeight: 'bold'}}>Send it!</Text>
       </TouchableOpacity>
     </View>
   )
@@ -73,82 +76,17 @@ const styles = StyleSheet.create({
       alignItems: 'center',
       justifyContent: 'center',
       marginTop: 15
+    },
+    submitDestination: {
+      backgroundColor: '#FDD835',
+      width: '100%',
+      height: 50,
+      borderRadius: 5,
+      alignItems: 'center',
+      justifyContent: 'center',
+      marginTop: 15
     }
   })
 
 
 export default CreateTrip;
-
-// container: {
-//   alignItems: 'center',
-//   backgroundColor: '#96cdec',
-//   borderRadius: 4,
-//   borderWidth: 1.5,
-//   borderColor: 'black',
-//   flex: 1,
-//   height: '100%',
-//   justifyContent: 'space-around',
-//   padding: 20,
-//   width: '100%'
-// },
-// header: {
-//   backgroundColor: '#96cdec',
-//   borderBottomWidth: 1.5,
-//   borderBottomColor: 'black',
-//   fontSize: 30,
-//   flexDirection: 'row',
-//   justifyContent: 'space-between',
-//   paddingBottom: 10,
-//   width: '100%'
-// },
-// image: {
-//   height: 36,
-//   width: 36,
-// },
-// input: {
-//   backgroundColor: '#EEF6F7',
-//   borderRadius: 4,
-//   borderWidth: 0.5,
-//   borderColor: '#d6d7da',
-//   height: 30,
-//   paddingVertical: 0,
-//   shadowColor: '#000',
-//   shadowOffset: { width: 1, height: 2 },
-//   shadowOpacity: 0.8,
-//   shadowRadius: 4,
-// },
-// legContainer: {
-//   alignItems: 'center',
-//   backgroundColor: 'white',
-//   borderRadius: 4,
-//   borderWidth: 1.5,
-//   borderColor: 'black',
-//   justifyContent: 'center',
-//   width: 180,
-// },
-// calendars: {
-//   flexDirection: 'row',
-//   justifyContent: 'center'
-// },
-// buttonLeg: {
-//   alignItems: 'center',
-//   backgroundColor: '#96CDEC',
-//   borderRadius: 4,
-//   borderWidth: .5,
-//   borderColor: 'black',
-//   height: 23,
-//   justifyContent: 'center',
-//   marginBottom: 4,
-//   padding: 5,
-//   width: 150,
-// },
-// buttonDestination: {
-//   alignItems: 'center',
-//   backgroundColor: '#BAE0BD',
-//   borderRadius: 4,
-//   borderWidth: .5,
-//   borderColor: 'black',
-//   height: 30,
-//   justifyContent: 'center',
-//   padding: 5,
-// }
