@@ -222,14 +222,14 @@ const Trips = ({ navigation }) => {
   const reformatTripsData = (fetchedData) => {
     let copiedTrips = [...fetchedData];
     console.log(copiedTrips);
-      copiedTrips.forEach(trip => {
-        trip.finalDestinationAbbrev = findFinalDestination(trip.tripdestinationSet);
-        trip.startDate = findStartDate(trip.tripdestinationSet);
-        trip.endDate = findEndDate(trip.tripdestinationSet);
-        trip.description = 'Placeholder text'
-      })
-      console.log(copiedTrips);
-      setReformattedTrips(copiedTrips)
+    copiedTrips.forEach(trip => {
+      trip.finalDestinationAbbrev = findFinalDestination(trip.tripdestinationSet);
+      trip.startDate = findStartDate(trip.tripdestinationSet);
+      trip.endDate = findEndDate(trip.tripdestinationSet);
+      trip.description = 'Placeholder text'
+    })
+    console.log(copiedTrips);
+    setReformattedTrips(copiedTrips)
   };
 
   useEffect(() => handleTripsFetch(), []);
@@ -250,7 +250,7 @@ const Trips = ({ navigation }) => {
 
   return (
     <View style={styles.trips}>
-      {!reformattedTrips.length && 
+      {!reformattedTrips.length &&
         <Text style={styles.noTrips}>Add a Trip!</Text>
       }
       <ScrollView>
@@ -278,7 +278,7 @@ const Trips = ({ navigation }) => {
         <View style={styles.plusContainer}>
           <Image
             style={styles.image}
-            source={{uri: 'https://freeiconshop.com/wp-content/uploads/edd/plus-flat.png'}}
+            source={{ uri: 'https://freeiconshop.com/wp-content/uploads/edd/plus-flat.png' }}
             accessibilityLabel='Add Trip'
           />
         </View>
