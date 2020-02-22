@@ -11,11 +11,11 @@ export const TripPreview = ({ route }) => {
         activeOpacity={.8}
         style={styles.destination}
         onPress={() => console.log('hi')}>
-        <View>
+        <View style={styles.destinationText}>
           <Text style={styles.destinationName}>{destination.destination.location}</Text>
           <View style={styles.destinationDates}>
             <Text style={{color: '#fff'}}>{destination.startDate}</Text>
-            <Text>-</Text>
+            <Text style={{color: '#fff'}}>-</Text>
             <Text style={{color: '#fff'}}>{destination.endDate}</Text>
           </View>
         </View>
@@ -33,10 +33,7 @@ export const TripPreview = ({ route }) => {
             <Text>{startDate}</Text>
           </View>
           <View style={styles.arrowContainer}>
-            <Image
-              source={arrow}
-              style={styles.arrow}
-            />
+            <Text>-</Text>
           </View>
           <View style={styles.cityContainer}>
             <Text style={{ fontSize: 40 }}>{finalDestinationAbbrev}</Text>
@@ -112,7 +109,8 @@ const styles = StyleSheet.create({
     height: '100%'
   },
   destinationName: {
-    fontSize: 30,
+    fontSize: 20,
+    fontWeight: 'bold',
     color: '#fff'
   },
   destinationDates: {
@@ -120,6 +118,9 @@ const styles = StyleSheet.create({
     justifyContent: 'space-around',
     width: '100%',
     color: '#fff'
+  },
+  destinationText: {
+    alignItems: 'center'
   }
 })
 
