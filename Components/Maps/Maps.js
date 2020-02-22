@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { StyleSheet, View, Text, Dimensions } from 'react-native';
-import MapView from 'react-native-maps';
+import MapView, { PROVIDER_GOOGLE } from 'react-native-maps';
 import { Marker } from 'react-native-maps';
 
 
@@ -8,14 +8,29 @@ export const Maps = ({ route }) => {
   const { destination } = route.params
   console.log('lat/long: ', destination);
 
-  const [ markers, setMarkers ] = useState([])
-
-  
+  const [ marker, setMarker ] = useState({});
 
   return (
     <View style={styles.container}>
-      <MapView style={styles.mapStyle} />
-      
+      <MapView style={styles.mapStyle}
+        provider={PROVIDER_GOOGLE}
+        region={{
+          latitude: parseInt(destination.lat),
+          longitude: parseInt(destination.long),
+          latitudeDelta: 0.5,
+          longitudeDelta: 0.55
+        }}
+        showsUserLocation
+      >
+      <Marker 
+        coordinate={{
+          latitude: parseInt(destination.lat),
+          longitude: parseInt(destination.long),
+          latitudeDelta: 0.4,
+          longitudeDelta: 0.41
+        }}
+      />
+      </MapView>
     </View>
   )
 }
