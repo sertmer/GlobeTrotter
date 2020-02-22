@@ -99,11 +99,7 @@ const styles = StyleSheet.create({
     marginVertical: 10,
     padding: 10,
     width: '100%',
-    borderRadius: 5,
-    shadowColor: '#A6ACAF',
-    shadowOffset: { width: 1, height: 1 },
-    shadowOpacity: .9,
-    shadowRadius: 8,
+    borderRadius: 5
   },
   destinationsContainer: {
     height: '100%'
