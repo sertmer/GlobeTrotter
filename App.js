@@ -1,28 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import Trips from './Components/Trips/Trips';
 import CreateTrip from './Components/CreateTrip/CreateTrip';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import TripPreview from './Components/TripPreview/TripPreview';
-import { getAllTrips } from './apiCalls';
 import DatePicker from './Components/DatePicker/DatePicker';
 
 export const App = ({ navigation }) => {
-
-  let [allTrips, setAllTrips] = useState([]);
-
-  const handleTripsFetch = async () => {
-    await getAllTrips()
-      .then(data => {
-        setAllTrips(data)
-      })
-      .catch(error => {
-        return `error: ${error}`
-      })
-  }
-
-  useEffect(() => handleTripsFetch(), []);
 
   const Stack = createStackNavigator();
 

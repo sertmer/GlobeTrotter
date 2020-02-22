@@ -1,9 +1,9 @@
-import React from 'react';
-
+import React, { useState, useEffect } from 'react';
 import { Text, View, FlatList, StyleSheet, ScrollView, TouchableOpacity, Image } from 'react-native';
 import TripPreview from '../TripPreview/TripPreview';
-
 import { globalStyles } from '../../styles/global';
+import { getAllTrips } from '../../apiCalls';
+
 
 const mockPreviews = [
   {
@@ -184,6 +184,70 @@ const mockPreviews = [
 ];
 
 const Trips = ({navigation}) => {
+
+  let [reformattedTrips, setReformattedTrips] = useState([]);
+
+  const handleTripsFetch = () => {
+    getAllTrips()
+      .then(fetchedData => {
+        console.log(fetchedData);
+        reformatTripsData(fetchedData.data.allTrips);
+      })
+      .catch(error => {
+        console.log(error)
+      })
+  }
+
+  const findFinalDestination = (destinationSet) => {
+    let copiedData = [...destinationSet];
+    copiedData.reverse();
+    console.log(copiedData[0].destination.abbrev);
+    return copiedData[0].destination.abbrev
+  }
+
+  const findEndDate = (destinationSet) => {
+    let copiedData = [...destinationSet];
+    copiedData.reverse();
+    console.log(copiedData[0].endDate);
+    return copiedData[0].endDate
+  }
+
+  const findStartDate = (destinationSet) => {
+    let copiedData = [...destinationSet];
+    console.log(copiedData[0].startDate);
+    return copiedData[0].startDate
+  }
+
+  const reformatTripsData = (fetchedData) => {
+    let copiedTrips = [...fetchedData];
+    console.log(copiedTrips);
+      copiedTrips.forEach(trip => {
+        trip.finalDestinationAbbrev = findFinalDestination(trip.tripdestinationSet);
+        trip.startDate = findStartDate(trip.tripdestinationSet);
+        trip.endDate = findEndDate(trip.tripdestinationSet);
+        trip.description = 'Placeholder text'
+      })
+      console.log(copiedTrips);
+      setReformattedTrips(copiedTrips)
+  };
+
+  useEffect(() => handleTripsFetch(), []);
+
+  // const generateDestinations = (tripObject) => {
+  //   tripObject.tripdestinationSet.map(place => {
+  //     return (
+  //       <View style={styles.cities}>
+  //         <Text style={styles.destination}>{place.destination.abbrev}</Text>
+  //       </View>
+  //       <View style={styles.cities}>
+  //         <Text style={styles.startDate}>{place.destination}</Text>
+  //         <Text style={styles.endDate}></Text>
+  //       </View>
+  //     )
+  //   })
+  // }
+
+
   return (
     <View style={styles.trips}>
       <View style={styles.header}>
@@ -205,7 +269,7 @@ const Trips = ({navigation}) => {
         </TouchableOpacity>
       </View>
       <ScrollView>
-        {mockPreviews.map(item => {
+        {reformattedTrips.map(item => {
           return (
             <View key={item.id}>
               <TouchableOpacity onPress={() => navigation.navigate('Trip Preview', item)}>
@@ -213,7 +277,7 @@ const Trips = ({navigation}) => {
                   <Text style={styles.name}>{item.name}</Text>
                   <View style={styles.cities}>
                     <Text style={styles.origin}>{item.originAbbrev}</Text>
-                    <Text style={styles.destination}>{item.finalDestinationAbbrev}</Text>
+                    <Text style={styles.origin}>{item.finalDestinationAbbrev}</Text>
                   </View>
                   <View style={styles.cities}>
                     <Text style={styles.startDate}>{item.startDate}</Text>
