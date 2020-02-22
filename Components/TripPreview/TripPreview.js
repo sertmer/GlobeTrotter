@@ -1,12 +1,12 @@
 import React from 'react';
 import { Text, View, StyleSheet, TouchableOpacity } from 'react-native';
 
-export const TripPreview = ({ route }) => {
-  const { name, startDate, endDate, originAbbrev, finalDestinationAbbrev, description, tripdestinationSet } = route.params;
+export const TripPreview = ({ route, navigation }) => {
+  const { name, originLat, originLong, startDate, endDate, originAbbrev, finalDestinationAbbrev, description, tripdestinationSet } = route.params;
 
   let displayDestinations = tripdestinationSet.map(destination => {
     return (
-      <TouchableOpacity onPress={() => console.log('hi')}>
+      <TouchableOpacity onPress={() => navigation.navigate('Maps', destination)}>
         <View style={styles.abbrevStyling}>
           <Text style={styles.abbrevStyling}>{destination.destination.location}</Text>
           <View style={styles.destinationDates}>

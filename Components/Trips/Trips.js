@@ -229,7 +229,7 @@ const Trips = ({ navigation }) => {
         trip.endDate = findEndDate(trip.tripdestinationSet);
         trip.description = 'Placeholder text'
       })
-      console.log(copiedTrips);
+      console.log('copiedTrips: ', copiedTrips);
       setReformattedTrips(copiedTrips)
   };
 
