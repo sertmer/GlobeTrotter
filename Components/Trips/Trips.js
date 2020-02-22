@@ -191,7 +191,6 @@ const Trips = ({ navigation }) => {
   const handleTripsFetch = () => {
     getAllTrips()
       .then(fetchedData => {
-        console.log(fetchedData);
         reformatTripsData(fetchedData.data.allTrips);
       })
       .catch(error => {
@@ -202,33 +201,28 @@ const Trips = ({ navigation }) => {
   const findFinalDestination = (destinationSet) => {
     let copiedData = [...destinationSet];
     copiedData.reverse();
-    console.log(copiedData[0].destination.abbrev);
     return copiedData[0].destination.abbrev
   }
 
   const findEndDate = (destinationSet) => {
     let copiedData = [...destinationSet];
     copiedData.reverse();
-    console.log(copiedData[0].endDate);
     return copiedData[0].endDate
   }
 
   const findStartDate = (destinationSet) => {
     let copiedData = [...destinationSet];
-    console.log(copiedData[0].startDate);
     return copiedData[0].startDate
   }
 
   const reformatTripsData = (fetchedData) => {
     let copiedTrips = [...fetchedData];
-    console.log(copiedTrips);
     copiedTrips.forEach(trip => {
       trip.finalDestinationAbbrev = findFinalDestination(trip.tripdestinationSet);
       trip.startDate = findStartDate(trip.tripdestinationSet);
       trip.endDate = findEndDate(trip.tripdestinationSet);
       trip.description = 'Placeholder text'
     })
-    console.log(copiedTrips);
     setReformattedTrips(copiedTrips)
   };
 
