@@ -184,7 +184,6 @@ const mockPreviews = [
   }
 ];
 
-
 const Trips = ({ navigation }) => {
 
   let [reformattedTrips, setReformattedTrips] = useState([]);
@@ -251,6 +250,9 @@ const Trips = ({ navigation }) => {
 
   return (
     <View style={styles.trips}>
+      {!reformattedTrips.length && 
+        <Text style={styles.noTrips}>Add a Trip!</Text>
+      }
       <ScrollView>
         {reformattedTrips.map(item => {
           return (
@@ -345,6 +347,9 @@ const styles = StyleSheet.create({
   },
   plusContainer: {
     padding: 100
+  },
+  noTrips: {
+    
   }
 });
 
