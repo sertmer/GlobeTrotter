@@ -1,6 +1,5 @@
 import React from 'react';
 import { Text, View, StyleSheet, TouchableOpacity, Image, ScrollView } from 'react-native';
-import arrow from '../../assets/right.svg';
 
 export const TripPreview = ({ route }) => {
   const { name, startDate, endDate, originAbbrev, finalDestinationAbbrev, tripdestinationSet } = route.params;
