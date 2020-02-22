@@ -278,7 +278,7 @@ const Trips = ({ navigation }) => {
         <View style={styles.plusContainer}>
           <Image
             style={styles.image}
-            source={plus}
+            source={{uri: 'https://freeiconshop.com/wp-content/uploads/edd/plus-flat.png'}}
             accessibilityLabel='Add Trip'
           />
         </View>
@@ -349,7 +349,7 @@ const styles = StyleSheet.create({
     padding: 100
   },
   noTrips: {
-    
+
   }
 });
 
