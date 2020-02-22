@@ -1021,6 +1021,7 @@ exports[`renders correctly 1`] = `
                             </View>
                           </View>
                         </View>
+
                       </RCTScrollView>
                       <View
                         accessible={true}
