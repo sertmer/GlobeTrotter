@@ -66,7 +66,8 @@ const styles = StyleSheet.create({
       justifyContent: 'center',
       height: '100%',
       width: '100%',
-      fontSize: 20
+      fontSize: 20,
+      paddingHorizontal: 20
     },
     addDestination: {
       backgroundColor: '#2CCB70',
