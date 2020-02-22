@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+
 import Trips from './Components/Trips/Trips';
 import CreateTrip from './Components/CreateTrip/CreateTrip';
 import { NavigationContainer } from '@react-navigation/native';
@@ -16,11 +17,13 @@ export const App = ({ navigation }) => {
       <Stack.Navigator
         initialRouteName='Trips'
         screenOptions={{ gestureEnabled: false }}
+        headerMode={'float'}
+        mode={'card'}
       >
         <Stack.Screen
           name='Trips'
           component={Trips}
-          options={{ title: 'Globe Trotter' }}
+          options={{ title: 'Trips' }}
         />
         <Stack.Screen
           name='Trip Preview'
@@ -39,13 +42,5 @@ export const App = ({ navigation }) => {
   )
 }
 
-const styles = StyleSheet.create({
-  container: {
-    alignItems: 'center',
-    backgroundColor: '#c9e2ef',
-    flex: 1,
-    justifyContent: 'center',
-  },
-});
 
 export default App;
