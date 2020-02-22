@@ -1,17 +1,22 @@
 import React from 'react';
-import { Text, View, StyleSheet, TouchableOpacity } from 'react-native';
+import { Text, View, StyleSheet, TouchableOpacity, Image, ScrollView } from 'react-native';
+import arrow from '../../assets/right.svg';
 
 export const TripPreview = ({ route }) => {
-  const { name, startDate, endDate, originAbbrev, finalDestinationAbbrev, description, tripdestinationSet } = route.params;
+  const { name, startDate, endDate, originAbbrev, finalDestinationAbbrev, tripdestinationSet } = route.params;
 
   let displayDestinations = tripdestinationSet.map(destination => {
     return (
-      <TouchableOpacity onPress={() => console.log('hi')}>
-        <View style={styles.abbrevStyling}>
-          <Text style={styles.abbrevStyling}>{destination.destination.location}</Text>
+      <TouchableOpacity
+        activeOpacity={.8}
+        style={styles.destination}
+        onPress={() => console.log('hi')}>
+        <View>
+          <Text style={styles.destinationName}>{destination.destination.location}</Text>
           <View style={styles.destinationDates}>
-            <Text>{destination.startDate}</Text>
-            <Text>{destination.endDate}</Text>
+            <Text style={{color: '#fff'}}>{destination.startDate}</Text>
+            <Text>-</Text>
+            <Text style={{color: '#fff'}}>{destination.endDate}</Text>
           </View>
         </View>
       </TouchableOpacity>
@@ -21,26 +26,30 @@ export const TripPreview = ({ route }) => {
   return (
     <View style={styles.container}>
       <Text style={styles.name}>{name}</Text>
-      <View style={styles.tripOverview}>
-        <View style={styles.cityContainer}>
-          <Text style={{ fontSize: 40 }}>{originAbbrev}</Text>
-          <Text>{startDate}</Text>
+      <View style={styles.tripCard}>
+        <View style={styles.tripOverview}>
+          <View style={styles.cityContainer}>
+            <Text style={{ fontSize: 40 }}>{originAbbrev}</Text>
+            <Text>{startDate}</Text>
+          </View>
+          <View style={styles.arrowContainer}>
+            <Image
+              source={arrow}
+              style={styles.arrow}
+            />
+          </View>
+          <View style={styles.cityContainer}>
+            <Text style={{ fontSize: 40 }}>{finalDestinationAbbrev}</Text>
+            <Text>{endDate}</Text>
+          </View>
         </View>
-        <Text style={{ fontSize: 20 }}>to</Text>
-        <View style={styles.cityContainer}>
-          <Text style={{ fontSize: 40 }}>{finalDestinationAbbrev}</Text>
-          <Text>{endDate}</Text>
-        </View>
-      </View>
-      <View style={styles.description}>
-        <Text>Notes: {description}</Text>
-      </View>
-      <View style={styles.destinationsContainer}>
-        {
-          tripdestinationSet.length ?
-            displayDestinations :
-            <Text>No Other Destinations</Text>
-        }
+        <ScrollView style={styles.destinationsConatainer}>
+          {
+            tripdestinationSet.length ?
+              displayDestinations :
+              <Text>No Other Destinations</Text>
+          }
+        </ScrollView>
       </View>
     </View>
   )
@@ -48,55 +57,69 @@ export const TripPreview = ({ route }) => {
 
 const styles = StyleSheet.create({
   container: {
-    padding: 10,
-    flex: 1,
-    paddingBottom: 40,
-    backgroundColor: '#c9e2ef',
-    justifyContent: 'flex-start',
-    alignItems: 'center'
+    display: 'flex',
+    alignItems: 'center',
+    backgroundColor: '#1E88E5',
+    height: '100%',
+    paddingTop: 5,
+    paddingBottom: 80,
+    paddingHorizontal: 15,
   },
   tripOverview: {
     flexDirection: 'row',
     justifyContent: 'space-around',
+    width: '100%',
     alignItems: 'center',
-    width: '100%'
+    marginBottom: 10
   },
   name: {
-    alignItems: 'center',
     fontSize: 40,
     fontWeight: 'bold',
-    margin: 'auto',
-    marginBottom: 20
+    color: '#fff',
+    marginBottom: 15
   },
-  citiesContainer: {
-    flex: 1,
-    flexDirection: 'row',
-    justifyContent: 'space-around',
-    alignItems: 'center'
+  tripCard: {
+    backgroundColor: '#ffffff',
+    width: '100%',
+    borderRadius: 5,
+    shadowColor: '#0D47A1',
+    shadowOffset: { width: 1, height: 1 },
+    shadowOpacity: .9,
+    shadowRadius: 10,
+    padding: 10,
+    height: '100%'
   },
-  description: {
-    margin: 'auto',
-    justifyContent: 'center',
-    fontSize: 10
+  arrow: {
+    width: 50,
+    height: 50
   },
-  dates: {
-    flex: 1,
-    flexDirection: 'row',
-    justifyContent: 'space-around'
+  arrowContainer: {
+    width: 'auto'
+  },
+  destination: {
+    backgroundColor: '#00C853',
+    alignItems: 'center',
+    marginVertical: 10,
+    padding: 10,
+    width: '100%',
+    borderRadius: 5,
+    shadowColor: '#A6ACAF',
+    shadowOffset: { width: 1, height: 1 },
+    shadowOpacity: .9,
+    shadowRadius: 8,
+  },
+  destinationsContainer: {
+    height: '100%'
+  },
+  destinationName: {
+    fontSize: 30,
+    color: '#fff'
   },
   destinationDates: {
-    display: 'flex',
     flexDirection: 'row',
-    justifyContent: 'space-around'
-  },
-  destinationContainer: {
-    height: '100%',
-    justifyContent: 'space-around'
-  },
-  abbrevStyling: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    fontSize: 40
+    justifyContent: 'space-around',
+    width: '100%',
+    color: '#fff'
   }
 })
 
