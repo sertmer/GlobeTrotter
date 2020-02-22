@@ -3200,7 +3200,7 @@ exports[`renders correctly 1`] = `
         }
       >
         <View
-          accessibilityLabel="today Friday February 21 "
+          accessibilityLabel=" Friday February 21 "
           accessibilityRole="button"
           accessible={true}
           focusable={true}
@@ -3219,6 +3219,116 @@ exports[`renders correctly 1`] = `
             }
           }
           testID="native.calendar.SELECT_DATE_SLOT-2020-02-21"
+        >
+          <View
+            style={
+              Array [
+                Object {
+                  "flexDirection": "row",
+                  "height": 34,
+                  "left": 0,
+                  "position": "absolute",
+                  "right": 0,
+                },
+                Object {
+                  "backgroundColor": undefined,
+                },
+              ]
+            }
+          >
+            <View
+              style={
+                Array [
+                  Object {
+                    "flex": 1,
+                    "height": 34,
+                  },
+                  Object {
+                    "backgroundColor": undefined,
+                  },
+                ]
+              }
+            />
+            <View
+              style={
+                Array [
+                  Object {
+                    "flex": 1,
+                    "height": 34,
+                  },
+                  Object {
+                    "backgroundColor": undefined,
+                  },
+                ]
+              }
+            />
+          </View>
+          <View
+            style={
+              Array [
+                Object {
+                  "alignItems": "center",
+                  "height": 34,
+                  "width": 38,
+                },
+                Object {
+                  "borderRadius": 17,
+                },
+              ]
+            }
+          >
+            <Text
+              allowFontScaling={false}
+              style={
+                Array [
+                  Object {
+                    "backgroundColor": "rgba(255, 255, 255, 0)",
+                    "color": "red",
+                    "fontFamily": "System",
+                    "fontSize": 16,
+                    "fontWeight": "300",
+                    "marginTop": 7,
+                  },
+                  Object {
+                    "color": "#d9e1e8",
+                  },
+                  Object {},
+                ]
+              }
+            >
+              21
+            </Text>
+          </View>
+        </View>
+      </View>
+      <View
+        style={
+          Object {
+            "alignItems": "center",
+            "flex": 1,
+          }
+        }
+      >
+        <View
+          accessibilityLabel="today Saturday February 22 "
+          accessibilityRole="button"
+          accessible={true}
+          focusable={true}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            Object {
+              "alignItems": "center",
+              "alignSelf": "stretch",
+              "marginLeft": -1,
+            }
+          }
+          testID="native.calendar.SELECT_DATE_SLOT-2020-02-22"
         >
           <View
             style={
@@ -3295,113 +3405,6 @@ exports[`renders correctly 1`] = `
                   Object {
                     "color": "white",
                     "fontWeight": "500",
-                  },
-                  Object {},
-                ]
-              }
-            >
-              21
-            </Text>
-          </View>
-        </View>
-      </View>
-      <View
-        style={
-          Object {
-            "alignItems": "center",
-            "flex": 1,
-          }
-        }
-      >
-        <View
-          accessibilityLabel=" Saturday February 22 "
-          accessibilityRole="button"
-          accessible={true}
-          focusable={true}
-          onClick={[Function]}
-          onResponderGrant={[Function]}
-          onResponderMove={[Function]}
-          onResponderRelease={[Function]}
-          onResponderTerminate={[Function]}
-          onResponderTerminationRequest={[Function]}
-          onStartShouldSetResponder={[Function]}
-          style={
-            Object {
-              "alignItems": "center",
-              "alignSelf": "stretch",
-              "marginLeft": -1,
-            }
-          }
-          testID="native.calendar.SELECT_DATE_SLOT-2020-02-22"
-        >
-          <View
-            style={
-              Array [
-                Object {
-                  "flexDirection": "row",
-                  "height": 34,
-                  "left": 0,
-                  "position": "absolute",
-                  "right": 0,
-                },
-                Object {
-                  "backgroundColor": undefined,
-                },
-              ]
-            }
-          >
-            <View
-              style={
-                Array [
-                  Object {
-                    "flex": 1,
-                    "height": 34,
-                  },
-                  Object {
-                    "backgroundColor": undefined,
-                  },
-                ]
-              }
-            />
-            <View
-              style={
-                Array [
-                  Object {
-                    "flex": 1,
-                    "height": 34,
-                  },
-                  Object {
-                    "backgroundColor": undefined,
-                  },
-                ]
-              }
-            />
-          </View>
-          <View
-            style={
-              Array [
-                Object {
-                  "alignItems": "center",
-                  "height": 34,
-                  "width": 38,
-                },
-                Object {
-                  "borderRadius": 17,
-                },
-              ]
-            }
-          >
-            <Text
-              allowFontScaling={false}
-              style={
-                Array [
-                  Object {
-                    "backgroundColor": "rgba(255, 255, 255, 0)",
-                    "color": "red",
-                    "fontFamily": "System",
-                    "fontSize": 16,
-                    "fontWeight": "300",
-                    "marginTop": 7,
                   },
                   Object {},
                 ]
