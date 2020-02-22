@@ -44,7 +44,6 @@ export const DatePicker = () => {
   }
 
   return (
-    <>
     <Calendar
       current={Date()}
       minDate={Date()}
@@ -70,8 +69,6 @@ export const DatePicker = () => {
       }}
       markedDates={markedDates}
     />
-    <Maps />
-    </>
   )
 }
 
