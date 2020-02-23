@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { StyleSheet, View, Text, Dimensions } from 'react-native';
 import MapView, { PROVIDER_GOOGLE } from 'react-native-maps';
+import { Agenda } from 'react-native-calendars'
 import { Marker } from 'react-native-maps';
 
 
@@ -31,6 +32,11 @@ export const Maps = ({ route }) => {
         }}
       />
       </MapView>
+      <Agenda style={styles.agenda}
+        items={{
+          
+        }}
+      />
     </View>
   )
 }
@@ -42,10 +48,13 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#fff',
     alignItems: 'center',
-    justifyContent: 'center',
+    // justifyContent: 'center',
   },
   mapStyle: {
     width: Dimensions.get('window').width,
-    height: Dimensions.get('window').height,
+    height: Dimensions.get('window').height/3,
   },
+  agenda: {
+    width: Dimensions.get('window').width,
+  }
 })
