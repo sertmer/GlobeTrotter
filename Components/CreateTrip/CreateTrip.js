@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
-import { Image, StyleSheet, Text, View, TextInput, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, TextInput, TouchableOpacity, ScrollView } from 'react-native';
 import { postNewTrip } from '../../apiCalls';
-
 
 export const CreateTrip = ({ navigation }) => {
   return (
-    <View style={styles.container}>
+    <ScrollView 
+      contentContainerStyle={styles.container}
+      keyboardShouldPersistTaps='handled'
+    >
       <Text style={styles.label}>Name</Text>
       <View style={styles.inputContainer}>
         <TextInput style={styles.input} />
@@ -24,7 +26,7 @@ export const CreateTrip = ({ navigation }) => {
       <TouchableOpacity activeOpacity={.8} style={styles.submitDestination}>
         <Text style={{color: '#0D47A1', fontSize: 20, fontWeight: 'bold'}}>Send it!</Text>
       </TouchableOpacity>
-    </View>
+    </ScrollView>
   )
 }
 
