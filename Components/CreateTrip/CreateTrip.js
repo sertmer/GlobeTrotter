@@ -16,7 +16,11 @@ export const CreateTrip = ({ navigation }) => {
       <View style={styles.inputContainer}>
         <TextInput style={styles.input} />
       </View>
-      <TouchableOpacity activeOpacity={.8} style={styles.addDestination}>
+      <TouchableOpacity 
+        activeOpacity={.8}
+        style={styles.addDestination}
+        onPress={() => navigation.navigate('Add Destinations')}
+      >
         <Text style={{ color: '#0D47A1', fontSize: 20, fontWeight: 'bold' }}>Add A Destination</Text>
       </TouchableOpacity>
     </ScrollView>
