@@ -7,6 +7,8 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import TripPreview from './Components/TripPreview/TripPreview';
 import DatePicker from './Components/DatePicker/DatePicker';
+import AddDestinations from './Components/AddDestinations/AddDestinations'
+
 
 export const App = ({ navigation }) => {
 
@@ -37,6 +39,10 @@ export const App = ({ navigation }) => {
         <Stack.Screen
           name='Calendar'
           component={DatePicker}
+        />
+        <Stack.Screen
+          name='Add Destinations'
+          component={AddDestinations}
         />
       </Stack.Navigator>
     </NavigationContainer>
