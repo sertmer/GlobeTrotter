@@ -103,25 +103,24 @@ export const createNewDestination = (tripId, location, startDate, endDate) => {
 //     })
 // };
 
-// export const deleteTrip = () => {
-  // const mutation =   {
-  //   "query": `mutation {createDestination(userApiKey: \"b9aead4b955bccb5c57ef830580f3de5\", tripId: \"${tripId}\", location: \"${location}\", startDate: \"${startDate}\", endDate: \"${endDate}\") {trip {id name origin originAbbrev originLat originLong tripdestinationSet {destination {location abbrev lat long} startDate endDate activitySet {name date category}}}}}`
-  // };
-//
-//
-//   const options = {
-//     method: 'POST',
-//     body: JSON.stringify(mutation),
-//     headers: {
-//       'Content-Type': 'application/json',
-//     }
-//   }
-//
-//   return fetch('https://globe-trotter-api.herokuapp.com/graphql/', options)
-//     .then(response => {
-//       if (!response.ok) {
-//         throw Error('error posting new trip')
-//       }
-//       return response.json()
-//     })
-// };
+export const deleteTrip = (tripId) => {
+  const mutation =   {
+    "query": `mutation {deleteTrip(userApiKey: \"b9aead4b955bccb5c57ef830580f3de5\", tripId: \"${tripId}\") {id name}`
+  };
+
+  const options = {
+    method: 'DELETE',
+    body: JSON.stringify(mutation),
+    headers: {
+      'Content-Type': 'application/json',
+    }
+  }
+
+  return fetch('https://globe-trotter-api.herokuapp.com/graphql/', options)
+    .then(response => {
+      if (!response.ok) {
+        throw Error('error posting new trip')
+      }
+      return response.json()
+    })
+};
