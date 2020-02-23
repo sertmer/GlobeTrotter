@@ -1,8 +1,14 @@
 import React, { useState } from 'react';
 import { StyleSheet, Text, View, TextInput, TouchableOpacity, ScrollView } from 'react-native';
-import { postNewTrip } from '../../apiCalls';
+import { createNewTrip } from '../../apiCalls';
 
-export const CreateTrip = ({ navigation }) => {
+export const CreateTrip = ({ navigation, route }) => {
+  const { setReformattedTrips, reformattedTrips } = route.params;
+
+  const handleClick = () => {
+
+  }
+
   return (
     <ScrollView
       contentContainerStyle={styles.container}

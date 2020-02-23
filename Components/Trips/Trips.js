@@ -75,7 +75,7 @@ const Trips = ({ navigation }) => {
           )
         })}
       </ScrollView>
-      <TouchableOpacity activeOpacity={.9} style={styles.addTrip} onPress={() => navigation.navigate('Create Trip')}>
+      <TouchableOpacity activeOpacity={.9} style={styles.addTrip} onPress={() => navigation.navigate('Create Trip', {setReformattedTrips, reformattedTrips})}>
         <View style={styles.plusContainer}>
           <Image
             style={styles.image}
