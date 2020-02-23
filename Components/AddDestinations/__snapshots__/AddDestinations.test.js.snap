@@ -21,7 +21,7 @@ exports[`renders correctly 1`] = `
         }
       }
     >
-      Name
+      Destination
     </Text>
     <View
       style={
@@ -38,6 +38,9 @@ exports[`renders correctly 1`] = `
     >
       <TextInput
         allowFontScaling={true}
+        name="destination"
+        onChangeText={[Function]}
+        placeholder="City, Country"
         rejectResponderTermination={true}
         style={
           Object {
@@ -49,44 +52,7 @@ exports[`renders correctly 1`] = `
           }
         }
         underlineColorAndroid="transparent"
-      />
-    </View>
-    <Text
-      style={
-        Object {
-          "color": "#fff",
-          "fontSize": 20,
-        }
-      }
-    >
-      Starting Location
-    </Text>
-    <View
-      style={
-        Object {
-          "alignItems": "center",
-          "backgroundColor": "#fff",
-          "borderRadius": 5,
-          "height": 70,
-          "marginBottom": 20,
-          "marginTop": 5,
-          "width": "100%",
-        }
-      }
-    >
-      <TextInput
-        allowFontScaling={true}
-        rejectResponderTermination={true}
-        style={
-          Object {
-            "fontSize": 20,
-            "height": "100%",
-            "justifyContent": "center",
-            "paddingHorizontal": 20,
-            "width": "100%",
-          }
-        }
-        underlineColorAndroid="transparent"
+        value=""
       />
     </View>
     <View
@@ -122,7 +88,7 @@ exports[`renders correctly 1`] = `
           }
         }
       >
-        Add A Destination
+        Select Dates
       </Text>
     </View>
   </View>
