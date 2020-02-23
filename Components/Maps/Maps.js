@@ -10,7 +10,7 @@ export const Maps = ({ route }) => {
   console.log('lat/long: ', destination);
   console.log('dates: ', startDate, endDate);
 
-  const [ marker, setMarker ] = useState({});
+  const [ markers, setMarkers ] = useState({});
 
   return (
     <View style={styles.container}>
