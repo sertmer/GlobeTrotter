@@ -1,5 +1,18 @@
 import "isomorphic-fetch";
 
+//This get may need amendment regarding the lat and long interpolations (they should be numbers)
+export const getActivities = (lat, long) => {
+  const url = `/api/v1/yelp_activities/?lat=${lat}&long=${long}`;
+
+  return fetch(url)
+    .then(response => {
+      if (!response.ok) {
+        throw Error('error retrieving activities data')
+      }
+      return response.json()
+    })
+};
+
 export const getAllTrips = () => {
   const query = {
       "query": "{allTrips(userApiKey: \"b9aead4b955bccb5c57ef830580f3de5\") {id name origin originAbbrev originLat originLong tripdestinationSet {destination {location abbrev lat long} startDate endDate activitySet {name date category}}}}"
