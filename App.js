@@ -32,6 +32,7 @@ export const App = ({ navigation }) => {
         <Stack.Screen
           name='Create Trip'
           component={CreateTrip}
+          options={{title: 'Add A New Trip'}}
         />
         <Stack.Screen
           name='Calendar'

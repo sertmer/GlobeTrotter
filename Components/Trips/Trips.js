@@ -184,7 +184,6 @@ const mockPreviews = [
   }
 ];
 
-
 const Trips = ({ navigation }) => {
 
   let [reformattedTrips, setReformattedTrips] = useState([]);
@@ -192,7 +191,6 @@ const Trips = ({ navigation }) => {
   const handleTripsFetch = () => {
     getAllTrips()
       .then(fetchedData => {
-        console.log(fetchedData);
         reformatTripsData(fetchedData.data.allTrips);
       })
       .catch(error => {
@@ -203,34 +201,29 @@ const Trips = ({ navigation }) => {
   const findFinalDestination = (destinationSet) => {
     let copiedData = [...destinationSet];
     copiedData.reverse();
-    console.log(copiedData[0].destination.abbrev);
     return copiedData[0].destination.abbrev
   }
 
   const findEndDate = (destinationSet) => {
     let copiedData = [...destinationSet];
     copiedData.reverse();
-    console.log(copiedData[0].endDate);
     return copiedData[0].endDate
   }
 
   const findStartDate = (destinationSet) => {
     let copiedData = [...destinationSet];
-    console.log(copiedData[0].startDate);
     return copiedData[0].startDate
   }
 
   const reformatTripsData = (fetchedData) => {
     let copiedTrips = [...fetchedData];
-    console.log(copiedTrips);
-      copiedTrips.forEach(trip => {
-        trip.finalDestinationAbbrev = findFinalDestination(trip.tripdestinationSet);
-        trip.startDate = findStartDate(trip.tripdestinationSet);
-        trip.endDate = findEndDate(trip.tripdestinationSet);
-        trip.description = 'Placeholder text'
-      })
-      console.log(copiedTrips);
-      setReformattedTrips(copiedTrips)
+    copiedTrips.forEach(trip => {
+      trip.finalDestinationAbbrev = findFinalDestination(trip.tripdestinationSet);
+      trip.startDate = findStartDate(trip.tripdestinationSet);
+      trip.endDate = findEndDate(trip.tripdestinationSet);
+      trip.description = 'Placeholder text'
+    })
+    setReformattedTrips(copiedTrips)
   };
 
   useEffect(() => handleTripsFetch(), []);
@@ -251,6 +244,9 @@ const Trips = ({ navigation }) => {
 
   return (
     <View style={styles.trips}>
+      {!reformattedTrips.length &&
+        <Text style={styles.noTrips}>Add a Trip!</Text>
+      }
       <ScrollView>
         {reformattedTrips.map(item => {
           return (
@@ -276,7 +272,7 @@ const Trips = ({ navigation }) => {
         <View style={styles.plusContainer}>
           <Image
             style={styles.image}
-            source={plus}
+            source={{ uri: 'https://freeiconshop.com/wp-content/uploads/edd/plus-flat.png' }}
             accessibilityLabel='Add Trip'
           />
         </View>
@@ -345,6 +341,9 @@ const styles = StyleSheet.create({
   },
   plusContainer: {
     padding: 100
+  },
+  noTrips: {
+
   }
 });
 
