@@ -20,20 +20,32 @@ const Trips = ({ navigation }) => {
   }
 
   const findFinalDestination = (destinationSet) => {
-    let copiedData = [...destinationSet];
-    copiedData.reverse();
-    return copiedData[0].destination.abbrev
+    if (destinationSet.length) {
+      let copiedData = [...destinationSet];
+      copiedData.reverse();
+      return copiedData[0].destination.abbrev
+    } else {
+      return '???'
+    }
   }
 
   const findEndDate = (destinationSet) => {
-    let copiedData = [...destinationSet];
-    copiedData.reverse();
-    return copiedData[0].endDate
+    if (destinationSet.length) {
+      let copiedData = [...destinationSet];
+      copiedData.reverse();
+      return copiedData[0].endDate
+    } else {
+      return '???'
+    }
   }
 
   const findStartDate = (destinationSet) => {
-    let copiedData = [...destinationSet];
-    return copiedData[0].startDate
+    if (destinationSet.length) {
+      let copiedData = [...destinationSet];
+      return copiedData[0].startDate
+    } else {
+      return '???'
+    }
   }
 
   const reformatTripsData = (fetchedData) => {
