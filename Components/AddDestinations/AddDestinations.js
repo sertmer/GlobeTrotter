@@ -3,8 +3,8 @@ import { StyleSheet, Text, TextInput, TouchableOpacity, View, ScrollView } from 
 const AddDestinations = ({ navigation, route }) => {
   // const { tripId } = route.params
   let [destinationLocation, setDestinationLocation] = useState('');
-  let [startDate, setStartDate] = useState('');
-  let [endDate, setEndDate] = useState('')
+  let [destinationStartDate, setDestinationStartDate] = useState('');
+  let [destinationEndDate, setDestinationEndDate] = useState('')
 
   return (
     <ScrollView
@@ -17,13 +17,14 @@ const AddDestinations = ({ navigation, route }) => {
           style={styles.input} 
           name='destination'
           value={destinationLocation}
+          placeholder='City, Country'
           onChangeText={(text) => setDestinationLocation(text)}
         />
       </View>
       <TouchableOpacity
         activeOpacity={.8}
         style={styles.button}
-        onPress={() => navigation.navigate('Calendar')}
+        onPress={() => navigation.navigate('Calendar', {setDestinationStartDate: setDestinationStartDate, setDestinationEndDate: setDestinationEndDate})}
       >
         <Text style={{ color: '#0D47A1', fontSize: 20, fontWeight: 'bold' }}>Select Dates</Text>
       </TouchableOpacity>
