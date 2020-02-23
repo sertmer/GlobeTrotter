@@ -1,12 +1,29 @@
 import React, { useState } from 'react';
 import { StyleSheet, Text, View, TextInput, TouchableOpacity, ScrollView } from 'react-native';
-import { createNewTrip } from '../../apiCalls';
+import { createNewTrip, createNewDestination } from '../../apiCalls';
 
 export const CreateTrip = ({ navigation, route }) => {
   const { setReformattedTrips, reformattedTrips } = route.params;
 
-  const handleClick = () => {
+  let [origin, setOrigin] = useState('');
+  let [name, setName] = useState('');
+  let [newTrip, setNewTrip] = useState({});
 
+  const handleClick = () => {
+    createNewTrip(name, origin)
+      .then(returnedTripData => {
+        setNewTrip(returnedTripData)
+      })
+      .catch(error => {
+        console.log(error)
+      })
+  }
+
+  const handleDestinationSubmit = () => {
+    createNewDestination(tripId, location, startDate, endDate)
+      .then(returnedTripData => {
+        setNewTrip(returnedTripData)
+      })
   }
 
   return (
@@ -22,7 +39,7 @@ export const CreateTrip = ({ navigation, route }) => {
       <View style={styles.inputContainer}>
         <TextInput style={styles.input} />
       </View>
-      <TouchableOpacity activeOpacity={.8} style={styles.addDestination}>
+      <TouchableOpacity activeOpacity={.8} style={styles.addDestination} onPress={() => navigation.navigate('Add Destinations', {tripId: newTrip.id})}>
         <Text style={{ color: '#0D47A1', fontSize: 20, fontWeight: 'bold' }}>Add A Destination</Text>
       </TouchableOpacity>
     </ScrollView>
