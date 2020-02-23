@@ -1,130 +1,72 @@
 import React, { useState } from 'react';
-import { Image, StyleSheet, Text, View, TextInput, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, TextInput, TouchableOpacity, ScrollView } from 'react-native';
 import { postNewTrip } from '../../apiCalls';
-
 
 export const CreateTrip = ({ navigation }) => {
   return (
-    <View style={styles.container}>
-      <View style={styles.header}>
-        <Image
-          style={styles.image}
-          source={{uri: 'https://img.icons8.com/officel/40/000000/globe.png'}}
-        />
-        <Text style={{fontSize: 20, marginLeft: 33}}>
-          New Trip
-        </Text>
-        <Text style={{color: '#96CDEC', marginRight: 1}}>
-          placehold
-        </Text>
+    <ScrollView
+      contentContainerStyle={styles.container}
+      keyboardShouldPersistTaps='handled'
+    >
+      <Text style={styles.label}>Name</Text>
+      <View style={styles.inputContainer}>
+        <TextInput style={styles.input} />
       </View>
-      <View>
-        <Text>Trip name:</Text>
-        <TextInput style={styles.input}
-          placeholder='e.g. Spring break'
-        />
+      <Text style={styles.label}>Starting Location</Text>
+      <View style={styles.inputContainer}>
+        <TextInput style={styles.input} />
       </View>
-      <View>
-        <Text>Starting Location:</Text>
-        <TextInput style={styles.input}
-          placeholder='e.g. trip origin'
-        />
-      </View>
-      <View>
-        <Text>Destination:</Text>
-        <TextInput style={styles.input}
-          placeholder='e.g. trip destination'
-        />
-      </View>
-      <TouchableOpacity onPress={() => navigation.navigate('Calendar')}>
-        <Image
-          style={{height: 60, width: 60}}
-          source={{uri: 'https://img.icons8.com/plasticine/200/000000/calendar.png'}}
-        />
+      <TouchableOpacity activeOpacity={.8} style={styles.addDestination}>
+        <Text style={{ color: '#0D47A1', fontSize: 20, fontWeight: 'bold' }}>Add A Destination</Text>
       </TouchableOpacity>
-      <TouchableOpacity style={styles.buttonDestination}>
-        <Text>Add destination</Text>
-      </TouchableOpacity>
-
-    </View>
+    </ScrollView>
   )
 }
 
-
-
 const styles = StyleSheet.create({
   container: {
-    alignItems: 'center',
-    backgroundColor: '#96cdec',
-    borderRadius: 4,
-    borderWidth: 1.5,
-    borderColor: 'black',
-    flex: 1,
+    backgroundColor: '#1E88E5',
     height: '100%',
-    justifyContent: 'space-around',
-    padding: 20,
-    width: '100%'
+    alignItems: 'center',
+    padding: 15
   },
-  header: {
-    backgroundColor: '#96cdec',
-    borderBottomWidth: 1.5,
-    borderBottomColor: 'black',
-    fontSize: 30,
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    paddingBottom: 10,
-    width: '100%'
+  inputContainer: {
+    width: '100%',
+    alignItems: 'center',
+    backgroundColor: '#fff',
+    marginBottom: 20,
+    marginTop: 5,
+    borderRadius: 5,
+    height: 70
   },
-  image: {
-    height: 36,
-    width: 36,
+  label: {
+    color: '#fff',
+    fontSize: 20
   },
   input: {
-    backgroundColor: '#EEF6F7',
-    borderRadius: 4,
-    borderWidth: 0.5,
-    borderColor: '#d6d7da',
-    height: 30,
-    paddingVertical: 0,
-    shadowColor: '#000',
-    shadowOffset: { width: 1, height: 2 },
-    shadowOpacity: 0.8,
-    shadowRadius: 4,
-  },
-  legContainer: {
-    alignItems: 'center',
-    backgroundColor: 'white',
-    borderRadius: 4,
-    borderWidth: 1.5,
-    borderColor: 'black',
     justifyContent: 'center',
-    width: 180,
+    height: '100%',
+    width: '100%',
+    fontSize: 20,
+    paddingHorizontal: 20
   },
-  calendars: {
-    flexDirection: 'row',
-    justifyContent: 'center'
-  },
-  buttonLeg: {
+  addDestination: {
+    backgroundColor: '#2CCB70',
+    width: '100%',
+    height: 50,
+    borderRadius: 5,
     alignItems: 'center',
-    backgroundColor: '#96CDEC',
-    borderRadius: 4,
-    borderWidth: .5,
-    borderColor: 'black',
-    height: 23,
     justifyContent: 'center',
-    marginBottom: 4,
-    padding: 5,
-    width: 150,
+    marginTop: 15
   },
-  buttonDestination: {
+  submitDestination: {
+    backgroundColor: '#FDD835',
+    width: '100%',
+    height: 50,
+    borderRadius: 5,
     alignItems: 'center',
-    backgroundColor: '#BAE0BD',
-    borderRadius: 4,
-    borderWidth: .5,
-    borderColor: 'black',
-    height: 30,
     justifyContent: 'center',
-    padding: 5,
+    marginTop: 15
   }
 })
 

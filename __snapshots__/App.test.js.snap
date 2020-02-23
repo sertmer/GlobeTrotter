@@ -188,6 +188,11 @@ exports[`renders correctly 1`] = `
                         }
                       }
                     >
+                      <Text
+                        style={Object {}}
+                      >
+                        Add a Trip!
+                      </Text>
                       <RCTScrollView>
                         <View />
                       </RCTScrollView>
@@ -224,7 +229,11 @@ exports[`renders correctly 1`] = `
                         >
                           <Image
                             accessibilityLabel="Add Trip"
-                            source={1}
+                            source={
+                              Object {
+                                "uri": "https://freeiconshop.com/wp-content/uploads/edd/plus-flat.png",
+                              }
+                            }
                             style={
                               Object {
                                 "height": 80,
