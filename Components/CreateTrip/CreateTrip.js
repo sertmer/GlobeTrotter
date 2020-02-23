@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { StyleSheet, Text, View, TextInput, TouchableOpacity, ScrollView } from 'react-native';
-import { createNewTrip, createNewDestination } from '../../apiCalls';
+import { createNewTrip } from '../../apiCalls';
 
 export const CreateTrip = ({ navigation, route }) => {
   const { setReformattedTrips, reformattedTrips } = route.params;
@@ -9,21 +9,21 @@ export const CreateTrip = ({ navigation, route }) => {
   let [name, setName] = useState('');
   let [newTrip, setNewTrip] = useState({});
 
-  const handleClick = () => {
-    createNewTrip(name, origin)
-      .then(returnedTripData => {
-        setNewTrip(returnedTripData)
-      })
-      .catch(error => {
-        console.log(error)
-      })
-  }
+  // const handleClick = () => {
+  //   createNewTrip(name, origin)
+  //     .then(returnedTripData => {
+  //       setNewTrip(returnedTripData)
+  //     })
+  //     .catch(error => {
+  //       console.log(error)
+  //     });
+  //
+  //     navigation.navigate('Add Destinations', {tripId: newTrip.id})
+  // }
 
-  const handleDestinationSubmit = () => {
-    createNewDestination(tripId, location, startDate, endDate)
-      .then(returnedTripData => {
-        setNewTrip(returnedTripData)
-      })
+  const handleClick = () => {
+    console.log(`${name}, ${origin}`);
+    navigation.navigate('Add Destinations', {tripId: newTrip.id})
   }
 
   return (
@@ -33,16 +33,26 @@ export const CreateTrip = ({ navigation, route }) => {
     >
       <Text style={styles.label}>Name</Text>
       <View style={styles.inputContainer}>
-        <TextInput style={styles.input} />
+        <TextInput
+          style={styles.input}
+          value={name}
+          placeholder='Trip Name'
+          onChangeText={(text) => setName(text)}
+        />
       </View>
       <Text style={styles.label}>Starting Location</Text>
       <View style={styles.inputContainer}>
-        <TextInput style={styles.input} />
+        <TextInput
+          style={styles.input}
+          value={origin}
+          placeholder='City'
+          onChangeText={(text) => setOrigin(text)}
+        />
       </View>
       <TouchableOpacity
         activeOpacity={.8}
         style={styles.addDestination}
-        onPress={() => navigation.navigate('Add Destinations', {tripId: newTrip.id})}
+        onPress={() => handleClick()}
       >
         <Text style={{ color: '#0D47A1', fontSize: 20, fontWeight: 'bold' }}>Add A Destination</Text>
       </TouchableOpacity>
