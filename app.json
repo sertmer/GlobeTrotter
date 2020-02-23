@@ -27,14 +27,16 @@
       "supportsTablet": true,
       "bundleIdentifier": "globeTrotter",
       "buildNumber": "1.0.0",
-      "googleMapsApiKey": "AIzaSyDrIRrh-JhmaJn6F31RDg2WrUqmSNaxhO8"
+      "config": {
+        "googleMapsApiKey": "AIzaSyDrIRrh-JhmaJn6F31RDg2WrUqmSNaxhO8"
+      }
     },
     "android": {
       "package": "com.globeTrotter.globeTrotter",
       "versionCode": 1,
       "config": {
         "googleMaps": {
-          "apiKey": "AIzaSyBmyHwMJxaKEQR9vLV2mZjvEUSzeEkGf6g"
+          "apiKey": "Constants.manifest.android.config.googleMaps.apiKey"
         }
       }
     }
