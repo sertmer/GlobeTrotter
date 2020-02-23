@@ -6,7 +6,7 @@ export const TripPreview = ({ route, navigation }) => {
 
   let displayDestinations = tripdestinationSet.map(destination => {
     return (
-      <TouchableOpacity onPress={() => navigation.navigate('Maps', destination)}>
+      <TouchableOpacity onPress={() => navigation.navigate('Maps', destination, startDate, endDate, name )}>
         <View style={styles.abbrevStyling}>
           <Text style={styles.abbrevStyling}>{destination.destination.location}</Text>
           <View style={styles.destinationDates}>
