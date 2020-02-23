@@ -24,7 +24,7 @@ export const getAllTrips = () => {
 
 export const createNewTrip = (name, origin) => {
   const mutation =   {
-    "mutation": `{createTrip(userApiKey: \"b9aead4b955bccb5c57ef830580f3de5\", name: ${name}, origin: ${origin}) {trip {id name origin originAbbrev originLat originLong}}}}`
+    "mutation": `{createTrip(userApiKey: \"b9aead4b955bccb5c57ef830580f3de5\", name: \"${name}\", origin: \"${origin}\") {trip {id name origin originAbbrev originLat originLong}}}`
   };
 
   const options = {
@@ -46,9 +46,8 @@ export const createNewTrip = (name, origin) => {
 
 export const createNewDestination = (tripId, location, startDate, endDate) => {
   const mutation =   {
-    "mutation": `{createDestination(userApiKey: \"b9aead4b955bccb5c57ef830580f3de5\", tripId: ${tripId}, location: ${location}, startDate: ${startDate}, endDate: ${endDate}) {trip {id name origin originAbbrev originLat originLong tripdestinationSet {destination {location abbrev lat long} startDate endDate activitySet {name date category}}}}}`
+    "mutation": `{createDestination(userApiKey: \"b9aead4b955bccb5c57ef830580f3de5\", tripId: \"${tripId}\", location: \"${location}\", startDate: \"${startDate}\", endDate: \"${endDate}\") {trip {id name origin originAbbrev originLat originLong tripdestinationSet {destination {location abbrev lat long} startDate endDate activitySet {name date category}}}}}`
   };
-
 
   const options = {
     method: 'POST',
