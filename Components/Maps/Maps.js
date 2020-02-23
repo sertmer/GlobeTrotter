@@ -6,8 +6,9 @@ import { Marker } from 'react-native-maps';
 
 
 export const Maps = ({ route }) => {
-  const { destination } = route.params
+  const { destination, startDate, endDate, name } = route.params
   console.log('lat/long: ', destination);
+  console.log('dates: ', startDate, endDate);
 
   const [ marker, setMarker ] = useState({});
 
@@ -16,8 +17,8 @@ export const Maps = ({ route }) => {
       <MapView style={styles.mapStyle}
         provider={PROVIDER_GOOGLE}
         region={{
-          latitude: parseInt(destination.lat),
-          longitude: parseInt(destination.long),
+          latitude: parseFloat(destination.lat),
+          longitude: parseFloat(destination.long),
           latitudeDelta: 0.5,
           longitudeDelta: 0.55
         }}
@@ -25,8 +26,8 @@ export const Maps = ({ route }) => {
       >
       <Marker 
         coordinate={{
-          latitude: parseInt(destination.lat),
-          longitude: parseInt(destination.long),
+          latitude: parseFloat(destination.lat),
+          longitude: parseFloat(destination.long),
           latitudeDelta: 0.4,
           longitudeDelta: 0.41
         }}
@@ -34,8 +35,10 @@ export const Maps = ({ route }) => {
       </MapView>
       <Agenda style={styles.agenda}
         items={{
-          
+          [startDate]: { name: name, location: destination.location },
+          [endDate]: { name: name, location: destination.location }
         }}
+        renderEmptyDate={() => { return <View /> }}
       />
     </View>
   )
