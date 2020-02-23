@@ -4,7 +4,6 @@ import moment from 'moment';
 
 export const DatePicker = ({ route }) => {
   const { setDestinationStartDate, setDestinationEndDate } = route.params;
-  console.log('setStart:', setDestinationStartDate)
   const [markedDates, setMarkedDates] = useState({});
   const [startPicked, setStartPicked] = useState(false);
   const [endPicked, setEndPicked] = useState(false);
