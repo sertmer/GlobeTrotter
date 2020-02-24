@@ -12,7 +12,8 @@ export const LandingPage = ({ navigation }) => {
         />
       </View>
       <Text style={styles.title}>GlobeTrotter</Text>
-      <TouchableOpacity 
+      <TouchableOpacity
+        activeOpacity={.8}
         style={styles.getStarted}
         onPress={() => navigation.navigate('Trips')}
       >
@@ -41,10 +42,13 @@ const styles = StyleSheet.create({
   },
   title: {
     color: '#fff',
-    fontSize: 50
+    fontSize: 50,
+    fontWeight: 'bold'
   },
   buttonText: {
-    color: '#fff'
+    color: '#0D47A1',
+    fontWeight: 'bold',
+    fontSize: 20
   },
   globe: {
     width: 300,
