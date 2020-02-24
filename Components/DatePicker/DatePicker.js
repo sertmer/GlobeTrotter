@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Calendar } from 'react-native-calendars';
 import moment from 'moment';
+import Maps from '../Maps/Maps';
 
 export const DatePicker = (props) => {
   const { setDestinationStartDate, setDestinationEndDate } = props;

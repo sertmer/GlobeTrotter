@@ -2,12 +2,10 @@ import React, { useEffect } from 'react';
 import { Text, View, StyleSheet, TouchableOpacity, Image, ScrollView } from 'react-native';
 import { deleteTrip } from '../../apiCalls';
 
-export const TripPreview = ({ navigation, route }) => {
-  const { id, name, startDate, endDate, originAbbrev, finalDestinationAbbrev, tripdestinationSet } = route.params.item;
+export const TripPreview = ({ route, navigation }) => {
+  const {name, id, originLat, originLong, startDate, endDate, originAbbrev, finalDestinationAbbrev, description, tripdestinationSet } = route.params.item;
   const { handleTripsFetch } = route.params;
-
-
-
+        
   const handleClick = () => {
     navigation.navigate('Add Destinations', {tripId: id, handleTripsFetch})
   };
@@ -18,13 +16,13 @@ export const TripPreview = ({ navigation, route }) => {
     handleTripsFetch();
     navigation.navigate('Trips');
   };
-
+  
   let displayDestinations = tripdestinationSet.map(destination => {
     return (
-      <TouchableOpacity
+     <TouchableOpacity onPress={() => navigation.navigate('Maps', destination, startDate, endDate, name)}
         activeOpacity={.8}
         style={styles.destination}
-        onPress={() => console.log('hi')}>
+        >
         <View style={styles.destinationText}>
           <Text style={styles.destinationName}>{destination.destination.location}</Text>
           <View style={styles.destinationDates}>
