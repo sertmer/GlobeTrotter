@@ -4,6 +4,7 @@ exports[`renders correctly 1`] = `
 <View
   style={
     Object {
+      "alignItems": "center",
       "backgroundColor": "#1E88E5",
       "flex": 1,
       "height": 3000,
@@ -14,11 +15,39 @@ exports[`renders correctly 1`] = `
     }
   }
 >
-  <Text
-    style={Object {}}
+  <View
+    style={
+      Object {
+        "alignItems": "center",
+        "justifyContent": "space-around",
+        "marginTop": 200,
+        "width": "100%",
+      }
+    }
   >
-    Add a Trip!
-  </Text>
+    <Text
+      style={
+        Object {
+          "color": "#fff",
+          "fontSize": 30,
+          "fontWeight": "bold",
+        }
+      }
+    >
+      You need a vacation!
+    </Text>
+    <Text
+      style={
+        Object {
+          "color": "#fff",
+          "fontSize": 30,
+          "fontWeight": "bold",
+        }
+      }
+    >
+      Hit + to add a trip!
+    </Text>
+  </View>
   <RCTScrollView>
     <View />
   </RCTScrollView>

@@ -64,7 +64,10 @@ const Trips = ({ navigation }) => {
   return (
     <View style={styles.trips}>
       {!reformattedTrips.length &&
-        <Text style={styles.noTrips}>Add a Trip!</Text>
+        <View style={styles.noTripsContainer}>
+          <Text style={styles.noTrips}>You need a vacation!</Text>
+          <Text style={styles.noTrips}>Hit + to add a trip!</Text>
+        </View>
       }
       <ScrollView>
         {reformattedTrips.map(item => {
@@ -108,7 +111,8 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     paddingLeft: 15,
     paddingRight: 15,
-    width: '100%'
+    width: '100%',
+    alignItems: 'center'
   },
   header: {
     borderBottomColor: 'black',
@@ -162,7 +166,15 @@ const styles = StyleSheet.create({
     padding: 100
   },
   noTrips: {
-
+    color: '#fff',
+    fontSize: 30,
+    fontWeight: 'bold'
+  },
+  noTripsContainer: {
+    width: '100%',
+    alignItems: 'center',
+    justifyContent: 'space-around',
+    marginTop: 200
   }
 });
 
