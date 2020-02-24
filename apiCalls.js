@@ -58,7 +58,7 @@ export const createNewTrip = (name, origin) => {
 
 export const createNewDestination = (tripId, location, startDate, endDate) => {
   const mutation = {
-    "query": `mutation {createDestination(userApiKey: \"b9aead4b955bccb5c57ef830580f3de5\", tripId: \"${tripId}\", location: \"${location}\", startDate: \"${startDate}\", endDate: \"${endDate}\") {destination {id location abbrev lat long tripdestinationSet {startDate endDate trip {name origin}}}}}`
+    "query": `mutation {createDestination(userApiKey: \"b9aead4b955bccb5c57ef830580f3de5\", tripId: ${tripId}, location: \"${location}\", startDate: \"${startDate}\", endDate: \"${endDate}\") {destination {id location abbrev lat long tripdestinationSet {startDate endDate trip {name origin}}}}}`
   };
 
   const options = {

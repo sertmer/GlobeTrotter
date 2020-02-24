@@ -1,4 +1,4 @@
-import { getAllTrips, createNewTrip, createNewDestination, deleteTrip } from './apiCalls';
+import { getAllTrips, createNewTrip, createNewDestination, deleteTrip, getActivities } from './apiCalls';
 
 describe('apiCalls', () => {
 
@@ -245,6 +245,64 @@ describe('apiCalls', () => {
       });
 
       expect(deleteTrip(tripId)).rejects.toEqual(Error('error deleting trip'));
+    });
+  });
+
+  describe('getActivities', () => {
+    let mockResponse, lat, long;
+
+    beforeEach(() => {
+      lat = 41.89024968281812;
+      long = 12.4922484062616;
+
+      mockResponse =
+      {
+          activities: [
+              {
+                  name: "Pantheon - Basilica di Santa Maria ad Martyres",
+                  address: "Piazza della Rotonda, 00186 Rome, Italy",
+                  category: "Churches",
+                  rating: 4.5,
+                  image: "https://s3-media3.fl.yelpcdn.com/bphoto/wDcbtQyxePfBYfHHXYiwGw/o.jpg",
+                  lat: 41.898614,
+                  long: 12.476869
+              },
+              {
+                  name: "Colosseo",
+                  address: "Piazza del Colosseo 1, 00184 Rome, Italy",
+                  category: "Local Flavor",
+                  rating: 4.5,
+                  image: "https://s3-media1.fl.yelpcdn.com/bphoto/QcMxqdZmJTMpeeuT_NfHAg/o.jpg",
+                  lat: 41.8902496828181,
+                  long: 12.4922484062616
+              },
+          ]
+      };
+
+      window.fetch = jest.fn().mockImplementation(() => {
+        return Promise.resolve({
+          ok: true,
+          json: () => Promise.resolve(mockResponse)
+        });
+      });
+    });
+
+    it('should call fetch with the correct URL & options', () => {
+      getActivities(lat, long);
+
+      expect(window.fetch).toHaveBeenCalledWith(`https://globe-trotter-api.herokuapp.com/api/v1/yelp_activities/?lat=${lat}&long=${long}`);
+    });
+
+    it('should return an object of activities data', () => {
+      expect(getActivities(lat, long)).resolves.toEqual(mockResponse);
+    });
+
+    it('should return an error message if Promise is rejected', () => {
+      window.fetch = jest.fn().mockImplementation(() => {
+        return Promise.reject({ ok: false });
+      });
+
+      expect(getActivities(lat, long)).rejects.toEqual(Error('error retrieving activities data'));
     });
   });
 });
