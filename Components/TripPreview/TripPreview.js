@@ -3,7 +3,7 @@ import { Text, View, StyleSheet, TouchableOpacity, Image, ScrollView } from 'rea
 import { deleteTrip } from '../../apiCalls';
 
 export const TripPreview = ({ route, navigation }) => {
-  const {name, originLat, originLong, startDate, endDate, originAbbrev, finalDestinationAbbrev, description, tripdestinationSet } = route.params;
+  const {name, id, originLat, originLong, startDate, endDate, originAbbrev, finalDestinationAbbrev, description, tripdestinationSet } = route.params.item;
   const { handleTripsFetch } = route.params;
         
   const handleClick = () => {
@@ -16,7 +16,7 @@ export const TripPreview = ({ route, navigation }) => {
     handleTripsFetch();
     navigation.navigate('Trips');
   };
-
+  
   let displayDestinations = tripdestinationSet.map(destination => {
     return (
      <TouchableOpacity onPress={() => navigation.navigate('Maps', destination, startDate, endDate, name)}
