@@ -11,6 +11,14 @@ export const DatePicker = (props) => {
   const [startDate, setStartDate] = useState('');
   const [endDate, setEndDate] = useState('');
 
+  const setCurrent = () => {
+    if (endDate === '') {
+      return startDate
+    } else {
+      return endDate
+    }
+  };
+
   const onDayPress = day => {
     if (startPicked === false) {
       let datesMarked = {};
@@ -54,15 +62,18 @@ export const DatePicker = (props) => {
       onDayPress={onDayPress}
       style={{width: '95%'}}
       theme={{
-        calendarBackground: '#333248',
-        textSectionTitleColor: 'white',
-        dayTextColor: 'red',
-        todayTextColor: 'white',
-        selectedDayTextColor: 'white',
-        monthTextColor: 'white',
-        indicatorColor: 'white',
+        calendarBackground: 'white',
+        textSectionTitleColor: '#065a87',
+        dayTextColor: 'black',
+        todayTextColor: 'black',
+        selectedDayTextColor: '#1E88E5',
+        monthTextColor: '#1E88E5',
+        indicatorColor: 'black',
+        textDayFontSize: 20,
+        textDisabledColor: '#b3bcbb',
+        textMonthFontSize: 24,
         selectedDayBackgroundColor: '#333248',
-        arrowColor: 'white',
+        arrowColor: 'black',
         'stylesheet.calendar.header': {
           week: {
             marginTop: 5,
