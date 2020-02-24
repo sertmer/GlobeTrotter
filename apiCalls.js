@@ -35,7 +35,6 @@ export const getAllTrips = () => {
 };
 
 export const createNewTrip = (name, origin) => {
-  //Backticks amend the need for backslashes
   const mutation = {
     "query": `mutation {createTrip(userApiKey: \"b9aead4b955bccb5c57ef830580f3de5\", name: \"${name}\", origin: \"${origin}\") {trip {id name origin originAbbrev originLat originLong}}}`
   };
@@ -104,11 +103,11 @@ export const createNewDestination = (tripId, location, startDate, endDate) => {
 
 export const deleteTrip = (tripId) => {
   const mutation = {
-    "query": `mutation {deleteTrip(userApiKey: \"b9aead4b955bccb5c57ef830580f3de5\", tripId: \"${tripId}\") {id name}`
+    "query": `mutation {deleteTrip(userApiKey: \"b9aead4b955bccb5c57ef830580f3de5\", tripId: ${tripId}) {id name origin}}`
   };
 
   const options = {
-    method: 'DELETE',
+    method: 'POST',
     body: JSON.stringify(mutation),
     headers: {
       'Content-Type': 'application/json',
