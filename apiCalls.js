@@ -1,8 +1,7 @@
 import "isomorphic-fetch";
 
-//This get may need amendment regarding the lat and long interpolations (they should be numbers)
 export const getActivities = (lat, long) => {
-  const url = `/api/v1/yelp_activities/?lat=${lat}&long=${long}`;
+  const url = `https://globe-trotter-api.herokuapp.com/api/v1/yelp_activities/?lat=${lat}&long=${long}`;
 
   return fetch(url)
     .then(response => {
@@ -104,7 +103,7 @@ export const createNewDestination = (tripId, location, startDate, endDate) => {
 // };
 
 export const deleteTrip = (tripId) => {
-  const mutation =   {
+  const mutation = {
     "query": `mutation {deleteTrip(userApiKey: \"b9aead4b955bccb5c57ef830580f3de5\", tripId: \"${tripId}\") {id name}`
   };
 
@@ -119,7 +118,7 @@ export const deleteTrip = (tripId) => {
   return fetch('https://globe-trotter-api.herokuapp.com/graphql/', options)
     .then(response => {
       if (!response.ok) {
-        throw Error('error posting new trip')
+        throw Error('error deleting trip')
       }
       return response.json()
     })
