@@ -192,81 +192,59 @@ describe('apiCalls', () => {
       expect(createNewDestination(tripId, location, startDate, endDate)).rejects.toEqual(Error('error posting new destination data'));
     });
   });
+
+  describe('deleteTrip', () => {
+    let mockResponse, mockOptions, mockQuery, tripId;
+
+    beforeEach(() => {
+      tripId = 3;
+      mockQuery = {
+        "query": `mutation {deleteTrip(userApiKey: \"b9aead4b955bccb5c57ef830580f3de5\", tripId: ${tripId}) {id name origin}}`
+      };
+
+      mockOptions = {
+        method: 'POST',
+        body: JSON.stringify(mockQuery),
+        headers: {
+          'Content-Type': 'application/json',
+        }
+      };
+
+      mockResponse =
+      {
+          data: {
+              deleteTrip: {
+                id: 3,
+                name: 'Example',
+                origin: 'Denver, USA'
+              }
+          }
+      }
+
+      window.fetch = jest.fn().mockImplementation(() => {
+        return Promise.resolve({
+          ok: true,
+          json: () => Promise.resolve(mockResponse)
+        });
+      });
+    });
+
+    it('should call fetch with the correct URL & options', () => {
+      deleteTrip(tripId);
+
+      expect(window.fetch).toHaveBeenCalledWith('https://globe-trotter-api.herokuapp.com/graphql/', mockOptions);
+    });
+
+    it('should return an object with the deleted id', () => {
+      expect(deleteTrip(tripId)).resolves.toEqual(mockResponse);
+    });
+
+    it('should return an error message if Promise is rejected', () => {
+      window.fetch = jest.fn().mockImplementation(() => {
+        return Promise.resolve({ ok: false });
+      });
+
+      expect(deleteTrip(tripId)).rejects.toEqual(Error('error deleting trip'));
+    });
+  });
 });
-
-
-
-// mockTrip = {
-//   id: '2',
-//   name: ' Summer Break',
-//   origin: 'Fort Collins, CO, USA',
-//   originAbbrev: 'DEN',
-//   originLat: '1',
-//   originLong: '2',
-//   startData: '3',
-//   endDate: '4',
-//   user: {
-//     id: '1',
-//     name: 'John',
-//     email: 'John@gmail.com'
-//   },
-//   tripdestinationSet: [
-//     {
-//       destination: {location: 'Barcelona, Spain', abbrev: 'BCN'},
-//       startDate: '2020-03-16',
-//       endDate: "2020-03-19",
-//       activitySet: [
-//         {name: "Basílica de la Sagrada Familia", date: "2020-03-17", category: "Landmarks & Historical Buildings"},
-//         {name: "Castell de Montjuïc", date: "2022-03-18", category: "Castles"}
-//       ]
-//     }
-//   ]
-// };
-//
-// mockOptions = {
-//   method: 'POST',
-//   body: JSON.stringify(mockTrip),
-//   headers: {
-//     'Content-Type': 'application/json',
-//   }
-// };
-//
-// mockResponse = {
-//   allTrips: [
-//     {
-//       id: '1',
-//       name: ' Spring Break',
-//       origin: 'Denver, CO, USA',
-//       originAbbrev: 'DEN',
-//       originLat: '39.7392',
-//       originLong: '104.9903',
-//       startData: '2020-03-16',
-//       endDate: '2020-03-23',
-//       user: {
-//         id: '1',
-//         name: 'John',
-//         email: 'John@gmail.com'
-//       },
-//       destinations: [
-//         {
-//
-//         }
-//       ]
-//     },
-//     {
-//       id: '2',
-//       name: ' Summer Break',
-//       origin: 'Fort Collins, CO, USA',
-//       originAbbrev: 'DEN',
-//       originLat: '1',
-//       originLong: '2',
-//       startData: '3',
-//       endDate: '4',
-//       user: {
-//         id: '1',
-//         name: 'John',
-//         email: 'John@gmail.com'
-//       }
-//     }
-//   ]
-// };
