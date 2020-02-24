@@ -67,11 +67,13 @@ describe('apiCalls', () => {
   });
 
   describe('createNewTrip', () => {
-    let mockResponse, mockOptions, mockQuery;
+    let mockResponse, mockOptions, mockQuery, name, origin;
 
     beforeEach(() => {
+      name = "Summer Break";
+      origin = "Fort Collins, USA";
       mockQuery = {
-          "query": "{allTrips(userApiKey: \"b9aead4b955bccb5c57ef830580f3de5\",  name: \"${name}\", origin: \"${origin}\") {trip {id name origin originAbbrev originLat originLong}}}"
+            "query": `mutation {createTrip(userApiKey: \"b9aead4b955bccb5c57ef830580f3de5\", name: \"${name}\", origin: \"${origin}\") {trip {id name origin originAbbrev originLat originLong}}}`
         };
 
       mockOptions = {
@@ -101,13 +103,13 @@ describe('apiCalls', () => {
     });
 
     it('should call fetch with the correct URL & options', () => {
-      createNewTrip("Summer Break", "Fort Collins, USA");
+      createNewTrip(name, origin);
 
       expect(window.fetch).toHaveBeenCalledWith('https://globe-trotter-api.herokuapp.com/graphql/', mockOptions);
     });
 
     it('should return an array of trip objects', () => {
-      expect(createNewTrip("Summer Break", "Fort Collins, USA")).resolves.toEqual(mockResponse);
+      expect(createNewTrip(name, origin)).resolves.toEqual(mockResponse);
     });
 
     it('should return an error message if Promise is rejected', () => {
@@ -115,7 +117,7 @@ describe('apiCalls', () => {
         return Promise.resolve({ ok: false });
       });
 
-      expect(postNewTrip()).rejects.toEqual(Error('error posting new trip'));
+      expect(createNewTrip(name, origin)).rejects.toEqual(Error('error posting new trip'));
     });
   });
 });
