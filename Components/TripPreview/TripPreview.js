@@ -1,5 +1,6 @@
 import React from 'react';
 import { Text, View, StyleSheet, TouchableOpacity, Image, ScrollView } from 'react-native';
+import { deleteTrip } from '../../apiCalls';
 
 export const TripPreview = ({ navigation, route }) => {
   const { id, name, startDate, endDate, originAbbrev, finalDestinationAbbrev, tripdestinationSet } = route.params;
@@ -7,6 +8,13 @@ export const TripPreview = ({ navigation, route }) => {
   const handleClick = () => {
     console.log(`${name}, ${origin}`);
     navigation.navigate('Add Destinations', {tripId: id})
+  };
+
+  const handleDelete = () => {
+    console.log(id);
+    deleteTrip(id);
+
+    navigation.navigate('Trips');
   };
 
   let displayDestinations = tripdestinationSet.map(destination => {
@@ -56,6 +64,13 @@ export const TripPreview = ({ navigation, route }) => {
             onPress={() => handleClick()}
           >
             <Text style={{ color: 'white', fontSize: 20, fontWeight: 'bold' }}>Add A Destination</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            activeOpacity={.8}
+            style={styles.addDestination}
+            onPress={() => handleDelete()}
+          >
+            <Text style={{ color: 'white', fontSize: 20, fontWeight: 'bold' }}>Delete Trip</Text>
           </TouchableOpacity>
         </ScrollView>
       </View>
