@@ -3,22 +3,19 @@ import { StyleSheet, Text, View, TextInput, TouchableOpacity, ScrollView } from 
 import { getAllTrips, createNewTrip } from '../../apiCalls';
 
 export const CreateTrip = ({ navigation, route }) => {
-  const { reformattedTrips, setReformattedTrips, reformatTripsData, findStartDate, findEndDate, findFinalDestination, handleTripsFetch } = route.params;
+  const { handleTripsFetch } = route.params;
 
   let [origin, setOrigin] = useState('');
   let [name, setName] = useState('');
-  let [newTrip, setNewTrip] = useState({});
 
   const handleClick = () => {
     createNewTrip(name, origin)
       .then(returnedTripData => {
-        setNewTrip(returnedTripData.data.createTrip.trip)
+        handleTripsFetch();
+        navigation.navigate('Add Destinations', {tripId: returnedTripData.data.createTrip.trip.id, handleTripsFetch})
       })
       .catch(error => {
       });
-
-    handleTripsFetch();
-    navigation.navigate('Add Destinations', {tripId: newTrip.id})
   };
 
   return (
