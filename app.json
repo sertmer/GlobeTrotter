@@ -28,7 +28,7 @@
       "bundleIdentifier": "globeTrotter",
       "buildNumber": "1.0.0",
       "config": {
-        "googleMapsApiKey": "AIzaSyDrIRrh-JhmaJn6F31RDg2WrUqmSNaxhO8"
+        "googleMapsApiKey": ""
       }
     },
     "android": {
@@ -36,7 +36,7 @@
       "versionCode": 1,
       "config": {
         "googleMaps": {
-          "apiKey": "Constants.manifest.android.config.googleMaps.apiKey"
+          "apiKey": ""
         }
       }
     }
