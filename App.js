@@ -26,9 +26,8 @@ export const App = ({ navigation }) => {
         <Stack.Screen
           name='Globe Trotter'
           component={LandingPage}
-        >
-
-        </Stack.Screen>
+          options={{title: 'Welcome!'}}
+        />
         <Stack.Screen
           name='Trips'
           component={Trips}
