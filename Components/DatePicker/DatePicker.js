@@ -56,7 +56,7 @@ export const DatePicker = (props) => {
 
   return (
     <Calendar
-      current={startDate}
+      current={setCurrent()}
       minDate={Date()}
       markingType={'period'}
       onDayPress={onDayPress}
