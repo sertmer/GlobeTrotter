@@ -15,4 +15,4 @@ web-report/
 
 # macOS
 .DS_Store
-
+coverage
