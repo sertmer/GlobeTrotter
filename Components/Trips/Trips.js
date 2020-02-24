@@ -87,7 +87,7 @@ const Trips = ({ navigation }) => {
           )
         })}
       </ScrollView>
-      <TouchableOpacity activeOpacity={.9} style={styles.addTrip} onPress={() => navigation.navigate('Create Trip', {setReformattedTrips, reformattedTrips})}>
+      <TouchableOpacity activeOpacity={.9} style={styles.addTrip} onPress={() => navigation.navigate('Create Trip', {reformattedTrips, setReformattedTrips, reformatTripsData, findStartDate, findEndDate, findFinalDestination, handleTripsFetch})}>
         <View style={styles.plusContainer}>
           <Image
             style={styles.image}
