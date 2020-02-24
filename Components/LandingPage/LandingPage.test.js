@@ -1,9 +1,9 @@
 import React from 'react';
-import CreateTrip from './CreateTrip';
+import LandingPage from './LandingPage';
 
 import renderer from 'react-test-renderer';
 
 test.skip('renders correctly', () => {
-  const tree = renderer.create(<CreateTrip />).toJSON();
+  const tree = renderer.create(<LandingPage />).toJSON();
   expect(tree).toMatchSnapshot();
 });

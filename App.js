@@ -9,6 +9,7 @@ import TripPreview from './Components/TripPreview/TripPreview';
 import DatePicker from './Components/DatePicker/DatePicker';
 import Maps from './Components/Maps/Maps';
 import AddDestinations from './Components/AddDestinations/AddDestinations'
+import LandingPage from './Components/LandingPage/LandingPage'
 
 export const App = ({ navigation }) => {
 
@@ -17,11 +18,16 @@ export const App = ({ navigation }) => {
   return (
     <NavigationContainer>
       <Stack.Navigator
-        initialRouteName='Trips'
+        initialRouteName='Globe Trotter'
         screenOptions={{ gestureEnabled: false }}
         headerMode={'float'}
         mode={'card'}
       >
+        <Stack.Screen
+          name='Globe Trotter'
+          component={LandingPage}
+          options={{title: 'Welcome!'}}
+        />
         <Stack.Screen
           name='Trips'
           component={Trips}
