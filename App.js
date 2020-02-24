@@ -8,8 +8,14 @@ import { createStackNavigator } from '@react-navigation/stack';
 import TripPreview from './Components/TripPreview/TripPreview';
 import DatePicker from './Components/DatePicker/DatePicker';
 import Maps from './Components/Maps/Maps';
-import AddDestinations from './Components/AddDestinations/AddDestinations'
-import LandingPage from './Components/LandingPage/LandingPage'
+import AddDestinations from './Components/AddDestinations/AddDestinations';
+import LandingPage from './Components/LandingPage/LandingPage';
+import { YellowBox } from 'react-native';
+
+YellowBox.ignoreWarnings([
+  'We found non-serializable values in the navigation state',
+  'Remote debugger'
+]);
 
 export const App = ({ navigation }) => {
 
