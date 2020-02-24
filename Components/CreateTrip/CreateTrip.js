@@ -10,6 +10,7 @@ export const CreateTrip = ({ navigation, route }) => {
   let [newTrip, setNewTrip] = useState({});
 
   // const handleClick = () => {
+  //   console.log(`${name}, ${origin}`);
   //   createNewTrip(name, origin)
   //     .then(returnedTripData => {
   //       setNewTrip(returnedTripData)
