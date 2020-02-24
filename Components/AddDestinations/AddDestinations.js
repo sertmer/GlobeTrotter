@@ -9,15 +9,25 @@ const AddDestinations = ({ navigation, route }) => {
   let [destinationStartDate, setDestinationStartDate] = useState('');
   let [destinationEndDate, setDestinationEndDate] = useState('');
 
-  // const handleDestinationSubmit = () => {
-  //   createNewDestination(tripId, destinationLocation, destinationStartDate, destinationEndDate)
-  //     .then(returnedTripData => {
-  //       setNewTrip(returnedTripData)
-  //     })
-  // }
+  //Use conditional rendering to notify the user that they are adding a destination #${tripdestinationSet.length} - requires some props reformation
 
+  //Need to figure out how to best go about the REFETCHING of the passed datesMarked - Should I have some sort of intermediate hook in the interim in case of slow-loading?
   const handleDestinationSubmit = () => {
-    console.log(tripId, destinationLocation, destinationStartDate, destinationEndDate)
+    createNewDestination(tripId, destinationLocation, destinationStartDate, destinationEndDate)
+      .then(returnedTripData => {
+        setNewTrip(returnedTripData)
+      })
+      .catch(error => {
+      });
+
+    resetInputs();
+  }
+
+
+  const resetInputs = () => {
+    setDestinationLocation('');
+    setDestinationStartDate('');
+    setDestinationEndDate('');
   }
 
   return (
@@ -42,6 +52,7 @@ const AddDestinations = ({ navigation, route }) => {
       <TouchableOpacity
         activeOpacity={.8}
         style={styles.button}
+        onPress={() => handleDestinationSubmit()}
       >
         <Text style={{ color: '#0D47A1', fontSize: 20, fontWeight: 'bold' }}>Add to Trip</Text>
       </TouchableOpacity>
@@ -54,6 +65,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#1E88E5',
     height: '100%',
     alignItems: 'center',
+    justifyContent: 'space-between',
     padding: 15
   },
   label: {
