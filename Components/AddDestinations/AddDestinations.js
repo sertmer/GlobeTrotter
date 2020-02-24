@@ -4,20 +4,22 @@ import { createNewDestination } from '../../apiCalls';
 import DatePicker from '../DatePicker/DatePicker';
 
 const AddDestinations = ({ navigation, route }) => {
-  const { tripId } = route.params;
+  const { tripId, handleTripsFetch } = route.params;
   let [destinationLocation, setDestinationLocation] = useState('');
   let [destinationStartDate, setDestinationStartDate] = useState('');
   let [destinationEndDate, setDestinationEndDate] = useState('');
+  let [newDestination, setNewDestination] = useState([]);
 
   //Use conditional rendering to notify the user that they are adding a destination #${tripdestinationSet.length} - requires some props reformation
 
-  //Need to figure out how to best go about the REFETCHING of the passed datesMarked - Should I have some sort of intermediate hook in the interim in case of slow-loading?
   const handleDestinationSubmit = () => {
     createNewDestination(tripId, destinationLocation, destinationStartDate, destinationEndDate)
       .then(returnedTripData => {
-        setNewTrip(returnedTripData)
+        setNewDestination(returnedTripData);
+        handleTripsFetch();
       })
       .catch(error => {
+        console.log(error)
       });
 
     resetInputs();
