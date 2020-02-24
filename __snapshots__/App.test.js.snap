@@ -178,24 +178,41 @@ exports[`renders correctly 1`] = `
                     <View
                       style={
                         Object {
+                          "alignItems": "center",
                           "backgroundColor": "#1E88E5",
-                          "flex": 1,
-                          "height": 3000,
-                          "justifyContent": "center",
-                          "paddingLeft": 15,
-                          "paddingRight": 15,
-                          "width": "100%",
+                          "height": "100%",
+                          "justifyContent": "space-around",
+                          "padding": 15,
                         }
                       }
                     >
+                      <View>
+                        <Image
+                          source={
+                            Object {
+                              "uri": "https://i.imgur.com/ixGj1Nf.png",
+                            }
+                          }
+                          style={
+                            Object {
+                              "height": 300,
+                              "marginLeft": 20,
+                              "width": 300,
+                            }
+                          }
+                        />
+                      </View>
                       <Text
-                        style={Object {}}
+                        style={
+                          Object {
+                            "color": "#fff",
+                            "fontSize": 50,
+                            "fontWeight": "bold",
+                          }
+                        }
                       >
-                        Add a Trip!
+                        GlobeTrotter
                       </Text>
-                      <RCTScrollView>
-                        <View />
-                      </RCTScrollView>
                       <View
                         accessible={true}
                         focusable={true}
@@ -210,45 +227,27 @@ exports[`renders correctly 1`] = `
                         style={
                           Object {
                             "alignItems": "center",
-                            "bottom": 50,
-                            "height": 100,
+                            "backgroundColor": "#2CCB70",
+                            "borderRadius": 5,
+                            "height": 50,
                             "justifyContent": "center",
+                            "marginTop": 15,
                             "opacity": 1,
-                            "position": "absolute",
-                            "right": 100,
-                            "width": 10,
+                            "width": "100%",
                           }
                         }
                       >
-                        <View
+                        <Text
                           style={
                             Object {
-                              "padding": 100,
+                              "color": "#0D47A1",
+                              "fontSize": 20,
+                              "fontWeight": "bold",
                             }
                           }
                         >
-                          <Image
-                            accessibilityLabel="Add Trip"
-                            source={
-                              Object {
-                                "uri": "https://freeiconshop.com/wp-content/uploads/edd/plus-flat.png",
-                              }
-                            }
-                            style={
-                              Object {
-                                "height": 80,
-                                "shadowColor": "#0D47A1",
-                                "shadowOffset": Object {
-                                  "height": 1,
-                                  "width": 1,
-                                },
-                                "shadowOpacity": 0.5,
-                                "shadowRadius": 0.5,
-                                "width": 80,
-                              }
-                            }
-                          />
-                        </View>
+                          Get Started
+                        </Text>
                       </View>
                     </View>
                   </View>
@@ -366,7 +365,7 @@ exports[`renders correctly 1`] = `
                   }
                 }
               >
-                Trips
+                Welcome!
               </Text>
             </View>
           </View>
