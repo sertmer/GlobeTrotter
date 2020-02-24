@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import { Calendar } from 'react-native-calendars';
 import moment from 'moment';
 
-export const DatePicker = ({ route }) => {
-  const { setDestinationStartDate, setDestinationEndDate } = route.params;
+export const DatePicker = (props) => {
+  const { setDestinationStartDate, setDestinationEndDate } = props;
   const [markedDates, setMarkedDates] = useState({});
   const [startPicked, setStartPicked] = useState(false);
   const [endPicked, setEndPicked] = useState(false);
@@ -51,6 +51,7 @@ export const DatePicker = ({ route }) => {
       minDate={Date()}
       markingType={'period'}
       onDayPress={onDayPress}
+      style={{width: '95%'}}
       theme={{
         calendarBackground: '#333248',
         textSectionTitleColor: 'white',

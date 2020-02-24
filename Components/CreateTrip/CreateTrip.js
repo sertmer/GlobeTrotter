@@ -1,8 +1,23 @@
 import React, { useState } from 'react';
 import { StyleSheet, Text, View, TextInput, TouchableOpacity, ScrollView } from 'react-native';
-import { postNewTrip } from '../../apiCalls';
+import { getAllTrips, createNewTrip } from '../../apiCalls';
 
-export const CreateTrip = ({ navigation }) => {
+export const CreateTrip = ({ navigation, route }) => {
+  const { handleTripsFetch } = route.params;
+
+  let [origin, setOrigin] = useState('');
+  let [name, setName] = useState('');
+
+  const handleClick = () => {
+    createNewTrip(name, origin)
+      .then(returnedTripData => {
+        handleTripsFetch();
+        navigation.navigate('Add Destinations', {tripId: returnedTripData.data.createTrip.trip.id, handleTripsFetch})
+      })
+      .catch(error => {
+      });
+  };
+
   return (
     <ScrollView
       contentContainerStyle={styles.container}
@@ -10,16 +25,26 @@ export const CreateTrip = ({ navigation }) => {
     >
       <Text style={styles.label}>Name</Text>
       <View style={styles.inputContainer}>
-        <TextInput style={styles.input} />
+        <TextInput
+          style={styles.input}
+          value={name}
+          placeholder='Trip Name'
+          onChangeText={(text) => setName(text)}
+        />
       </View>
       <Text style={styles.label}>Starting Location</Text>
       <View style={styles.inputContainer}>
-        <TextInput style={styles.input} />
+        <TextInput
+          style={styles.input}
+          value={origin}
+          placeholder='City, Country'
+          onChangeText={(text) => setOrigin(text)}
+        />
       </View>
-      <TouchableOpacity 
+      <TouchableOpacity
         activeOpacity={.8}
         style={styles.addDestination}
-        onPress={() => navigation.navigate('Add Destinations')}
+        onPress={() => handleClick()}
       >
         <Text style={{ color: '#0D47A1', fontSize: 20, fontWeight: 'bold' }}>Add A Destination</Text>
       </TouchableOpacity>

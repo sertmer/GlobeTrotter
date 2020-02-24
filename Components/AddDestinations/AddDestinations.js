@@ -1,10 +1,36 @@
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, Text, TextInput, TouchableOpacity, View, ScrollView } from 'react-native'
+import { StyleSheet, Text, TextInput, TouchableOpacity, View, ScrollView } from 'react-native';
+import { createNewDestination } from '../../apiCalls';
+import DatePicker from '../DatePicker/DatePicker';
+
 const AddDestinations = ({ navigation, route }) => {
-  // const { tripId } = route.params
+  const { tripId, handleTripsFetch } = route.params;
   let [destinationLocation, setDestinationLocation] = useState('');
   let [destinationStartDate, setDestinationStartDate] = useState('');
-  let [destinationEndDate, setDestinationEndDate] = useState('')
+  let [destinationEndDate, setDestinationEndDate] = useState('');
+  let [newDestination, setNewDestination] = useState([]);
+
+  //Use conditional rendering to notify the user that they are adding a destination #${tripdestinationSet.length} - requires some props reformation
+
+  const handleDestinationSubmit = () => {
+    createNewDestination(tripId, destinationLocation, destinationStartDate, destinationEndDate)
+      .then(returnedTripData => {
+        setNewDestination(returnedTripData);
+        navigation.navigate('Trips')
+        handleTripsFetch()
+      })
+      .catch(error => {
+        console.log(error)
+      });
+      resetInputs();
+  }
+
+
+  const resetInputs = () => {
+    setDestinationLocation('');
+    setDestinationStartDate('');
+    setDestinationEndDate('');
+  }
 
   return (
     <ScrollView
@@ -13,20 +39,24 @@ const AddDestinations = ({ navigation, route }) => {
     >
       <Text style={styles.label}>Destination</Text>
       <View style={styles.inputContainer}>
-        <TextInput 
-          style={styles.input} 
+        <TextInput
+          style={styles.input}
           name='destination'
           value={destinationLocation}
           placeholder='City, Country'
           onChangeText={(text) => setDestinationLocation(text)}
         />
       </View>
+      <DatePicker
+        setDestinationStartDate={setDestinationStartDate}
+        setDestinationEndDate={setDestinationEndDate}
+      />
       <TouchableOpacity
         activeOpacity={.8}
         style={styles.button}
-        onPress={() => navigation.navigate('Calendar', {setDestinationStartDate: setDestinationStartDate, setDestinationEndDate: setDestinationEndDate})}
+        onPress={() => handleDestinationSubmit()}
       >
-        <Text style={{ color: '#0D47A1', fontSize: 20, fontWeight: 'bold' }}>Select Dates</Text>
+        <Text style={{ color: '#0D47A1', fontSize: 20, fontWeight: 'bold' }}>Add to Trip</Text>
       </TouchableOpacity>
     </ScrollView>
   )
@@ -37,6 +67,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#1E88E5',
     height: '100%',
     alignItems: 'center',
+    justifyContent: 'space-between',
     padding: 15
   },
   label: {

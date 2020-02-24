@@ -1,8 +1,23 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Text, View, StyleSheet, TouchableOpacity, Image, ScrollView } from 'react-native';
+import { deleteTrip } from '../../apiCalls';
 
-export const TripPreview = ({ route }) => {
-  const { name, startDate, endDate, originAbbrev, finalDestinationAbbrev, tripdestinationSet } = route.params;
+export const TripPreview = ({ navigation, route }) => {
+  const { id, name, startDate, endDate, originAbbrev, finalDestinationAbbrev, tripdestinationSet } = route.params.item;
+  const { handleTripsFetch } = route.params;
+
+
+
+  const handleClick = () => {
+    navigation.navigate('Add Destinations', {tripId: id, handleTripsFetch})
+  };
+
+  const handleDelete = () => {
+    console.log(id);
+    deleteTrip(id);
+    handleTripsFetch();
+    navigation.navigate('Trips');
+  };
 
   let displayDestinations = tripdestinationSet.map(destination => {
     return (
@@ -39,12 +54,26 @@ export const TripPreview = ({ route }) => {
             <Text>{endDate}</Text>
           </View>
         </View>
-        <ScrollView style={styles.destinationsConatainer}>
+        <ScrollView contentContainerStyle={styles.contentContainer}>
           {
             tripdestinationSet.length ?
               displayDestinations :
               <Text>No Other Destinations</Text>
           }
+          <TouchableOpacity
+            activeOpacity={.8}
+            style={styles.addDestination}
+            onPress={() => handleClick()}
+          >
+            <Text style={{ color: 'white', fontSize: 20, fontWeight: 'bold' }}>Add A Destination</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            activeOpacity={.8}
+            style={styles.addDestination}
+            onPress={() => handleDelete()}
+          >
+            <Text style={{ color: 'white', fontSize: 20, fontWeight: 'bold' }}>Delete Trip</Text>
+          </TouchableOpacity>
         </ScrollView>
       </View>
     </View>
@@ -100,7 +129,18 @@ const styles = StyleSheet.create({
     width: '100%',
     borderRadius: 5
   },
-  destinationsContainer: {
+  addDestination: {
+    alignItems: 'center',
+    backgroundColor: '#1F87E5',
+    borderRadius: 5,
+    justifyContent: 'center',
+    marginVertical: 10,
+    padding: 10,
+    width: '65%',
+  },
+  contentContainer: {
+    alignItems: 'center',
+    justifyContent: 'center',
     height: '100%'
   },
   destinationName: {
