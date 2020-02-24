@@ -108,7 +108,7 @@ describe('apiCalls', () => {
       expect(window.fetch).toHaveBeenCalledWith('https://globe-trotter-api.herokuapp.com/graphql/', mockOptions);
     });
 
-    it('should return an array of trip objects', () => {
+    it('should return a trip object', () => {
       expect(createNewTrip(name, origin)).resolves.toEqual(mockResponse);
     });
 
@@ -118,6 +118,78 @@ describe('apiCalls', () => {
       });
 
       expect(createNewTrip(name, origin)).rejects.toEqual(Error('error posting new trip'));
+    });
+  });
+
+  describe('createNewDestination', () => {
+    let mockResponse, mockOptions, mockQuery, tripId, location, startDate, endDate;
+
+    beforeEach(() => {
+      tripId = 2;
+      location = "Fort Collins, USA";
+      startDate = "2020-03-01";
+      endDate = "2020-03-10";
+      mockQuery = {
+        "query": `mutation {createDestination(userApiKey: \"b9aead4b955bccb5c57ef830580f3de5\", tripId: ${tripId}, location: \"${location}\", startDate: \"${startDate}\", endDate: \"${endDate}\") {destination {id location abbrev lat long tripdestinationSet {startDate endDate trip {name origin}}}}}`
+      };
+
+      mockOptions = {
+        method: 'POST',
+        body: JSON.stringify(mockQuery),
+        headers: {
+          'Content-Type': 'application/json',
+        }
+      };
+
+      mockResponse =
+      {
+          data: {
+              createDestination: {
+                  destination: {
+                      id: 11,
+                      location: "Fort Collins, CO, USA",
+                      abbrev: "FNL",
+                      lat: "40.5852602",
+                      long: "-105.084423",
+                      tripdestinationSet: [
+                          {
+                              startDate: "2020-03-01",
+                              endDate: "2020-03-10",
+                              trip: {
+                                  name: "Spring Break",
+                                  origin: "Denver, CO, USA"
+                              }
+                          }
+                      ]
+                  }
+              }
+          }
+      }
+
+      window.fetch = jest.fn().mockImplementation(() => {
+        return Promise.resolve({
+          ok: true,
+          json: () => Promise.resolve(mockResponse)
+        });
+      });
+    });
+
+    it('should call fetch with the correct URL & options', () => {
+      createNewDestination(tripId, location, startDate, endDate);
+
+      expect(window.fetch).toHaveBeenCalledWith('https://globe-trotter-api.herokuapp.com/graphql/', mockOptions);
+    });
+
+    it('should return a new destination object', () => {
+      expect(createNewDestination(tripId, location, startDate, endDate)).resolves.toEqual(mockResponse);
+    });
+
+    it('should return an error message if Promise is rejected', () => {
+      window.fetch = jest.fn().mockImplementation(() => {
+        return Promise.resolve({ ok: false });
+      });
+
+      expect(createNewDestination(tripId, location, startDate, endDate)).rejects.toEqual(Error('error posting new destination data'));
     });
   });
 });
