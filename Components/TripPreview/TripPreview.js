@@ -5,7 +5,7 @@ import { deleteTrip } from '../../apiCalls';
 export const TripPreview = ({ route, navigation }) => {
   const {name, id, originLat, originLong, startDate, endDate, originAbbrev, finalDestinationAbbrev, description, tripdestinationSet } = route.params.item;
   const { handleTripsFetch } = route.params;
-        
+
   const handleClick = () => {
     navigation.navigate('Add Destinations', {tripId: id, handleTripsFetch})
   };
@@ -16,11 +16,12 @@ export const TripPreview = ({ route, navigation }) => {
     handleTripsFetch();
     navigation.navigate('Trips');
   };
-  
-  let displayDestinations = tripdestinationSet.map(destination => {
+
+  let displayDestinations = tripdestinationSet.map((destination, index) => {
     return (
      <TouchableOpacity onPress={() => navigation.navigate('Maps', destination, startDate, endDate, name)}
         activeOpacity={.8}
+        key={index}
         style={styles.destination}
         >
         <View style={styles.destinationText}>
