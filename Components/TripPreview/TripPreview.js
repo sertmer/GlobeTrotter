@@ -1,7 +1,7 @@
 import React from 'react';
 import { Text, View, StyleSheet, TouchableOpacity, Image, ScrollView } from 'react-native';
 
-export const TripPreview = ({ route }) => {
+export const TripPreview = ({ route, navigation }) => {
   const {name, originLat, originLong, startDate, endDate, originAbbrev, finalDestinationAbbrev, description, tripdestinationSet } = route.params;
         
   let displayDestinations = tripdestinationSet.map(destination => {
@@ -9,7 +9,7 @@ export const TripPreview = ({ route }) => {
      <TouchableOpacity onPress={() => navigation.navigate('Maps', destination, startDate, endDate, name)}
         activeOpacity={.8}
         style={styles.destination}
-        onPress={() => console.log('hi')}>
+        >
         <View style={styles.destinationText}>
           <Text style={styles.destinationName}>{destination.destination.location}</Text>
           <View style={styles.destinationDates}>
