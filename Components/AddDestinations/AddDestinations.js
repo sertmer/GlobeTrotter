@@ -1,10 +1,24 @@
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, Text, TextInput, TouchableOpacity, View, ScrollView } from 'react-native'
+import { StyleSheet, Text, TextInput, TouchableOpacity, View, ScrollView } from 'react-native';
+import { createNewDestination } from '../../apiCalls';
+import DatePicker from '../DatePicker/DatePicker';
+
 const AddDestinations = ({ navigation, route }) => {
-  // const { tripId } = route.params
+  const { tripId } = route.params;
   let [destinationLocation, setDestinationLocation] = useState('');
   let [destinationStartDate, setDestinationStartDate] = useState('');
-  let [destinationEndDate, setDestinationEndDate] = useState('')
+  let [destinationEndDate, setDestinationEndDate] = useState('');
+
+  // const handleDestinationSubmit = () => {
+  //   createNewDestination(tripId, destinationLocation, destinationStartDate, destinationEndDate)
+  //     .then(returnedTripData => {
+  //       setNewTrip(returnedTripData)
+  //     })
+  // }
+
+  const handleDestinationSubmit = () => {
+    console.log(tripId, destinationLocation, destinationStartDate, destinationEndDate)
+  }
 
   return (
     <ScrollView
@@ -13,21 +27,19 @@ const AddDestinations = ({ navigation, route }) => {
     >
       <Text style={styles.label}>Destination</Text>
       <View style={styles.inputContainer}>
-        <TextInput 
-          style={styles.input} 
+        <TextInput
+          style={styles.input}
           name='destination'
           value={destinationLocation}
           placeholder='City, Country'
           onChangeText={(text) => setDestinationLocation(text)}
         />
       </View>
-      <TouchableOpacity
-        activeOpacity={.8}
-        style={styles.button}
-        onPress={() => navigation.navigate('Calendar', {setDestinationStartDate: setDestinationStartDate, setDestinationEndDate: setDestinationEndDate})}
-      >
-        <Text style={{ color: '#0D47A1', fontSize: 20, fontWeight: 'bold' }}>Select Dates</Text>
-      </TouchableOpacity>
+      <DatePicker
+        setDestinationStartDate={setDestinationStartDate}
+        setDestinationEndDate={setDestinationEndDate}
+      />
+
     </ScrollView>
   )
 }
@@ -71,3 +83,12 @@ const styles = StyleSheet.create({
 })
 
 export default AddDestinations;
+
+//
+// <TouchableOpacity
+//   activeOpacity={.8}
+//   style={styles.button}
+//   onPress={() => navigation.navigate('Calendar', {setDestinationStartDate: setDestinationStartDate, setDestinationEndDate: setDestinationEndDate})}
+// >
+//   <Text style={{ color: '#0D47A1', fontSize: 20, fontWeight: 'bold' }}>Select Dates</Text>
+// </TouchableOpacity>
