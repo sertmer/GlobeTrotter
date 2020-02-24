@@ -6,7 +6,7 @@ export const TripPreview = ({ navigation, route }) => {
   const { id, name, startDate, endDate, originAbbrev, finalDestinationAbbrev, tripdestinationSet } = route.params.item;
   const { handleTripsFetch } = route.params;
 
-  useEffect(() => handleTripsFetch(), []);
+
 
   const handleClick = () => {
     navigation.navigate('Add Destinations', {tripId: id, handleTripsFetch})
