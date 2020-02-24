@@ -7,12 +7,8 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import TripPreview from './Components/TripPreview/TripPreview';
 import DatePicker from './Components/DatePicker/DatePicker';
-<<<<<<< HEAD
 import Maps from './Components/Maps/Maps';
-=======
 import AddDestinations from './Components/AddDestinations/AddDestinations'
-
->>>>>>> master
 
 export const App = ({ navigation }) => {
 
