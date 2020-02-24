@@ -39,7 +39,12 @@ const AddDestinations = ({ navigation, route }) => {
         setDestinationStartDate={setDestinationStartDate}
         setDestinationEndDate={setDestinationEndDate}
       />
-
+      <TouchableOpacity
+        activeOpacity={.8}
+        style={styles.button}
+      >
+        <Text style={{ color: '#0D47A1', fontSize: 20, fontWeight: 'bold' }}>Add to Trip</Text>
+      </TouchableOpacity>
     </ScrollView>
   )
 }
@@ -83,12 +88,3 @@ const styles = StyleSheet.create({
 })
 
 export default AddDestinations;
-
-//
-// <TouchableOpacity
-//   activeOpacity={.8}
-//   style={styles.button}
-//   onPress={() => navigation.navigate('Calendar', {setDestinationStartDate: setDestinationStartDate, setDestinationEndDate: setDestinationEndDate})}
-// >
-//   <Text style={{ color: '#0D47A1', fontSize: 20, fontWeight: 'bold' }}>Select Dates</Text>
-// </TouchableOpacity>

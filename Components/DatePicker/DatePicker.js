@@ -51,6 +51,7 @@ export const DatePicker = (props) => {
       minDate={Date()}
       markingType={'period'}
       onDayPress={onDayPress}
+      style={{width: '95%'}}
       theme={{
         calendarBackground: '#333248',
         textSectionTitleColor: 'white',
