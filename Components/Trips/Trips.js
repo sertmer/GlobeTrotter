@@ -70,7 +70,7 @@ const Trips = ({ navigation }) => {
         {reformattedTrips.map(item => {
           return (
             <View key={item.id}>
-              <TouchableOpacity activeOpacity={.8} onPress={() => navigation.navigate('Trip Preview', item)}>
+              <TouchableOpacity activeOpacity={.8} onPress={() => navigation.navigate('Trip Preview', {item, handleTripsFetch})}>
                 <View style={styles.container}>
                   <Text style={styles.name}>{item.name}</Text>
                   <View style={styles.cities}>
@@ -87,7 +87,7 @@ const Trips = ({ navigation }) => {
           )
         })}
       </ScrollView>
-      <TouchableOpacity activeOpacity={.9} style={styles.addTrip} onPress={() => navigation.navigate('Create Trip', {reformattedTrips, setReformattedTrips, reformatTripsData, findStartDate, findEndDate, findFinalDestination, handleTripsFetch})}>
+      <TouchableOpacity activeOpacity={.9} style={styles.addTrip} onPress={() => navigation.navigate('Create Trip', {handleTripsFetch})}>
         <View style={styles.plusContainer}>
           <Image
             style={styles.image}

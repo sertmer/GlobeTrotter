@@ -1,19 +1,21 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Text, View, StyleSheet, TouchableOpacity, Image, ScrollView } from 'react-native';
 import { deleteTrip } from '../../apiCalls';
 
 export const TripPreview = ({ navigation, route }) => {
-  const { id, name, startDate, endDate, originAbbrev, finalDestinationAbbrev, tripdestinationSet } = route.params;
+  const { id, name, startDate, endDate, originAbbrev, finalDestinationAbbrev, tripdestinationSet } = route.params.item;
+  const { handleTripsFetch } = route.params;
+
+  useEffect(() => handleTripsFetch(), []);
 
   const handleClick = () => {
-    console.log(`${name}, ${origin}`);
-    navigation.navigate('Add Destinations', {tripId: id})
+    navigation.navigate('Add Destinations', {tripId: id, handleTripsFetch})
   };
 
   const handleDelete = () => {
     console.log(id);
     deleteTrip(id);
-
+    handleTripsFetch();
     navigation.navigate('Trips');
   };
 

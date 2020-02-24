@@ -37,7 +37,7 @@ export const CreateTrip = ({ navigation, route }) => {
         <TextInput
           style={styles.input}
           value={origin}
-          placeholder='City'
+          placeholder='City, Country'
           onChangeText={(text) => setOrigin(text)}
         />
       </View>

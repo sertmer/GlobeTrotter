@@ -16,13 +16,13 @@ const AddDestinations = ({ navigation, route }) => {
     createNewDestination(tripId, destinationLocation, destinationStartDate, destinationEndDate)
       .then(returnedTripData => {
         setNewDestination(returnedTripData);
-        handleTripsFetch();
+        navigation.navigate('Trips')
+        handleTripsFetch()
       })
       .catch(error => {
         console.log(error)
       });
-
-    resetInputs();
+      resetInputs();
   }
 
 
