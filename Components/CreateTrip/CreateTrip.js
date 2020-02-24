@@ -1,31 +1,25 @@
 import React, { useState } from 'react';
 import { StyleSheet, Text, View, TextInput, TouchableOpacity, ScrollView } from 'react-native';
-import { createNewTrip } from '../../apiCalls';
+import { getAllTrips, createNewTrip } from '../../apiCalls';
 
 export const CreateTrip = ({ navigation, route }) => {
-  const { setReformattedTrips, reformattedTrips } = route.params;
+  const { reformattedTrips, setReformattedTrips, reformatTripsData, findStartDate, findEndDate, findFinalDestination, handleTripsFetch } = route.params;
 
   let [origin, setOrigin] = useState('');
   let [name, setName] = useState('');
   let [newTrip, setNewTrip] = useState({});
 
-  // const handleClick = () => {
-  //   console.log(`${name}, ${origin}`);
-  //   createNewTrip(name, origin)
-  //     .then(returnedTripData => {
-  //       setNewTrip(returnedTripData)
-  //     })
-  //     .catch(error => {
-  //       console.log(error)
-  //     });
-  //
-  //     navigation.navigate('Add Destinations', {tripId: newTrip.id})
-  // }
-
   const handleClick = () => {
-    console.log(`${name}, ${origin}`);
+    createNewTrip(name, origin)
+      .then(returnedTripData => {
+        setNewTrip(returnedTripData.data.createTrip.trip)
+      })
+      .catch(error => {
+      });
+
+    handleTripsFetch();
     navigation.navigate('Add Destinations', {tripId: newTrip.id})
-  }
+  };
 
   return (
     <ScrollView
