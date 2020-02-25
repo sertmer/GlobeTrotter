@@ -12,12 +12,12 @@ import AddDestinations from './Components/AddDestinations/AddDestinations';
 import LandingPage from './Components/LandingPage/LandingPage';
 import { YellowBox } from 'react-native';
 
-YellowBox.ignoreWarnings([
-  'We found non-serializable values in the navigation state',
-  'Remote debugger'
-]);
-
 export const App = ({ navigation }) => {
+
+  YellowBox.ignoreWarnings([
+    'We found non-serializable values in the navigation state',
+    'Remote debugger'
+  ]);
 
   const Stack = createStackNavigator();
 

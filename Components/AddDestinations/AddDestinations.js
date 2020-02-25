@@ -9,20 +9,29 @@ const AddDestinations = ({ navigation, route }) => {
   let [destinationStartDate, setDestinationStartDate] = useState('');
   let [destinationEndDate, setDestinationEndDate] = useState('');
   let [newDestination, setNewDestination] = useState([]);
-
-  //Use conditional rendering to notify the user that they are adding a destination #${tripdestinationSet.length} - requires some props reformation
+  let [error, setError] = useState('');
 
   const handleDestinationSubmit = () => {
-    createNewDestination(tripId, destinationLocation, destinationStartDate, destinationEndDate)
-      .then(returnedTripData => {
-        setNewDestination(returnedTripData);
-        navigation.navigate('Trips')
-        handleTripsFetch()
-      })
-      .catch(error => {
-        console.log(error)
-      });
+    if (destinationLocation !== '' && destinationStartDate !== ''  && destinationEndDate !== '' ) {
+      createNewDestination(tripId, destinationLocation, destinationStartDate, destinationEndDate)
+        .then(returnedTripData => {
+          setNewDestination(returnedTripData);
+          navigation.navigate('Trips')
+          handleTripsFetch()
+        })
+        .catch(error => {
+          console.log(error)
+        });
       resetInputs();
+    } else {
+      resetInputs();
+      setError('All fields required');
+    }
+  }
+
+  const handleChange = (text) => {
+    setError('');
+    setDestinationLocation(text)
   }
 
 
@@ -37,14 +46,22 @@ const AddDestinations = ({ navigation, route }) => {
       contentContainerStyle={styles.container}
       keyboardShouldPersistTaps='handled'
     >
-      <Text style={styles.label}>Destination</Text>
+      {error === '' ?
+        <Text style={styles.label}>
+          Destination
+        </Text>
+        :
+        <Text style={styles.error}>
+          {error}
+        </Text>
+      }
       <View style={styles.inputContainer}>
         <TextInput
           style={styles.input}
           name='destination'
           value={destinationLocation}
           placeholder='City, Country'
-          onChangeText={(text) => setDestinationLocation(text)}
+          onChangeText={(text) => handleChange(text)}
         />
       </View>
       <DatePicker
@@ -73,6 +90,13 @@ const styles = StyleSheet.create({
   label: {
     color: '#fff',
     fontSize: 20
+  },
+  error: {
+    color: 'red',
+    fontSize: 25,
+    textShadowColor: 'black',
+    textShadowOffset: {width: 1, height: 1},
+    textShadowRadius: 7
   },
   input: {
     justifyContent: 'center',
