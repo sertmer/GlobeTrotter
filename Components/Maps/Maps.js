@@ -1,45 +1,54 @@
-import React, { useState, useEffect } from 'react';
-import { StyleSheet, View, Text, Dimensions } from 'react-native';
-import MapView, { PROVIDER_GOOGLE } from 'react-native-maps';
-import { Agenda } from 'react-native-calendars'
+import React, { useState } from 'react';
+import { StyleSheet, View, Dimensions } from 'react-native';
+import MapView from 'react-native-maps';
 import { Marker } from 'react-native-maps';
 
 
 export const Maps = ({ route }) => {
-  const { destination, startDate, endDate, name } = route.params
-  console.log('lat/long: ', destination);
-  console.log('dates: ', startDate, endDate);
+  const { dest, formattedMarkers } = route.params
+  const [ activities, setActivities ] = useState(formattedMarkers)
+  const [ startDate, setStartDate ] = useState(dest.destination.startDate)
+  const [ endDate, setEndDate ] = useState(dest.destination.endDate)
+  const [ savedActivities, setSavedActivities ] = useState([])
+  const [ region, setRegion ] = useState({
+    latitude: parseFloat(dest.destination.lat),
+    longitude: parseFloat(dest.destination.long),
+    latitudeDelta: 0.109,
+    longitudeDelta: 0.224
+  })
 
-  const [ marker, setMarker ] = useState({});
+  const matchActivities = (act) => {
+    let saved = activities.find(activity => {
+      return activity.coordinates.latitude === act.latitude
+    })
+    return saved
+  }
 
+  const addActivity = (act) => {
+    setSavedActivities([...savedActivities, matchActivities(act)])
+  }
+
+  const renderMarkers = formattedMarkers.map((marker, index) => {
+    return (
+      <Marker
+      key={index}
+      coordinate={marker.coordinates}
+      title={marker.title}
+      description={marker.description}
+      onPress={(marker) => addActivity(marker.nativeEvent.coordinate)}
+      />
+    )
+  })
+    
   return (
     <View style={styles.container}>
       <MapView style={styles.mapStyle}
-        provider={PROVIDER_GOOGLE}
-        region={{
-          latitude: parseFloat(destination.lat),
-          longitude: parseFloat(destination.long),
-          latitudeDelta: 0.5,
-          longitudeDelta: 0.55
-        }}
-        showsUserLocation
+        // provider={PROVIDER_GOOGLE}
+        region={region}
+        zoomEnabled={true}
       >
-      <Marker 
-        coordinate={{
-          latitude: parseFloat(destination.lat),
-          longitude: parseFloat(destination.long),
-          latitudeDelta: 0.4,
-          longitudeDelta: 0.41
-        }}
-      />
+      {renderMarkers}
       </MapView>
-      <Agenda style={styles.agenda}
-        items={{
-          [startDate]: { name: name, location: destination.location },
-          [endDate]: { name: name, location: destination.location }
-        }}
-        renderEmptyDate={() => { return <View /> }}
-      />
     </View>
   )
 }
@@ -50,14 +59,10 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
-    alignItems: 'center',
-    // justifyContent: 'center',
+    alignItems: 'center'
   },
   mapStyle: {
     width: Dimensions.get('window').width,
-    height: Dimensions.get('window').height/3,
-  },
-  agenda: {
-    width: Dimensions.get('window').width,
+    height: Dimensions.get('window').height/2.5,
   }
 })
