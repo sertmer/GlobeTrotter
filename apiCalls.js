@@ -127,7 +127,6 @@ export const addActivity = (id, name, date, address, category, rating, image, la
     }`
   };
 
-
   const options = {
     method: 'POST',
     body: JSON.stringify(mutation),

@@ -2,14 +2,17 @@ import React, { useState } from 'react';
 import { StyleSheet, View, Dimensions } from 'react-native';
 import MapView from 'react-native-maps';
 import { Marker } from 'react-native-maps';
+import { addActivity } from '../../apiCalls';
 
 
 export const Maps = ({ route }) => {
   const { dest, formattedMarkers } = route.params
-  const [ activities, setActivities ] = useState(formattedMarkers)
-  const [ startDate, setStartDate ] = useState(dest.destination.startDate)
-  const [ endDate, setEndDate ] = useState(dest.destination.endDate)
-  const [ savedActivities, setSavedActivities ] = useState([])
+  let [ activities, setActivities ] = useState(formattedMarkers)
+  let [ startDate, setStartDate ] = useState(dest.destination.startDate)
+  let [ endDate, setEndDate ] = useState(dest.destination.endDate)
+  let [ savedActivities, setSavedActivities ] = useState([])
+  let [ clickedActivity, setClickedActivity ] = useState({})
+
   const [ region, setRegion ] = useState({
     latitude: parseFloat(dest.destination.lat),
     longitude: parseFloat(dest.destination.long),
@@ -24,8 +27,12 @@ export const Maps = ({ route }) => {
     return saved
   }
 
+      // setSavedActivities([...savedActivities, matchActivities(act)])
+
   const addActivity = (act) => {
-    setSavedActivities([...savedActivities, matchActivities(act)])
+    console.log('add 1', matchActivities(act))
+    setClickedActivity(matchActivities(act))
+    console.log(clickedActivity)
   }
 
   const renderMarkers = formattedMarkers.map((marker, index) => {
@@ -39,7 +46,7 @@ export const Maps = ({ route }) => {
       />
     )
   })
-    
+
   return (
     <View style={styles.container}>
       <MapView style={styles.mapStyle}
@@ -49,6 +56,23 @@ export const Maps = ({ route }) => {
       >
       {renderMarkers}
       </MapView>
+      {clickedActivity !== {} ?
+        <ScrollView style={{width: '95%'}}>
+          
+        </ScrollView>
+        :
+        <View>
+          <Text>
+            Save activity to Trip?
+          </Text>
+          <TouchableOpacity>
+            Yes
+          </TouchableOpacity>
+          <TouchableOpacity>
+            No
+          </TouchableOpacity>
+        </View>
+      }
     </View>
   )
 }
