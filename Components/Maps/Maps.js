@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StyleSheet, View, Dimensions } from 'react-native';
+import { StyleSheet, View, Dimensions, Text, ScrollView, TouchableOpacity } from 'react-native';
 import MapView from 'react-native-maps';
 import { Marker } from 'react-native-maps';
 import { addActivity } from '../../apiCalls';
@@ -20,19 +20,28 @@ export const Maps = ({ route }) => {
     longitudeDelta: 0.224
   })
 
+  const displaySavedActivities = () => {
+    console.log(savedActivities)
+    let reformattedData = savedActivities.map((activity, index) => {
+      return (
+        <View key={index}>
+          <Text>hi</Text>
+        </View>
+      )
+    })
+  }
+
   const matchActivities = (act) => {
     let saved = activities.find(activity => {
       return activity.coordinates.latitude === act.latitude
     })
+
     return saved
   }
 
-      // setSavedActivities([...savedActivities, matchActivities(act)])
-
   const addActivity = (act) => {
-    console.log('add 1', matchActivities(act))
     setClickedActivity(matchActivities(act))
-    console.log(clickedActivity)
+    console.log('addActivity clickedActivity', clickedActivity)
   }
 
   const renderMarkers = formattedMarkers.map((marker, index) => {
@@ -47,6 +56,13 @@ export const Maps = ({ route }) => {
     )
   })
 
+  const handleYesClick = () => {
+    setSavedActivities([...savedActivities, clickedActivity])
+    setClickedActivity({})
+    console.log('savedActivity on yes click', savedActivities);
+    console.log('yes click Clickedactivity', clickedActivity);
+  }
+
   return (
     <View style={styles.container}>
       <MapView style={styles.mapStyle}
@@ -56,23 +72,20 @@ export const Maps = ({ route }) => {
       >
       {renderMarkers}
       </MapView>
-      {clickedActivity !== {} ?
-        <ScrollView style={{width: '95%'}}>
-          
-        </ScrollView>
-        :
         <View>
           <Text>
             Save activity to Trip?
           </Text>
-          <TouchableOpacity>
-            Yes
+          <TouchableOpacity onPress={() => handleYesClick()}>
+            <Text>Yes</Text>
           </TouchableOpacity>
-          <TouchableOpacity>
-            No
+          <TouchableOpacity onPress={() => setClickedActivity({})}>
+            <Text>No</Text>
           </TouchableOpacity>
         </View>
-      }
+        <ScrollView style={{width: '95%'}}>
+          {displaySavedActivities}
+        </ScrollView>
     </View>
   )
 }
@@ -90,3 +103,27 @@ const styles = StyleSheet.create({
     height: Dimensions.get('window').height/2.5,
   }
 })
+
+
+
+
+
+
+//
+// {clickedActivity !== {} ?
+//   <ScrollView style={{width: '95%'}}>
+//     {displaySavedActivities}
+//   </ScrollView>
+//   :
+//   <View>
+//     <Text>
+//       Save activity to Trip?
+//     </Text>
+//     <TouchableOpacity onPress={() => handleYesClick()}>
+//       Yes
+//     </TouchableOpacity>
+//     <TouchableOpacity onPress={() => setClickedActivity({})}>
+//       No
+//     </TouchableOpacity>
+//   </View>
+// }
