@@ -10,10 +10,18 @@ export const DatePicker = (props) => {
   const [startDate, setStartDate] = useState('');
   const [endDate, setEndDate] = useState('');
 
+  const setCurrent = () => {
+    if (endDate === '') {
+      return startDate
+    } else {
+      return endDate
+    }
+  };
+
   const onDayPress = day => {
     if (startPicked === false) {
       let datesMarked = {};
-      datesMarked[day.dateString] = { startingDay: true, color: '#00B0BF', textColor: '#FFFFFF' };
+      datesMarked[day.dateString] = { startingDay: true, color: '#2CCB70', textColor: '#FFFFFF' };
       setMarkedDates(datesMarked);
       setStartPicked(true);
       setStartDate(day.dateString);
@@ -31,9 +39,9 @@ export const DatePicker = (props) => {
           let tempDate = start.add(1, 'day');
           tempDate = moment(tempDate).format('YYYY-MM-DD')
           if (i < range) {
-            datesMarked[tempDate] = { color: '#00B0BF', textColor: '#FFFFFF' };
+            datesMarked[tempDate] = { color: '#2CCB70', textColor: '#FFFFFF' };
           } else {
-            datesMarked[tempDate] = { endingDay: true, color: '#00B0BF', textColor: '#FFFFFF' };
+            datesMarked[tempDate] = { endingDay: true, color: '#2CCB70', textColor: '#FFFFFF' };
           }
         }
         setMarkedDates(datesMarked);
@@ -47,21 +55,24 @@ export const DatePicker = (props) => {
 
   return (
     <Calendar
-      current={Date()}
+      current={setCurrent()}
       minDate={Date()}
       markingType={'period'}
       onDayPress={onDayPress}
-      style={{width: '95%'}}
+      style={{width: '95%', borderRadius: 8}}
       theme={{
-        calendarBackground: '#333248',
-        textSectionTitleColor: 'white',
-        dayTextColor: 'red',
-        todayTextColor: 'white',
-        selectedDayTextColor: 'white',
-        monthTextColor: 'white',
-        indicatorColor: 'white',
+        calendarBackground: 'white',
+        textSectionTitleColor: '#065a87',
+        dayTextColor: 'black',
+        todayTextColor: 'black',
+        selectedDayTextColor: '#1E88E5',
         selectedDayBackgroundColor: '#333248',
-        arrowColor: 'white',
+        monthTextColor: '#1E88E5',
+        indicatorColor: 'black',
+        textDayFontSize: 20,
+        textDisabledColor: '#b3bcbb',
+        textMonthFontSize: 24,
+        arrowColor: 'black',
         'stylesheet.calendar.header': {
           week: {
             marginTop: 5,

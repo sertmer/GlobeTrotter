@@ -32,17 +32,16 @@ export const TripPreview = ({ route, navigation }) => {
             }
           }
         })
-      
       navigation.navigate('Maps', {dest, formattedMarkers})
     })
   }
 
+  let displayDestinations = tripdestinationSet.map((destination, index) => {
 
-  
-  let displayDestinations = tripdestinationSet.map(destination => {
     return (
      <TouchableOpacity onPress={() => handleActivities(destination)}
         activeOpacity={.8}
+        key={index}
         style={styles.destination}
         >
         <View style={styles.destinationText}>

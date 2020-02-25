@@ -66,13 +66,16 @@ const Trips = ({ navigation }) => {
           <Text style={styles.noTrips}>Hit + to add a trip!</Text>
         </View>
       }
-      <ScrollView style={{width: '100%'}}>
+
+      <ScrollView style={{width: '95%'}}>
         {reformattedTrips.map(item => {
           return (
             <View key={item.id}>
               <TouchableOpacity activeOpacity={.8} onPress={() => navigation.navigate('Trip Preview', {item, handleTripsFetch})}>
                 <View style={styles.container}>
-                  <Text style={styles.name}>{item.name}</Text>
+                  <View style={{alignItems: 'center', justifyContent: 'center'}}>
+                    <Text style={styles.name}>{item.name}</Text>
+                  </View>
                   <View style={styles.cities}>
                     <Text style={styles.origin}>{item.originAbbrev}</Text>
                     <Text style={styles.origin}>{item.finalDestinationAbbrev}</Text>
@@ -149,6 +152,7 @@ const styles = StyleSheet.create({
   },
   name: {
     alignItems: 'center',
+    justifyContent: 'center',
     fontSize: 20,
     fontWeight: 'bold',
     margin: 'auto',
