@@ -92,11 +92,9 @@ const styles = StyleSheet.create({
     fontSize: 20
   },
   error: {
-    color: 'red',
+    color: '#f7003d',
     fontSize: 25,
-    textShadowColor: 'black',
-    textShadowOffset: {width: 1, height: 1},
-    textShadowRadius: 7
+    fontWeight: 'bold'
   },
   input: {
     justifyContent: 'center',
