@@ -15,6 +15,7 @@ export const CreateTrip = ({ navigation, route }) => {
         navigation.navigate('Add Destinations', {tripId: returnedTripData.data.createTrip.trip.id, handleTripsFetch})
       })
       .catch(error => {
+        console.log(error)
       });
   };
 

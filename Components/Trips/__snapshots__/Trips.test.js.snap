@@ -48,7 +48,13 @@ exports[`renders correctly 1`] = `
       Hit + to add a trip!
     </Text>
   </View>
-  <RCTScrollView>
+  <RCTScrollView
+    style={
+      Object {
+        "width": "95%",
+      }
+    }
+  >
     <View />
   </RCTScrollView>
   <View
