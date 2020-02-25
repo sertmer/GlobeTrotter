@@ -23,6 +23,9 @@ export const TripPreview = ({ route, navigation }) => {
           return {
             title: act.name,
             description: act.category,
+            address: act.address,
+            image: act.image,
+            reating: act.rating,
             coordinates: {
               latitude: parseFloat(act.lat),
               longitude: parseFloat(act.long)
