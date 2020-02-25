@@ -1,8 +1,5 @@
-import plus from '../../assets/001-plus.svg'
 import React, { useState, useEffect } from 'react';
-import { Text, View, FlatList, StyleSheet, ScrollView, TouchableOpacity, Image } from 'react-native';
-import TripPreview from '../TripPreview/TripPreview';
-import { globalStyles } from '../../styles/global';
+import { Text, View, StyleSheet, ScrollView, TouchableOpacity, Image } from 'react-native';
 import { getAllTrips } from '../../apiCalls';
 
 const Trips = ({ navigation }) => {
@@ -69,7 +66,7 @@ const Trips = ({ navigation }) => {
           <Text style={styles.noTrips}>Hit + to add a trip!</Text>
         </View>
       }
-      <ScrollView>
+      <ScrollView style={{width: '100%'}}>
         {reformattedTrips.map(item => {
           return (
             <View key={item.id}>

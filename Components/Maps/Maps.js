@@ -1,42 +1,44 @@
-import React, { useState, useEffect } from 'react';
-import { StyleSheet, View, Text, Dimensions } from 'react-native';
+import React, { useState } from 'react';
+import { StyleSheet, View, Dimensions } from 'react-native';
 import MapView, { PROVIDER_GOOGLE } from 'react-native-maps';
 import { Agenda } from 'react-native-calendars'
 import { Marker } from 'react-native-maps';
 
 
-export const Maps = ({ route }) => {
-  const { destination, startDate, endDate, name } = route.params
-  console.log('lat/long: ', destination);
-  console.log('dates: ', startDate, endDate);
 
-  const [ marker, setMarker ] = useState({});
+export const Maps = ({ route }) => {
+  const { dest, formattedMarkers } = route.params
+
+  const [ region, setRegion ] = useState({
+    latitude: parseFloat(dest.destination.lat),
+    longitude: parseFloat(dest.destination.long),
+    latitudeDelta: 0.222,
+    longitudeDelta: 0.2421
+  })
+
+  const renderMarkers = formattedMarkers.map(marker => {
+      return (
+      <Marker
+        coordinate={marker.coordinates}
+        title={marker.title}
+      // description={marker.description} 
+      />
+      )
+  })
 
   return (
     <View style={styles.container}>
       <MapView style={styles.mapStyle}
         provider={PROVIDER_GOOGLE}
-        region={{
-          latitude: parseFloat(destination.lat),
-          longitude: parseFloat(destination.long),
-          latitudeDelta: 0.5,
-          longitudeDelta: 0.55
-        }}
-        showsUserLocation
+        region={region}
+        zoomEnabled={true}
       >
-      <Marker 
-        coordinate={{
-          latitude: parseFloat(destination.lat),
-          longitude: parseFloat(destination.long),
-          latitudeDelta: 0.4,
-          longitudeDelta: 0.41
-        }}
-      />
+      {renderMarkers}
       </MapView>
       <Agenda style={styles.agenda}
         items={{
-          [startDate]: { name: name, location: destination.location },
-          [endDate]: { name: name, location: destination.location }
+          [dest.startDate]: { name: dest.name, location: dest.destination.location },
+          [dest.endDate]: { name: dest.name, location: dest.destination.location }
         }}
         renderEmptyDate={() => { return <View /> }}
       />

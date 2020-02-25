@@ -1,25 +1,44 @@
-import React, { useEffect } from 'react';
-import { Text, View, StyleSheet, TouchableOpacity, Image, ScrollView } from 'react-native';
-import { deleteTrip } from '../../apiCalls';
+import React from 'react';
+import { Text, View, StyleSheet, TouchableOpacity, ScrollView } from 'react-native';
+import { deleteTrip, getActivities } from '../../apiCalls';
 
 export const TripPreview = ({ route, navigation }) => {
-  const {name, id, originLat, originLong, startDate, endDate, originAbbrev, finalDestinationAbbrev, description, tripdestinationSet } = route.params.item;
+  const {name, id, startDate, endDate, originAbbrev, finalDestinationAbbrev, tripdestinationSet } = route.params.item;
   const { handleTripsFetch } = route.params;
-        
+
   const handleClick = () => {
     navigation.navigate('Add Destinations', {tripId: id, handleTripsFetch})
   };
 
   const handleDelete = () => {
-    console.log(id);
     deleteTrip(id);
     handleTripsFetch();
     navigation.navigate('Trips');
   };
+
+  const handleActivities = (dest) => {
+    getActivities(dest.destination.lat, dest.destination.long)
+      .then(data => {
+        let formattedMarkers = data.activities.map(act => {
+          return {
+            title: act.name,
+            description: act.category,
+            coordinates: {
+              latitude: parseFloat(act.lat),
+              longitude: parseFloat(act.long)
+            }
+          }
+        })
+      
+      navigation.navigate('Maps', {dest, formattedMarkers})
+    })
+  }
+
+
   
   let displayDestinations = tripdestinationSet.map(destination => {
     return (
-     <TouchableOpacity onPress={() => navigation.navigate('Maps', destination, startDate, endDate, name)}
+     <TouchableOpacity onPress={() => handleActivities(destination)}
         activeOpacity={.8}
         style={styles.destination}
         >
