@@ -100,25 +100,47 @@ export const deleteTrip = (tripId) => {
     })
 };
 
-// export const addActivity = () => {
-// const mutation =   {
-//   "query": `mutation {createDestination(userApiKey: \"b9aead4b955bccb5c57ef830580f3de5\", tripId: \"${tripId}\", location: \"${location}\", startDate: \"${startDate}\", endDate: \"${endDate}\") {trip {id name origin originAbbrev originLat originLong tripdestinationSet {destination {location abbrev lat long} startDate endDate activitySet {name date category}}}}}`
-// };
-//
-//
-//   const options = {
-//     method: 'POST',
-//     body: JSON.stringify(mutation),
-//     headers: {
-//       'Content-Type': 'application/json',
-//     }
-//   }
-//
-//   return fetch('https://globe-trotter-api.herokuapp.com/graphql/', options)
-//     .then(response => {
-//       if (!response.ok) {
-//         throw Error('error posting new trip')
-//       }
-//       return response.json()
-//     })
-// };
+export const addActivity = (id, name, date, address, category, rating, image, lat, long) => {
+  const mutation = {
+    "query": `mutation {
+      createActivity(userApiKey: \"b9aead4b955bccb5c57ef830580f3de5\", tripDestinationId: ${id}, name: \"${name}\", date: \"${date}\", address: \"${address}\", category: \"${category}\", rating: ${rating}, image: \"${image}\", lat: ${lat}, long: ${long}) {
+        activity {
+          name
+          date
+          address
+          category
+          rating
+          image
+          lat
+          long
+          tripDestination {
+            trip {
+              name
+            }
+            destination {
+              location
+              abbrev
+            }
+          }
+        }
+      }
+    }`
+  };
+
+
+  const options = {
+    method: 'POST',
+    body: JSON.stringify(mutation),
+    headers: {
+      'Content-Type': 'application/json',
+    }
+  }
+
+  return fetch('https://globe-trotter-api.herokuapp.com/graphql/', options)
+    .then(response => {
+      if (!response.ok) {
+        throw Error('error saving new activity')
+      }
+      return response.json()
+    })
+};
