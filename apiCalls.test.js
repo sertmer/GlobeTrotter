@@ -7,7 +7,7 @@ describe('apiCalls', () => {
 
     beforeEach(() => {
       mockQuery = {
-        "query": "{allTrips(userApiKey: \"b9aead4b955bccb5c57ef830580f3de5\") { name origin originAbbrev originLat originLong tripdestinationSet {destination {location abbrev lat long} startDate endDate activitySet {name date category}}}}"
+        "query": "{allTrips(userApiKey: \"b9aead4b955bccb5c57ef830580f3de5\") {id name origin originAbbrev originLat originLong tripdestinationSet {destination {location abbrev lat long} id startDate endDate activitySet {name date address category rating image lat long tripDestination { trip { name } destination { location abbrev } } } } } }"
         };
       mockOptions = {
         method: 'POST',
@@ -42,13 +42,13 @@ describe('apiCalls', () => {
       window.fetch = jest.fn().mockImplementation(() => {
         return Promise.resolve({
           ok: true,
-          json: () => Promise.resolve(mockQuery)
+          json: () => Promise.resolve(mockResponse)
         });
       });
     });
 
-    it.skip('should call fetch with the correct URL & options', () => {
-      getAllTrips();
+    it('should call fetch with the correct URL & options', () => {
+        getAllTrips();
 
       expect(window.fetch).toHaveBeenCalledWith('https://globe-trotter-api.herokuapp.com/graphql/', mockOptions);
     });
