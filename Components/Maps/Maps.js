@@ -4,16 +4,11 @@ import MapView from 'react-native-maps';
 import { Marker } from 'react-native-maps';
 import { addActivity } from '../../apiCalls';
 
-
 export const Maps = ({ route }) => {
-  const { dest, formattedMarkers, startDate, endDate, handleTripsFetch } = route.params
+  const { dest, formattedMarkers, endDate, handleTripsFetch } = route.params
   let [ activities, setActivities ] = useState(formattedMarkers)
   let [ savedActivities, setSavedActivities ] = useState(dest.activitySet)
   let [ clickedActivity, setClickedActivity ] = useState('')
-
-
-    console.log('dest:', dest.activitySet)
-    console.log('id', dest.id)
 
   const [ region, setRegion ] = useState({
     latitude: parseFloat(dest.destination.lat),
@@ -29,32 +24,6 @@ export const Maps = ({ route }) => {
 
     return saved
   }
-
-  // saved Object {
-  //   "data": Object {
-  //     "createActivity": Object {
-  //       "activity": Object {
-  //         "address": "3800 Homer St, Los Angeles, CA 90031",
-  //           "category": "Museums",
-  //             "date": "2020-03-10",
-  //               "image": "https://s3-media1.fl.yelpcdn.com/bphoto/kI-d5wKeYwye1NdQP32d4A/o.jpg",
-  //                 "lat": "34.0887136",
-  //                   "long": "-118.2076662",
-  //                     "name": "Heritage Square Museum",
-  //                       "rating": 4,
-  //                         "tripDestination": Object {
-  //           "destination": Object {
-  //             "abbrev": "LAX",
-  //               "location": "Los Angeles, CA, USA",
-  //         },
-  //           "trip": Object {
-  //             "name": "Hunting bugs",
-  //         },
-  //         },
-  //       },
-  //     },
-  //   },
-  // }
 
   const handleActivity = (act) => {
     setClickedActivity(matchActivities(act))
@@ -72,10 +41,6 @@ export const Maps = ({ route }) => {
     )
   })
 
-  // addActivity(dest.id, name, date, address, category, rating, image, lat, long)
-    // setSavedActivities([...savedActivities, clickedActivity])
-
-
   const handleYesClick = async () => {
     await addActivity(dest.id, clickedActivity.title, endDate, clickedActivity.address, clickedActivity.description, clickedActivity.rating, clickedActivity.image, clickedActivity.coordinates.latitude, clickedActivity.coordinates.longitude)
       .then(data => {
@@ -86,30 +51,13 @@ export const Maps = ({ route }) => {
       .catch(err => console.log(err))
   }
 
-
   const handleNoClick = () => {
     setClickedActivity('')
   }
 
-  const handleTest = () => {
-    console.log('CLICKED ACTIVITY', clickedActivity)
-    console.log('SAVEDACTIVITIES', savedActivities)
-    console.log('all the stuff1', dest.id)
-    console.log('all the stuff2', clickedActivity.title)
-    console.log('all the stuff3', clickedActivity.address)
-    console.log('all the stuff4', endDate)
-    console.log('all the stuff5', clickedActivity.description)
-    console.log('all the stuff6', clickedActivity.rating)
-    console.log('all the stuff7', clickedActivity.image)
-    console.log('all the stuff8', clickedActivity.coordinates.latitude)
-    console.log('all the stuff9', clickedActivity.coordinates.longitude)
-  }
-
-
   return (
     <View style={styles.container}>
       <MapView style={styles.mapStyle}
-        // provider={PROVIDER_GOOGLE}
         region={region}
         zoomEnabled={true}
       >
@@ -118,7 +66,7 @@ export const Maps = ({ route }) => {
       {clickedActivity === '' ?
         <View style={styles.activitiesContainer}>
           <Text style={{fontSize: 30, textDecorationLine: 'underline'}}>Saved Activities</Text>
-          <ScrollView style={{width: '100%'}} contentContainerStyle={styles.scrollView}>
+          <ScrollView style={{ width: '100%', }} contentContainerStyle={styles.scrollView} showsVerticalScrollIndicator={false} bounces={false}>
             {savedActivities.length
               ?
                 savedActivities.map((activity, index) => {
@@ -189,14 +137,15 @@ const styles = StyleSheet.create({
     backgroundColor: '#96cdec',
     borderTopColor: 'black',
     borderTopWidth: 1,
-    height: '100%',
-    width: '100%'
+    height: '56%',
+    width: '100%',
+    padding: 10
   },
   scrollView: {
     alignItems: 'center',
     marginTop: 15,
+    marginBottom: 15,
     width: '100%',
-    height: Dimensions.get('window').height
   },
   activity: {
     alignItems: 'center',

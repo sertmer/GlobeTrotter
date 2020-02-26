@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { StyleSheet, Text, View, TextInput, TouchableOpacity, ScrollView } from 'react-native';
-import { getAllTrips, createNewTrip } from '../../apiCalls';
+import { createNewTrip } from '../../apiCalls';
 
 export const CreateTrip = ({ navigation, route }) => {
   const { handleTripsFetch } = route.params;
