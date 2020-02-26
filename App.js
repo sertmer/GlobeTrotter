@@ -8,7 +8,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import TripPreview from './Components/TripPreview/TripPreview';
 import DatePicker from './Components/DatePicker/DatePicker';
 import Maps from './Components/Maps/Maps';
-import AddDestinations from './Components/AddDestinations/AddDestinations';
+import { AddDestinations } from './Components/AddDestinations/AddDestinations';
 import LandingPage from './Components/LandingPage/LandingPage';
 import { YellowBox } from 'react-native';
 
