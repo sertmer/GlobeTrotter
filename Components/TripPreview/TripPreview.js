@@ -148,7 +148,9 @@ const styles = StyleSheet.create({
     marginVertical: 10,
     padding: 10,
     width: '100%',
-    borderRadius: 5
+    borderRadius: 5,
+    shadowOffset: { width: 1, height: 1 },
+    shadowOpacity: .5,
   },
   addDestination: {
     alignItems: 'center',
@@ -158,6 +160,8 @@ const styles = StyleSheet.create({
     marginVertical: 10,
     padding: 10,
     width: '65%',
+    shadowOffset: { width: 1, height: 1 },
+    shadowOpacity: .5,
   },
   contentContainer: {
     alignItems: 'center',
