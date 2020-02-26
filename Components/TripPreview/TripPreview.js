@@ -10,8 +10,6 @@ export const TripPreview = ({ route, navigation }) => {
     navigation.navigate('Add Destinations', {tripId: id, handleTripsFetch})
   };
 
-  console.log('trip preview', id, name, tripdestinationSet);
-
   const handleDelete = () => {
     deleteTrip(id);
     handleTripsFetch();
