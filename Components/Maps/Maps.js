@@ -21,14 +21,17 @@ export const Maps = ({ route }) => {
   })
 
   const displaySavedActivities = () => {
-    console.log(savedActivities)
     let reformattedData = savedActivities.map((activity, index) => {
       return (
         <View key={index}>
           <Text>hi</Text>
+          <Text>hi</Text>
+          <Text>hi</Text>
         </View>
       )
     })
+
+    return reformattedData
   }
 
   const matchActivities = (act) => {
@@ -59,9 +62,19 @@ export const Maps = ({ route }) => {
   const handleYesClick = () => {
     setSavedActivities([...savedActivities, clickedActivity])
     setClickedActivity({})
-    console.log('savedActivity on yes click', savedActivities);
-    console.log('yes click Clickedactivity', clickedActivity);
+
   }
+
+  const handleNoClick = () => {
+    setClickedActivity({})
+  }
+
+  const handleTest = () => {
+    console.log('CLICKED ACTIVITY', clickedActivity)
+    console.log('SAVEDACTIVITIES', savedActivities);
+  }
+
+
 
   return (
     <View style={styles.container}>
@@ -72,20 +85,27 @@ export const Maps = ({ route }) => {
       >
       {renderMarkers}
       </MapView>
-        <View>
+      {!clickedActivity.description  ?
+        <ScrollView style={{width: '100%'}} contentContainerStyle={styles.activities}>
+          <Text>Saved Activities</Text>
+          {displaySavedActivities}
+        </ScrollView>
+      :
+        <View style={styles.yesOrNoContainer}>
           <Text>
             Save activity to Trip?
           </Text>
-          <TouchableOpacity onPress={() => handleYesClick()}>
+          <TouchableOpacity style={{fontSize: 40}} onPress={() => handleYesClick()}>
             <Text>Yes</Text>
           </TouchableOpacity>
-          <TouchableOpacity onPress={() => setClickedActivity({})}>
+          <TouchableOpacity style={{fontSize: 40}} onPress={() => handleNoClick()}>
             <Text>No</Text>
           </TouchableOpacity>
+          <TouchableOpacity style={{fontSize: 40}} onPress={() => handleTest()}>
+            <Text>TEST TEST TEST</Text>
+          </TouchableOpacity>
         </View>
-        <ScrollView style={{width: '95%'}}>
-          {displaySavedActivities}
-        </ScrollView>
+      }
     </View>
   )
 }
@@ -96,11 +116,24 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
-    alignItems: 'center'
+    alignItems: 'center',
   },
   mapStyle: {
     width: Dimensions.get('window').width,
     height: Dimensions.get('window').height/2.5,
+  },
+  yesOrNoContainer: {
+    alignItems: 'center',
+    justifyContent: 'space-around',
+    backgroundColor: 'yellow',
+    flex: 1,
+    width: '100%',
+  },
+  activities: {
+    alignItems: 'center',
+    justifyContent: 'space-around',
+    backgroundColor: 'orange',
+    height: '100%',
   }
 })
 
