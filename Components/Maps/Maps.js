@@ -67,7 +67,9 @@ export const Maps = ({ route }) => {
       {clickedActivity === '' ?
         <View style={styles.activitiesContainer}>
           <Text style={{fontSize: 30, color: '#fff', fontWeight: 'bold'}}>Saved Activities</Text>
-          <ScrollView style={{width: '100%'}} contentContainerStyle={styles.scrollView}>
+          <ScrollView style={{width: '100%'}} contentContainerStyle={styles.scrollView}
+          showsVerticalScrollIndicator={false} bounces={false}
+          >
             {savedActivities.length
               ?
                 savedActivities.map((activity, index) => {
@@ -160,6 +162,7 @@ const styles = StyleSheet.create({
     marginTop: 15,
     marginBottom: 15,
     width: '100%',
+    paddingBottom: 20
   },
   activity: {
     alignItems: 'center',
