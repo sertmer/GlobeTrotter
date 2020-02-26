@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import React, { useState } from 'react';
 import { Calendar } from 'react-native-calendars';
 import moment from 'moment';
@@ -84,6 +85,11 @@ export const DatePicker = (props) => {
       markedDates={markedDates}
     />
   )
+}
+
+DatePicker.propTypes = {
+  setDestinationEndDate: PropTypes.any,
+  setDestinationStartDate: PropTypes.any
 }
 
 export default DatePicker;

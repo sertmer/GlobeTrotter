@@ -1,4 +1,4 @@
-import { getAllTrips, createNewTrip, createNewDestination, deleteTrip, getActivities } from './apiCalls';
+import { getAllTrips, createNewTrip, createNewDestination, deleteTrip, getActivities, addActivity } from './apiCalls';
 
 describe('apiCalls', () => {
 
@@ -7,8 +7,8 @@ describe('apiCalls', () => {
 
     beforeEach(() => {
       mockQuery = {
-        "query": "{allTrips(userApiKey: \"b9aead4b955bccb5c57ef830580f3de5\") { name origin originAbbrev originLat originLong tripdestinationSet {destination {location abbrev lat long} startDate endDate activitySet {name date category}}}}"
-        };
+        "query": "{allTrips(userApiKey: \"b9aead4b955bccb5c57ef830580f3de5\") {id name origin originAbbrev originLat originLong tripdestinationSet {destination {location abbrev lat long} id startDate endDate activitySet {name date address category rating image lat long tripDestination { trip { name } destination { location abbrev } } } } } }"
+      };
       mockOptions = {
         method: 'POST',
         body: JSON.stringify(mockQuery),
@@ -18,36 +18,36 @@ describe('apiCalls', () => {
       };
 
       mockResponse = [
-          {
-            id: '1',
-            name: ' Spring Break',
-            origin: 'Denver, CO, USA',
-            originAbbrev: 'DEN',
-            originLat: '39.7392',
-            originLong: '104.9903',
-            tripdestinationSet: [
-              {
-                destination: {location: 'Barcelona, Spain', abbrev: 'BCN'},
-                startDate: '2020-03-16',
-                endDate: "2020-03-19",
-                activitySet: [
-                  {name: "Basílica de la Sagrada Familia", date: "2020-03-17", category: "Landmarks & Historical Buildings"},
-                  {name: "Castell de Montjuïc", date: "2022-03-18", category: "Castles"}
-                ]
-              }
-            ]
-          }
+        {
+          id: '1',
+          name: ' Spring Break',
+          origin: 'Denver, CO, USA',
+          originAbbrev: 'DEN',
+          originLat: '39.7392',
+          originLong: '104.9903',
+          tripdestinationSet: [
+            {
+              destination: { location: 'Barcelona, Spain', abbrev: 'BCN' },
+              startDate: '2020-03-16',
+              endDate: "2020-03-19",
+              activitySet: [
+                { name: "Basílica de la Sagrada Familia", date: "2020-03-17", category: "Landmarks & Historical Buildings" },
+                { name: "Castell de Montjuïc", date: "2022-03-18", category: "Castles" }
+              ]
+            }
+          ]
+        }
       ];
 
       window.fetch = jest.fn().mockImplementation(() => {
         return Promise.resolve({
           ok: true,
-          json: () => Promise.resolve(mockQuery)
+          json: () => Promise.resolve(mockResponse)
         });
       });
     });
 
-    it.skip('should call fetch with the correct URL & options', () => {
+    it('should call fetch with the correct URL & options', () => {
       getAllTrips();
 
       expect(window.fetch).toHaveBeenCalledWith('https://globe-trotter-api.herokuapp.com/graphql/', mockOptions);
@@ -73,8 +73,8 @@ describe('apiCalls', () => {
       name = "Summer Break";
       origin = "Fort Collins, USA";
       mockQuery = {
-            "query": `mutation {createTrip(userApiKey: \"b9aead4b955bccb5c57ef830580f3de5\", name: \"${name}\", origin: \"${origin}\") {trip {id name origin originAbbrev originLat originLong}}}`
-        };
+        "query": `mutation {createTrip(userApiKey: \"b9aead4b955bccb5c57ef830580f3de5\", name: \"${name}\", origin: \"${origin}\") {trip {id name origin originAbbrev originLat originLong}}}`
+      };
 
       mockOptions = {
         method: 'POST',
@@ -85,14 +85,14 @@ describe('apiCalls', () => {
       };
 
       mockResponse =
-          {
-            id: '2',
-            name: ' Summer Break',
-            origin: 'Fort Collins, CO, USA',
-            originAbbrev: 'DEN',
-            originLat: '1',
-            originLong: '2',
-          };
+      {
+        id: '2',
+        name: ' Summer Break',
+        origin: 'Fort Collins, CO, USA',
+        originAbbrev: 'DEN',
+        originLat: '1',
+        originLong: '2',
+      };
 
       window.fetch = jest.fn().mockImplementation(() => {
         return Promise.resolve({
@@ -130,7 +130,7 @@ describe('apiCalls', () => {
       startDate = "2020-03-01";
       endDate = "2020-03-10";
       mockQuery = {
-        "query": `mutation {createDestination(userApiKey: \"b9aead4b955bccb5c57ef830580f3de5\", tripId: ${tripId}, location: \"${location}\", startDate: \"${startDate}\", endDate: \"${endDate}\") {destination {id location abbrev lat long tripdestinationSet {startDate endDate trip {name origin}}}}}`
+        "query": `mutation {createDestination(userApiKey: \"b9aead4b955bccb5c57ef830580f3de5\", tripId: ${tripId}, location: \"${location}\", startDate: \"${startDate}\", endDate: \"${endDate}\") {destination {id location abbrev lat long tripdestinationSet {id startDate endDate trip {name origin}}}}}`
       };
 
       mockOptions = {
@@ -143,27 +143,27 @@ describe('apiCalls', () => {
 
       mockResponse =
       {
-          data: {
-              createDestination: {
-                  destination: {
-                      id: 11,
-                      location: "Fort Collins, CO, USA",
-                      abbrev: "FNL",
-                      lat: "40.5852602",
-                      long: "-105.084423",
-                      tripdestinationSet: [
-                          {
-                              startDate: "2020-03-01",
-                              endDate: "2020-03-10",
-                              trip: {
-                                  name: "Spring Break",
-                                  origin: "Denver, CO, USA"
-                              }
-                          }
-                      ]
+        data: {
+          createDestination: {
+            destination: {
+              id: 11,
+              location: "Fort Collins, CO, USA",
+              abbrev: "FNL",
+              lat: "40.5852602",
+              long: "-105.084423",
+              tripdestinationSet: [
+                {
+                  startDate: "2020-03-01",
+                  endDate: "2020-03-10",
+                  trip: {
+                    name: "Spring Break",
+                    origin: "Denver, CO, USA"
                   }
-              }
+                }
+              ]
+            }
           }
+        }
       }
 
       window.fetch = jest.fn().mockImplementation(() => {
@@ -174,7 +174,7 @@ describe('apiCalls', () => {
       });
     });
 
-    it.skip('should call fetch with the correct URL & options', () => {
+    it('should call fetch with the correct URL & options', () => {
       createNewDestination(tripId, location, startDate, endDate);
 
       expect(window.fetch).toHaveBeenCalledWith('https://globe-trotter-api.herokuapp.com/graphql/', mockOptions);
@@ -212,13 +212,13 @@ describe('apiCalls', () => {
 
       mockResponse =
       {
-          data: {
-              deleteTrip: {
-                id: 3,
-                name: 'Example',
-                origin: 'Denver, USA'
-              }
+        data: {
+          deleteTrip: {
+            id: 3,
+            name: 'Example',
+            origin: 'Denver, USA'
           }
+        }
       }
 
       window.fetch = jest.fn().mockImplementation(() => {
@@ -257,26 +257,26 @@ describe('apiCalls', () => {
 
       mockResponse =
       {
-          activities: [
-              {
-                  name: "Pantheon - Basilica di Santa Maria ad Martyres",
-                  address: "Piazza della Rotonda, 00186 Rome, Italy",
-                  category: "Churches",
-                  rating: 4.5,
-                  image: "https://s3-media3.fl.yelpcdn.com/bphoto/wDcbtQyxePfBYfHHXYiwGw/o.jpg",
-                  lat: 41.898614,
-                  long: 12.476869
-              },
-              {
-                  name: "Colosseo",
-                  address: "Piazza del Colosseo 1, 00184 Rome, Italy",
-                  category: "Local Flavor",
-                  rating: 4.5,
-                  image: "https://s3-media1.fl.yelpcdn.com/bphoto/QcMxqdZmJTMpeeuT_NfHAg/o.jpg",
-                  lat: 41.8902496828181,
-                  long: 12.4922484062616
-              },
-          ]
+        activities: [
+          {
+            name: "Pantheon - Basilica di Santa Maria ad Martyres",
+            address: "Piazza della Rotonda, 00186 Rome, Italy",
+            category: "Churches",
+            rating: 4.5,
+            image: "https://s3-media3.fl.yelpcdn.com/bphoto/wDcbtQyxePfBYfHHXYiwGw/o.jpg",
+            lat: 41.898614,
+            long: 12.476869
+          },
+          {
+            name: "Colosseo",
+            address: "Piazza del Colosseo 1, 00184 Rome, Italy",
+            category: "Local Flavor",
+            rating: 4.5,
+            image: "https://s3-media1.fl.yelpcdn.com/bphoto/QcMxqdZmJTMpeeuT_NfHAg/o.jpg",
+            lat: 41.8902496828181,
+            long: 12.4922484062616
+          },
+        ]
       };
 
       window.fetch = jest.fn().mockImplementation(() => {
@@ -305,4 +305,99 @@ describe('apiCalls', () => {
       expect(getActivities(lat, long)).rejects.toEqual(Error('error retrieving activities data'));
     });
   });
+
+  describe('AddActivity', () => {
+    let mockResponse, mockOptions, mockQuery, mockId, mockName, mockRating, mockImage, mockLat, mockLong, mockDate, mockAddress, mockCategory;
+
+    beforeEach(() => {
+      mockId = 15
+      mockName = 'City of Fort Collins'
+      mockRating = 4.5
+      mockImage = 'https://s3-media4.fl.yelpcdn.com/bphoto/52c4dM4H9C-d_sP_isIXIg/o.jpg'
+      mockLat = 40.5571098327637
+      mockLong = -105.040428161621
+      mockDate = '2020-03-02'
+      mockAddress = "2221 S Timberline Rd, Fort Collins, CO 8052"
+      mockCategory = 'Landmarks & Historical Building'
+
+      mockQuery = {
+        "data": {
+          "createActivity": {
+            "activity": {
+              "name": "City of Fort Collins",
+              "date": "2020-03-02",
+              "address": "2221 S Timberline Rd, Fort Collins, CO 8052",
+              "category": "Landmarks & Historical Building",
+              "rating": 4.5,
+              "image": "https://s3-media4.fl.yelpcdn.com/bphoto/52c4dM4H9C-d_sP_isIXIg/o.jpg",
+              "lat": "40.5571098327637",
+              "long": "-105.040428161621",
+              "tripDestination": {
+                "trip": {
+                  "name": "Test"
+                },
+                "destination": {
+                  "location": "Fort Collins, CO, USA",
+                  "abbrev": "FNL"
+                }
+              }
+            }
+          }
+        }
+      }
+
+
+      mockOptions = {
+        method: 'POST',
+        body: JSON.stringify(mockQuery),
+        headers: {
+          'Content-Type': 'application/json',
+        }
+      };
+
+    mockResponse = {
+      "data": {
+        "createActivity": {
+          "activity": {
+            "name": "City of Fort Collins",
+            "date": "2020-03-02",
+            "address": "2221 S Timberline Rd, Fort Collins, CO 8052",
+            "category": "Landmarks & Historical Building",
+            "rating": 4.5,
+            "image": "https://s3-media4.fl.yelpcdn.com/bphoto/52c4dM4H9C-d_sP_isIXIg/o.jpg",
+            "lat": "40.5571098327637",
+            "long": "-105.040428161621",
+            "tripDestination": {
+              "trip": {
+                "name": "Test"
+              },
+              "destination": {
+                "location": "Fort Collins, CO, USA",
+                "abbrev": "FNL"
+              }
+            }
+          }
+        }
+      }
+    }
+    window.fetch = jest.fn().mockImplementation(() => {
+      return Promise.resolve({
+        ok: true,
+        json: () => Promise.resolve(mockResponse)
+      })
+    })
+  })
+
+  it('should return an object of activities data', () => {
+    expect(addActivity(mockId, mockName, mockDate, mockAddress, mockCategory, mockRating, mockImage, mockLat, mockLong )).resolves.toEqual(mockResponse);
+  });
+
+  it('should return an error message if Promise is rejected', () => {
+    window.fetch = jest.fn().mockImplementation(() => {
+      return Promise.reject({ ok: false });
+    });
+
+    expect(addActivity(mockId, mockName, mockDate, mockAddress, mockCategory, mockRating, mockImage, mockLat, mockLong )).rejects.toEqual(Error('error saving new activity'));
+  });
+})
 });

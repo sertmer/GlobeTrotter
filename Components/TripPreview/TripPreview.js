@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import React from 'react';
 import { Text, View, StyleSheet, TouchableOpacity, ScrollView } from 'react-native';
 import { deleteTrip, getActivities } from '../../apiCalls';
@@ -97,6 +98,11 @@ export const TripPreview = ({ route, navigation }) => {
       </View>
     </View>
   )
+}
+
+TripPreview.propTypes = {
+  navigation: PropTypes.any,
+  route: PropTypes.any
 }
 
 const styles = StyleSheet.create({
