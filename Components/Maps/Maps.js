@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StyleSheet, View, Dimensions, Text, ScrollView, TouchableOpacity } from 'react-native';
+import { StyleSheet, Image, View, Dimensions, Text, ScrollView, TouchableOpacity } from 'react-native';
 import MapView from 'react-native-maps';
 import { Marker } from 'react-native-maps';
 import { addActivity } from '../../apiCalls';
@@ -19,20 +19,6 @@ export const Maps = ({ route }) => {
     latitudeDelta: 0.109,
     longitudeDelta: 0.224
   })
-
-  const displaySavedActivities = () => {
-    let reformattedData = savedActivities.map((activity, index) => {
-      return (
-        <View key={index}>
-          <Text>hi</Text>
-          <Text>hi</Text>
-          <Text>hi</Text>
-        </View>
-      )
-    })
-
-    return reformattedData
-  }
 
   const matchActivities = (act) => {
     let saved = activities.find(activity => {
@@ -86,9 +72,22 @@ export const Maps = ({ route }) => {
       {renderMarkers}
       </MapView>
       {!clickedActivity.description  ?
-        <ScrollView style={{width: '100%'}} contentContainerStyle={styles.activities}>
+        <ScrollView style={{width: '100%'}} contentContainerStyle={styles.activitiesContainer}>
           <Text>Saved Activities</Text>
-          {displaySavedActivities}
+          {savedActivities.map((activity, index) => {
+            return (
+              <View style={styles.activity} key={index}>
+                <Text>{activity.title}</Text>
+                <Text>{activity.address}</Text>
+                <Text>Yelp Score: {activity.rating}</Text>
+                <Image
+                  source={{ uri: activity.image }}
+                  style={styles.globe}
+                />
+              </View>
+            )
+          })
+        }
         </ScrollView>
       :
         <View style={styles.yesOrNoContainer}>
@@ -128,12 +127,30 @@ const styles = StyleSheet.create({
     backgroundColor: 'yellow',
     flex: 1,
     width: '100%',
+    borderTopColor: 'black',
+    borderTopWidth: 1,
   },
-  activities: {
+  activitiesContainer: {
     alignItems: 'center',
     justifyContent: 'space-around',
     backgroundColor: 'orange',
+    borderTopColor: 'black',
+    borderTopWidth: 1,
     height: '100%',
+  },
+  activity: {
+    alignItems: 'center',
+    backgroundColor: 'red',
+    justifyContent: 'center',
+    width: '95%',
+    backgroundColor: '#eff6f7',
+    borderRadius: 5,
+    marginTop: 20,
+    padding: 10,
+    shadowColor: '#0D47A1',
+    shadowOffset: { width: 1, height: 1 },
+    shadowOpacity: .9,
+    shadowRadius: 3
   }
 })
 
