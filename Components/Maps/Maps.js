@@ -11,10 +11,6 @@ export const Maps = ({ route }) => {
   let [ savedActivities, setSavedActivities ] = useState(dest.activitySet)
   let [ clickedActivity, setClickedActivity ] = useState('')
 
-
-    console.log('dest:', dest.activitySet)
-    console.log('id', dest.id)
-
   const [ region, setRegion ] = useState({
     latitude: parseFloat(dest.destination.lat),
     longitude: parseFloat(dest.destination.long),
@@ -90,21 +86,6 @@ export const Maps = ({ route }) => {
   const handleNoClick = () => {
     setClickedActivity('')
   }
-
-  const handleTest = () => {
-    console.log('CLICKED ACTIVITY', clickedActivity)
-    console.log('SAVEDACTIVITIES', savedActivities)
-    console.log('all the stuff1', dest.id)
-    console.log('all the stuff2', clickedActivity.title)
-    console.log('all the stuff3', clickedActivity.address)
-    console.log('all the stuff4', endDate)
-    console.log('all the stuff5', clickedActivity.description)
-    console.log('all the stuff6', clickedActivity.rating)
-    console.log('all the stuff7', clickedActivity.image)
-    console.log('all the stuff8', clickedActivity.coordinates.latitude)
-    console.log('all the stuff9', clickedActivity.coordinates.longitude)
-  }
-
 
   return (
     <View style={styles.container}>
