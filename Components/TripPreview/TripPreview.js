@@ -34,7 +34,7 @@ export const TripPreview = ({ route, navigation }) => {
             }
           }
         })
-      navigation.navigate('Maps', {dest, formattedMarkers, startDate})
+      navigation.navigate('Maps', {dest, formattedMarkers, endDate, handleTripsFetch})
     })
   }
 

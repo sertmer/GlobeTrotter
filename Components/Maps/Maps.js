@@ -6,10 +6,10 @@ import { addActivity } from '../../apiCalls';
 
 
 export const Maps = ({ route }) => {
-  const { dest, formattedMarkers, startDate } = route.params
+  const { dest, formattedMarkers, startDate, endDate, handleTripsFetch } = route.params
   let [ activities, setActivities ] = useState(formattedMarkers)
   let [ savedActivities, setSavedActivities ] = useState([])
-  let [ clickedActivity, setClickedActivity ] = useState({})
+  let [ clickedActivity, setClickedActivity ] = useState('')
 
     console.log('dest:', dest)
     console.log('id', dest.id)
@@ -31,7 +31,6 @@ export const Maps = ({ route }) => {
 
   const addActivity = (act) => {
     setClickedActivity(matchActivities(act))
-    console.log('addActivity clickedActivity', clickedActivity)
   }
 
   const renderMarkers = formattedMarkers.map((marker, index) => {
@@ -50,17 +49,36 @@ export const Maps = ({ route }) => {
 
   const handleYesClick = () => {
     setSavedActivities([...savedActivities, clickedActivity])
-    setClickedActivity({})
+    console.log('description', clickedActivity.description)
+    addActivity(dest.id, clickedActivity.title, endDate, clickedActivity.address, clickedActivity.description, clickedActivity.rating, clickedActivity.image, clickedActivity.coordinates.latitude, clickedActivity.coordinates.longitude)
+      .then(response => {
+        console.log('addActivity response', response)
+        handleTripsFetch()
+      })
+      .catch(error => {
+        console.log(error)
+      })
 
+    setClickedActivity('')
   }
 
+
   const handleNoClick = () => {
-    setClickedActivity({})
+    setClickedActivity('')
   }
 
   const handleTest = () => {
     console.log('CLICKED ACTIVITY', clickedActivity)
-    console.log('SAVEDACTIVITIES', savedActivities);
+    console.log('SAVEDACTIVITIES', savedActivities)
+    console.log('all the stuff', dest.id)
+    console.log('all the stuff', clickedActivity.title)
+    console.log('all the stuff', clickedActivity.address)
+    console.log('all the stuff', endDate)
+    console.log('all the stuff', clickedActivity.description)
+    console.log('all the stuff', clickedActivity.rating)
+    console.log('all the stuff', clickedActivity.image)
+    console.log('all the stuff', clickedActivity.coordinates.latitude)
+    console.log('all the stuff', clickedActivity.coordinates.longitude)
   }
 
 
@@ -73,7 +91,7 @@ export const Maps = ({ route }) => {
       >
       {renderMarkers}
       </MapView>
-      {!clickedActivity.description  ?
+      {clickedActivity === '' ?
         <View style={styles.activitiesContainer}>
           <Text style={{fontSize: 30, textDecorationLine: 'underline'}}>Saved Activities</Text>
           <ScrollView style={{width: '100%'}} contentContainerStyle={styles.scrollView}>
@@ -198,27 +216,3 @@ const styles = StyleSheet.create({
     color: 'white'
   }
 })
-
-
-
-
-
-
-//
-// {clickedActivity !== {} ?
-//   <ScrollView style={{width: '95%'}}>
-//     {displaySavedActivities}
-//   </ScrollView>
-//   :
-//   <View>
-//     <Text>
-//       Save activity to Trip?
-//     </Text>
-//     <TouchableOpacity onPress={() => handleYesClick()}>
-//       Yes
-//     </TouchableOpacity>
-//     <TouchableOpacity onPress={() => setClickedActivity({})}>
-//       No
-//     </TouchableOpacity>
-//   </View>
-// }
