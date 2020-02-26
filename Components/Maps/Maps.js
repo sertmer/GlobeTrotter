@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import React, { useState } from 'react';
 import { StyleSheet, Image, View, Dimensions, Text, ScrollView, TouchableOpacity } from 'react-native';
 import MapView from 'react-native-maps';
@@ -122,6 +123,10 @@ export const Maps = ({ route }) => {
       }
     </View>
   )
+}
+
+Maps.propTypes = {
+  route: PropTypes.any
 }
 
 export default Maps;

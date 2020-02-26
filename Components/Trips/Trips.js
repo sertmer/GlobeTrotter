@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import React, { useState, useEffect } from 'react';
 import { Text, View, StyleSheet, ScrollView, TouchableOpacity, Image } from 'react-native';
 import { getAllTrips } from '../../apiCalls';
@@ -100,6 +101,10 @@ const Trips = ({ navigation }) => {
       </TouchableOpacity>
     </View>
   )
+}
+
+Trips.propTypes = {
+  navigation: PropTypes.any
 }
 
 const styles = StyleSheet.create({
