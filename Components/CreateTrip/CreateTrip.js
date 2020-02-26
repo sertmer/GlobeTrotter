@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import React, { useState } from 'react';
 import { StyleSheet, Text, View, TextInput, TouchableOpacity, ScrollView } from 'react-native';
 import { createNewTrip } from '../../apiCalls';
@@ -51,6 +52,11 @@ export const CreateTrip = ({ navigation, route }) => {
       </TouchableOpacity>
     </ScrollView>
   )
+}
+
+CreateTrip.propTypes = {
+  navigation: PropTypes.any,
+  route: PropTypes.any
 }
 
 const styles = StyleSheet.create({

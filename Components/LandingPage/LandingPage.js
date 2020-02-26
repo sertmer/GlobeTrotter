@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import React from 'react';
 import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native'
 
@@ -20,6 +21,10 @@ export const LandingPage = ({ navigation }) => {
       </TouchableOpacity>
     </View>
   )
+}
+
+LandingPage.propTypes = {
+  navigation: PropTypes.any
 }
 
 const styles = StyleSheet.create({
