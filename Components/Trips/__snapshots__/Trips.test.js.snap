@@ -49,6 +49,7 @@ exports[`renders correctly 1`] = `
     </Text>
   </View>
   <RCTScrollView
+    showsVerticalScrollIndicator={false}
     style={
       Object {
         "width": "95%",
