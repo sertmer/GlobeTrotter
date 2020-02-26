@@ -15,7 +15,6 @@ const Trips = ({ navigation }) => {
         console.log(error)
       })
   }
-
   const findFinalDestination = (destinationSet) => {
     if (destinationSet.length) {
       let copiedData = [...destinationSet];
