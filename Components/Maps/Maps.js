@@ -8,10 +8,22 @@ import { addActivity } from '../../apiCalls';
 export const Maps = ({ route }) => {
   const { dest, formattedMarkers, startDate, endDate, handleTripsFetch } = route.params
   let [ activities, setActivities ] = useState(formattedMarkers)
-  let [ savedActivities, setSavedActivities ] = useState([])
+  let [ savedActivities, setSavedActivities ] = useState(dest.activitySet)
   let [ clickedActivity, setClickedActivity ] = useState('')
 
+//Component is currently set up to rely on state that is populated by local actions NOT properly set up to re-render based off updated fetched data
+//savedActivites needs to be specifically reset so that following the user's click on  YES, the mutation is made, the state in Trips is refetched, and then
+//here in the Maps component we setSavedActivities to reflect the activitySet data within the specific trips's tripdestinationSet data
+// activitySet returns an array of the following objects (but we're lacking properties ) - Did I leave these values out in the fetch call?
+// Object {
+//   "category": "Landmarks & Historical Building",
+//   "date": "2020-03-02",
+//   "name": "City of Fort Collins",
+// },
+
+
     console.log('dest:', dest)
+    console.log('dest:', dest.activitySet)
     console.log('id', dest.id)
 
   const [ region, setRegion ] = useState({
@@ -46,13 +58,13 @@ export const Maps = ({ route }) => {
   })
 
   // addActivity(dest.id, name, date, address, category, rating, image, lat, long)
+    // setSavedActivities([...savedActivities, clickedActivity])
 
-  const handleYesClick = () => {
-    setSavedActivities([...savedActivities, clickedActivity])
-    console.log('description', clickedActivity.description)
-    addActivity(dest.id, clickedActivity.title, endDate, clickedActivity.address, clickedActivity.description, clickedActivity.rating, clickedActivity.image, clickedActivity.coordinates.latitude, clickedActivity.coordinates.longitude)
+
+  const handleYesClick = async () => {
+
+    await addActivity(dest.id, clickedActivity.title, endDate, clickedActivity.address, clickedActivity.description, clickedActivity.rating, clickedActivity.image, clickedActivity.coordinates.latitude, clickedActivity.coordinates.longitude)
       .then(response => {
-        console.log('addActivity response', response)
         handleTripsFetch()
       })
       .catch(error => {
@@ -70,15 +82,15 @@ export const Maps = ({ route }) => {
   const handleTest = () => {
     console.log('CLICKED ACTIVITY', clickedActivity)
     console.log('SAVEDACTIVITIES', savedActivities)
-    console.log('all the stuff', dest.id)
-    console.log('all the stuff', clickedActivity.title)
-    console.log('all the stuff', clickedActivity.address)
-    console.log('all the stuff', endDate)
-    console.log('all the stuff', clickedActivity.description)
-    console.log('all the stuff', clickedActivity.rating)
-    console.log('all the stuff', clickedActivity.image)
-    console.log('all the stuff', clickedActivity.coordinates.latitude)
-    console.log('all the stuff', clickedActivity.coordinates.longitude)
+    console.log('all the stuff1', dest.id)
+    console.log('all the stuff2', clickedActivity.title)
+    console.log('all the stuff3', clickedActivity.address)
+    console.log('all the stuff4', endDate)
+    console.log('all the stuff5', clickedActivity.description)
+    console.log('all the stuff6', clickedActivity.rating)
+    console.log('all the stuff7', clickedActivity.image)
+    console.log('all the stuff8', clickedActivity.coordinates.latitude)
+    console.log('all the stuff9', clickedActivity.coordinates.longitude)
   }
 
 
