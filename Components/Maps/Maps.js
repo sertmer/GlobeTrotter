@@ -6,12 +6,13 @@ import { addActivity } from '../../apiCalls';
 
 
 export const Maps = ({ route }) => {
-  const { dest, formattedMarkers } = route.params
+  const { dest, formattedMarkers, startDate } = route.params
   let [ activities, setActivities ] = useState(formattedMarkers)
-  let [ startDate, setStartDate ] = useState(dest.destination.startDate)
-  let [ endDate, setEndDate ] = useState(dest.destination.endDate)
   let [ savedActivities, setSavedActivities ] = useState([])
   let [ clickedActivity, setClickedActivity ] = useState({})
+
+    console.log('dest:', dest)
+    console.log('id', dest.id)
 
   const [ region, setRegion ] = useState({
     latitude: parseFloat(dest.destination.lat),
@@ -45,6 +46,8 @@ export const Maps = ({ route }) => {
     )
   })
 
+  // addActivity(dest.id, name, date, address, category, rating, image, lat, long)
+
   const handleYesClick = () => {
     setSavedActivities([...savedActivities, clickedActivity])
     setClickedActivity({})
@@ -74,36 +77,42 @@ export const Maps = ({ route }) => {
         <View style={styles.activitiesContainer}>
           <Text style={{fontSize: 30, textDecorationLine: 'underline'}}>Saved Activities</Text>
           <ScrollView style={{width: '100%'}} contentContainerStyle={styles.scrollView}>
-            {savedActivities.map((activity, index) => {
-              return (
-                <View style={styles.activity} key={index}>
-                  <Text style={{fontWeight: 'bold'}}>{activity.title}</Text>
-                  <Text style={{textAlign: 'center'}}>{activity.address}</Text>
-                  <Text>Yelp Score: {activity.rating}</Text>
-                  <Image
-                    source={{uri: activity.image}}
-                    style={{height: 100, width: 100}}
-                    resizeMode='contain'
-                  />
-                </View>
-                )
-              })
+            {savedActivities.length
+              ?
+                savedActivities.map((activity, index) => {
+                return (
+                  <View style={styles.activity} key={index}>
+                    <Text style={{fontWeight: 'bold'}}>{activity.title}</Text>
+                    <Text style={{textAlign: 'center'}}>{activity.address}</Text>
+                    <Text>Yelp Score: {activity.rating}</Text>
+                    <Image
+                      source={{uri: activity.image}}
+                      style={{height: 100, width: 150}}
+                      resizeMode='cover'
+                    />
+                  </View>
+                  )
+                })
+              :
+              <View style={styles.activity2}>
+                <Text style={{fontWeight: 'bold'}}>Add activities by clicking map markers!</Text>
+              </View>
             }
           </ScrollView>
         </View>
       :
         <View style={styles.yesOrNoContainer}>
-          <Text>
+          <Text style={{fontSize: 30}}>
             Save activity to Trip?
           </Text>
-          <TouchableOpacity style={{fontSize: 40}} onPress={() => handleYesClick()}>
-            <Text>Yes</Text>
+          <TouchableOpacity style={styles.button} onPress={() => handleYesClick()}>
+            <Text style={styles.btnText}>Yes</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={{fontSize: 40}} onPress={() => handleNoClick()}>
-            <Text>No</Text>
+          <TouchableOpacity style={styles.button}  onPress={() => handleNoClick()}>
+            <Text style={styles.btnText}>No</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={{fontSize: 40}} onPress={() => handleTest()}>
-            <Text>TEST TEST TEST</Text>
+          <TouchableOpacity style={styles.button}  onPress={() => handleTest()}>
+            <Text style={styles.btnText}>TEST TEST TEST</Text>
           </TouchableOpacity>
         </View>
       }
@@ -126,7 +135,7 @@ const styles = StyleSheet.create({
   yesOrNoContainer: {
     alignItems: 'center',
     justifyContent: 'space-around',
-    backgroundColor: 'yellow',
+    backgroundColor: '#bae0bd',
     flex: 1,
     width: '100%',
     borderTopColor: 'black',
@@ -135,7 +144,7 @@ const styles = StyleSheet.create({
   activitiesContainer: {
     alignItems: 'center',
     justifyContent: 'space-around',
-    backgroundColor: 'orange',
+    backgroundColor: '#96cdec',
     borderTopColor: 'black',
     borderTopWidth: 1,
     height: '100%',
@@ -158,6 +167,35 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 1, height: 1 },
     shadowOpacity: .9,
     shadowRadius: 3
+  },
+  activity2: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: '95%',
+    backgroundColor: '#eff6f7',
+    borderRadius: 5,
+    marginTop: 80,
+    padding: 10,
+    shadowColor: '#0D47A1',
+    shadowOffset: { width: 1, height: 1 },
+    shadowOpacity: .9,
+    shadowRadius: 3
+  },
+  button: {
+    backgroundColor: '#1E88E5',
+    width: '100%',
+    height: 50,
+    borderRadius: 5,
+    alignItems: 'center',
+    justifyContent: 'center',
+    shadowOffset: { width: 1, height: 1 },
+    shadowOpacity: .9,
+    shadowRadius: 3,
+    width: '90%'
+  },
+  btnText: {
+    fontSize: 20,
+    color: 'white'
   }
 })
 
