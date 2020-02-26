@@ -130,7 +130,7 @@ describe('apiCalls', () => {
       startDate = "2020-03-01";
       endDate = "2020-03-10";
       mockQuery = {
-        "query": `mutation {createDestination(userApiKey: \"b9aead4b955bccb5c57ef830580f3de5\", tripId: ${tripId}, location: \"${location}\", startDate: \"${startDate}\", endDate: \"${endDate}\") {destination {id location abbrev lat long tripdestinationSet {startDate endDate trip {name origin}}}}}`
+        "query": `mutation {createDestination(userApiKey: \"b9aead4b955bccb5c57ef830580f3de5\", tripId: ${tripId}, location: \"${location}\", startDate: \"${startDate}\", endDate: \"${endDate}\") {destination {id location abbrev lat long tripdestinationSet {id startDate endDate trip {name origin}}}}}`
       };
 
       mockOptions = {
@@ -174,7 +174,7 @@ describe('apiCalls', () => {
       });
     });
 
-    it.skip('should call fetch with the correct URL & options', () => {
+    it('should call fetch with the correct URL & options', () => {
       createNewDestination(tripId, location, startDate, endDate);
 
       expect(window.fetch).toHaveBeenCalledWith('https://globe-trotter-api.herokuapp.com/graphql/', mockOptions);
