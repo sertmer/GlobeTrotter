@@ -143,3 +143,26 @@ export const addActivity = (id, name, date, address, category, rating, image, la
       return response.json()
     })
 }
+
+
+export const deleteActivity = (activityId) => {
+  const mutation = {
+    "query": `mutation {deleteActivity(userApiKey: \"b9aead4b955bccb5c57ef830580f3de5\", activityId: ${activityId}) {id name address date category rating image lat long}}`
+  };
+
+  const options = {
+    method: 'POST',
+    body: JSON.stringify(mutation),
+    headers: {
+      'Content-Type': 'application/json',
+    }
+  }
+
+  return fetch('https://globe-trotter-api.herokuapp.com/graphql/', options)
+    .then(response => {
+      if (!response.ok) {
+        throw Error('error deleting activity')
+      }
+      return response.json()
+    })
+};

@@ -4,37 +4,48 @@ import { StyleSheet, Text, TextInput, TouchableOpacity, View, ScrollView } from 
 import { createNewDestination } from '../../apiCalls';
 import DatePicker from '../DatePicker/DatePicker';
 
-const AddDestinations = ({ navigation, route }) => {
+export const AddDestinations = ({ navigation, route }) => {
   const { tripId, handleTripsFetch } = route.params;
   let [destinationLocation, setDestinationLocation] = useState('');
   let [destinationStartDate, setDestinationStartDate] = useState('');
   let [destinationEndDate, setDestinationEndDate] = useState('');
-  let [newDestination, setNewDestination] = useState([]);
   let [error, setError] = useState('');
+  let [dateError, setDateError] = useState('');
 
   const handleDestinationSubmit = () => {
-    if (destinationLocation !== '' && destinationStartDate !== ''  && destinationEndDate !== '' ) {
+    if (destinationLocation !== '' && destinationStartDate !== ''  && destinationEndDate !== '') {
       createNewDestination(tripId, destinationLocation, destinationStartDate, destinationEndDate)
         .then(returnedTripData => {
-          setNewDestination(returnedTripData);
-          navigation.navigate('Trips')
-          handleTripsFetch()
+          handleDateError(returnedTripData)
         })
         .catch(error => {
-          console.log(error)
+          console.log('date error', error)
         });
       resetInputs();
     } else {
       resetInputs();
       setError('All fields required');
+      setDateError('')
+    }
+  }
+
+  const handleDateError = (returnedTripData) => {
+    if (returnedTripData.data.createDestination === null) {
+      console.log('handleDateError', returnedTripData.errors[0].message)
+      setDateError(returnedTripData.errors[0].message)
+      setError('')
+    } else {
+      navigation.navigate('Trips')
+      handleTripsFetch()
+      console.log('date response', returnedTripData)
     }
   }
 
   const handleChange = (text) => {
     setError('');
+    setDateError('');
     setDestinationLocation(text)
   }
-
 
   const resetInputs = () => {
     setDestinationLocation('');
@@ -47,13 +58,19 @@ const AddDestinations = ({ navigation, route }) => {
       contentContainerStyle={styles.container}
       keyboardShouldPersistTaps='handled'
     >
-      {error === '' ?
+      {error === '' && dateError === '' &&
         <Text style={styles.label}>
           Destination
         </Text>
-        :
+      }
+      {error !== '' &&
         <Text style={styles.error}>
           {error}
+        </Text>
+      }
+      {dateError !== '' &&
+        <Text style={styles.error2}>
+          {dateError}
         </Text>
       }
       <View style={styles.inputContainer}>
@@ -102,6 +119,12 @@ const styles = StyleSheet.create({
     fontSize: 25,
     fontWeight: 'bold'
   },
+  error2: {
+    color: '#f7003d',
+    fontSize: 18,
+    fontWeight: 'bold',
+    textAlign: 'center'
+  },
   input: {
     justifyContent: 'center',
     height: '100%',
@@ -128,5 +151,3 @@ const styles = StyleSheet.create({
     marginTop: 15
   }
 })
-
-export default AddDestinations;
