@@ -68,7 +68,7 @@ export const Maps = ({ route }) => {
         <View style={styles.activitiesContainer}>
           <Text style={{fontSize: 30, color: '#fff', fontWeight: 'bold'}}>Saved Activities</Text>
           <ScrollView style={{width: '100%'}} contentContainerStyle={styles.scrollView}
-          showsVerticalScrollIndicator={false} bounces={false}
+          showsVerticalScrollIndicator={false} bounces={true}
           >
             {savedActivities.length
               ?
@@ -155,7 +155,8 @@ const styles = StyleSheet.create({
     justifyContent: 'space-around',
     backgroundColor: '#1E88E5',
     height: '100%',
-    width: '100%'
+    width: '100%',
+    flex: 1
   },
   scrollView: {
     alignItems: 'center',
