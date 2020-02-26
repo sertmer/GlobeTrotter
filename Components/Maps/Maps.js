@@ -11,18 +11,7 @@ export const Maps = ({ route }) => {
   let [ savedActivities, setSavedActivities ] = useState(dest.activitySet)
   let [ clickedActivity, setClickedActivity ] = useState('')
 
-//Component is currently set up to rely on state that is populated by local actions NOT properly set up to re-render based off updated fetched data
-//savedActivites needs to be specifically reset so that following the user's click on  YES, the mutation is made, the state in Trips is refetched, and then
-//here in the Maps component we setSavedActivities to reflect the activitySet data within the specific trips's tripdestinationSet data
-// activitySet returns an array of the following objects (but we're lacking properties ) - Did I leave these values out in the fetch call?
-// Object {
-//   "category": "Landmarks & Historical Building",
-//   "date": "2020-03-02",
-//   "name": "City of Fort Collins",
-// },
 
-
-    console.log('dest:', dest)
     console.log('dest:', dest.activitySet)
     console.log('id', dest.id)
 
@@ -41,7 +30,33 @@ export const Maps = ({ route }) => {
     return saved
   }
 
-  const addActivity = (act) => {
+  // saved Object {
+  //   "data": Object {
+  //     "createActivity": Object {
+  //       "activity": Object {
+  //         "address": "3800 Homer St, Los Angeles, CA 90031",
+  //           "category": "Museums",
+  //             "date": "2020-03-10",
+  //               "image": "https://s3-media1.fl.yelpcdn.com/bphoto/kI-d5wKeYwye1NdQP32d4A/o.jpg",
+  //                 "lat": "34.0887136",
+  //                   "long": "-118.2076662",
+  //                     "name": "Heritage Square Museum",
+  //                       "rating": 4,
+  //                         "tripDestination": Object {
+  //           "destination": Object {
+  //             "abbrev": "LAX",
+  //               "location": "Los Angeles, CA, USA",
+  //         },
+  //           "trip": Object {
+  //             "name": "Hunting bugs",
+  //         },
+  //         },
+  //       },
+  //     },
+  //   },
+  // }
+
+  const handleActivity = (act) => {
     setClickedActivity(matchActivities(act))
   }
 
@@ -52,7 +67,7 @@ export const Maps = ({ route }) => {
       coordinate={marker.coordinates}
       title={marker.title}
       description={marker.description}
-      onPress={(marker) => addActivity(marker.nativeEvent.coordinate)}
+      onPress={(marker) => handleActivity(marker.nativeEvent.coordinate)}
       />
     )
   })
@@ -62,16 +77,13 @@ export const Maps = ({ route }) => {
 
 
   const handleYesClick = async () => {
-
     await addActivity(dest.id, clickedActivity.title, endDate, clickedActivity.address, clickedActivity.description, clickedActivity.rating, clickedActivity.image, clickedActivity.coordinates.latitude, clickedActivity.coordinates.longitude)
-      .then(response => {
+      .then(data => {
+        setSavedActivities([...savedActivities, data.data.createActivity.activity])
+        setClickedActivity('')
         handleTripsFetch()
       })
-      .catch(error => {
-        console.log(error)
-      })
-
-    setClickedActivity('')
+      .catch(err => console.log(err))
   }
 
 
@@ -112,7 +124,7 @@ export const Maps = ({ route }) => {
                 savedActivities.map((activity, index) => {
                 return (
                   <View style={styles.activity} key={index}>
-                    <Text style={{fontWeight: 'bold'}}>{activity.title}</Text>
+                    <Text style={{fontWeight: 'bold'}}>{activity.name}</Text>
                     <Text style={{textAlign: 'center'}}>{activity.address}</Text>
                     <Text>Yelp Score: {activity.rating}</Text>
                     <Image
@@ -183,7 +195,8 @@ const styles = StyleSheet.create({
   scrollView: {
     alignItems: 'center',
     marginTop: 15,
-    width: '100%'
+    width: '100%',
+    height: Dimensions.get('window').height
   },
   activity: {
     alignItems: 'center',
