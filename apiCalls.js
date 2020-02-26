@@ -137,7 +137,6 @@ export const addActivity = (id, name, date, address, category, rating, image, la
 
   return fetch('https://globe-trotter-api.herokuapp.com/graphql/', options)
     .then(response => {
-      console.log('MUTATTION', mutation)
       if (!response.ok) {
         throw Error('error saving new activity')
       }

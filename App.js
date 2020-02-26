@@ -1,6 +1,4 @@
 import React from 'react';
-
-
 import Trips from './Components/Trips/Trips';
 import CreateTrip from './Components/CreateTrip/CreateTrip';
 import { NavigationContainer } from '@react-navigation/native';
@@ -12,7 +10,7 @@ import { AddDestinations } from './Components/AddDestinations/AddDestinations';
 import LandingPage from './Components/LandingPage/LandingPage';
 import { YellowBox } from 'react-native';
 
-export const App = ({ navigation }) => {
+export const App = () => {
 
   YellowBox.ignoreWarnings([
     'We found non-serializable values in the navigation state',
@@ -64,6 +62,5 @@ export const App = ({ navigation }) => {
     </NavigationContainer>
   )
 }
-
 
 export default App;

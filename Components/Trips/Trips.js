@@ -66,7 +66,7 @@ const Trips = ({ navigation }) => {
         </View>
       }
 
-      <ScrollView style={{width: '95%'}}>
+      <ScrollView style={{ width: '95%' }} showsVerticalScrollIndicator={false}>
         {reformattedTrips.map(item => {
           return (
             <View key={item.id}>
