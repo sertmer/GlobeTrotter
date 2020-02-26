@@ -89,7 +89,7 @@ export const TripPreview = ({ route, navigation }) => {
           </TouchableOpacity>
           <TouchableOpacity
             activeOpacity={.8}
-            style={styles.addDestination}
+            style={styles.deleteDestination}
             onPress={() => handleDelete()}
           >
             <Text style={{ color: 'white', fontSize: 20, fontWeight: 'bold' }}>Delete Trip</Text>
@@ -159,6 +159,17 @@ const styles = StyleSheet.create({
   addDestination: {
     alignItems: 'center',
     backgroundColor: '#1F87E5',
+    borderRadius: 5,
+    justifyContent: 'center',
+    marginVertical: 10,
+    padding: 10,
+    width: '65%',
+    shadowOffset: { width: 1, height: 1 },
+    shadowOpacity: .5,
+  },
+  deleteDestination: {
+    alignItems: 'center',
+    backgroundColor: '#FF5733',
     borderRadius: 5,
     justifyContent: 'center',
     marginVertical: 10,
