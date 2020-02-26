@@ -117,21 +117,27 @@ export const Maps = ({ route }) => {
       </MapView>
       {clickedActivity === '' ?
         <View style={styles.activitiesContainer}>
-          <Text style={{fontSize: 30, textDecorationLine: 'underline'}}>Saved Activities</Text>
+          <Text style={{fontSize: 30, color: '#fff', fontWeight: 'bold'}}>Saved Activities</Text>
           <ScrollView style={{width: '100%'}} contentContainerStyle={styles.scrollView}>
             {savedActivities.length
               ?
                 savedActivities.map((activity, index) => {
                 return (
                   <View style={styles.activity} key={index}>
-                    <Text style={{fontWeight: 'bold'}}>{activity.name}</Text>
-                    <Text style={{textAlign: 'center'}}>{activity.address}</Text>
-                    <Text>Yelp Score: {activity.rating}</Text>
+                    <Text style={{fontWeight: 'bold', margin: 10, textAlign: 'center'}}>{activity.name}</Text>
+                    <Text style={{textAlign: 'center', margin: 10}}>{activity.address}</Text>
+                    <Text style={{margin: 10}}>Yelp Score: {activity.rating}</Text>
                     <Image
                       source={{uri: activity.image}}
                       style={{height: 100, width: 150}}
                       resizeMode='cover'
                     />
+                    <TouchableOpacity 
+                      activeOpacity={.8}
+                      style={styles.delete}
+                    >
+                      <Text style={styles.btnText}>Delete</Text>
+                    </TouchableOpacity>
                   </View>
                   )
                 })
@@ -144,17 +150,25 @@ export const Maps = ({ route }) => {
         </View>
       :
         <View style={styles.yesOrNoContainer}>
-          <Text style={{fontSize: 30}}>
+          <Text style={{
+            fontSize: 30,
+            color: '#fff',
+            fontWeight: 'bold'
+          }}>
             Save activity to Trip?
           </Text>
-          <TouchableOpacity style={styles.button} onPress={() => handleYesClick()}>
+          <TouchableOpacity 
+            style={styles.button}
+            activeOpacity={.9} 
+            onPress={() => handleYesClick()}>
             <Text style={styles.btnText}>Yes</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.button}  onPress={() => handleNoClick()}>
+          <TouchableOpacity 
+          style={styles.button} 
+          activeOpacity={.9} 
+          onPress={() => handleNoClick()}
+          >
             <Text style={styles.btnText}>No</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.button}  onPress={() => handleTest()}>
-            <Text style={styles.btnText}>TEST TEST TEST</Text>
           </TouchableOpacity>
         </View>
       }
@@ -177,18 +191,14 @@ const styles = StyleSheet.create({
   yesOrNoContainer: {
     alignItems: 'center',
     justifyContent: 'space-around',
-    backgroundColor: '#bae0bd',
+    backgroundColor: '#1E88E5',
     flex: 1,
     width: '100%',
-    borderTopColor: 'black',
-    borderTopWidth: 1,
   },
   activitiesContainer: {
     alignItems: 'center',
     justifyContent: 'space-around',
-    backgroundColor: '#96cdec',
-    borderTopColor: 'black',
-    borderTopWidth: 1,
+    backgroundColor: '#1E88E5',
     height: '100%',
     width: '100%'
   },
@@ -225,19 +235,25 @@ const styles = StyleSheet.create({
     shadowRadius: 3
   },
   button: {
-    backgroundColor: '#1E88E5',
+    backgroundColor: '#2CCB70',
     width: '100%',
     height: 50,
     borderRadius: 5,
     alignItems: 'center',
     justifyContent: 'center',
     shadowOffset: { width: 1, height: 1 },
-    shadowOpacity: .9,
+    shadowOpacity: .2,
     shadowRadius: 3,
     width: '90%'
   },
   btnText: {
     fontSize: 20,
     color: 'white'
+  },
+  delete: {
+    backgroundColor: '#FF5733',
+    padding: 10,
+    borderRadius: 5,
+    margin: 10
   }
 })
