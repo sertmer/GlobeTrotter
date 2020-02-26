@@ -124,9 +124,9 @@ export const Maps = ({ route }) => {
                 savedActivities.map((activity, index) => {
                 return (
                   <View style={styles.activity} key={index}>
-                    <Text style={{fontWeight: 'bold', margin: 10, textAlign: 'center'}}>{activity.name}</Text>
-                    <Text style={{textAlign: 'center', margin: 10}}>{activity.address}</Text>
-                    <Text style={{margin: 10}}>Yelp Score: {activity.rating}</Text>
+                    <Text style={{fontWeight: 'bold', margin: 5, textAlign: 'center'}}>{activity.name}</Text>
+                    <Text style={{textAlign: 'center', margin: 5}}>{activity.address}</Text>
+                    <Text style={{margin: 5}}>Yelp Score: {activity.rating}</Text>
                     <Image
                       source={{uri: activity.image}}
                       style={{height: 100, width: 150}}
@@ -254,6 +254,6 @@ const styles = StyleSheet.create({
     backgroundColor: '#FF5733',
     padding: 10,
     borderRadius: 5,
-    margin: 10
+    marginTop: 5
   }
 })
