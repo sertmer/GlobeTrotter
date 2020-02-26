@@ -5,11 +5,14 @@ exports[`renders correctly 1`] = `
   style={
     Array [
       Object {
-        "backgroundColor": "#333248",
+        "backgroundColor": "white",
         "paddingLeft": 5,
         "paddingRight": 5,
       },
-      undefined,
+      Object {
+        "borderRadius": 8,
+        "width": "95%",
+      },
     ]
   }
 >
@@ -73,7 +76,7 @@ exports[`renders correctly 1`] = `
           source={1}
           style={
             Object {
-              "tintColor": "white",
+              "tintColor": "black",
             }
           }
         />
@@ -89,9 +92,9 @@ exports[`renders correctly 1`] = `
           allowFontScaling={false}
           style={
             Object {
-              "color": "white",
+              "color": "#1E88E5",
               "fontFamily": "System",
-              "fontSize": 16,
+              "fontSize": 24,
               "fontWeight": "300",
               "margin": 10,
             }
@@ -131,7 +134,7 @@ exports[`renders correctly 1`] = `
           source={1}
           style={
             Object {
-              "tintColor": "white",
+              "tintColor": "black",
             }
           }
         />
@@ -152,7 +155,7 @@ exports[`renders correctly 1`] = `
         numberOfLines={1}
         style={
           Object {
-            "color": "white",
+            "color": "#065a87",
             "fontFamily": "System",
             "fontSize": 13,
             "fontWeight": undefined,
@@ -171,7 +174,7 @@ exports[`renders correctly 1`] = `
         numberOfLines={1}
         style={
           Object {
-            "color": "white",
+            "color": "#065a87",
             "fontFamily": "System",
             "fontSize": 13,
             "fontWeight": undefined,
@@ -190,7 +193,7 @@ exports[`renders correctly 1`] = `
         numberOfLines={1}
         style={
           Object {
-            "color": "white",
+            "color": "#065a87",
             "fontFamily": "System",
             "fontSize": 13,
             "fontWeight": undefined,
@@ -209,7 +212,7 @@ exports[`renders correctly 1`] = `
         numberOfLines={1}
         style={
           Object {
-            "color": "white",
+            "color": "#065a87",
             "fontFamily": "System",
             "fontSize": 13,
             "fontWeight": undefined,
@@ -228,7 +231,7 @@ exports[`renders correctly 1`] = `
         numberOfLines={1}
         style={
           Object {
-            "color": "white",
+            "color": "#065a87",
             "fontFamily": "System",
             "fontSize": 13,
             "fontWeight": undefined,
@@ -247,7 +250,7 @@ exports[`renders correctly 1`] = `
         numberOfLines={1}
         style={
           Object {
-            "color": "white",
+            "color": "#065a87",
             "fontFamily": "System",
             "fontSize": 13,
             "fontWeight": undefined,
@@ -266,7 +269,7 @@ exports[`renders correctly 1`] = `
         numberOfLines={1}
         style={
           Object {
-            "color": "white",
+            "color": "#065a87",
             "fontFamily": "System",
             "fontSize": 13,
             "fontWeight": undefined,
@@ -284,7 +287,7 @@ exports[`renders correctly 1`] = `
   <View
     style={
       Object {
-        "backgroundColor": "#333248",
+        "backgroundColor": "white",
       }
     }
   >
@@ -390,14 +393,14 @@ exports[`renders correctly 1`] = `
                 Array [
                   Object {
                     "backgroundColor": "rgba(255, 255, 255, 0)",
-                    "color": "red",
+                    "color": "black",
                     "fontFamily": "System",
-                    "fontSize": 16,
+                    "fontSize": 20,
                     "fontWeight": "300",
                     "marginTop": 7,
                   },
                   Object {
-                    "color": "#d9e1e8",
+                    "color": "#b3bcbb",
                   },
                   Object {},
                 ]
@@ -500,14 +503,14 @@ exports[`renders correctly 1`] = `
                 Array [
                   Object {
                     "backgroundColor": "rgba(255, 255, 255, 0)",
-                    "color": "red",
+                    "color": "black",
                     "fontFamily": "System",
-                    "fontSize": 16,
+                    "fontSize": 20,
                     "fontWeight": "300",
                     "marginTop": 7,
                   },
                   Object {
-                    "color": "#d9e1e8",
+                    "color": "#b3bcbb",
                   },
                   Object {},
                 ]
@@ -610,14 +613,14 @@ exports[`renders correctly 1`] = `
                 Array [
                   Object {
                     "backgroundColor": "rgba(255, 255, 255, 0)",
-                    "color": "red",
+                    "color": "black",
                     "fontFamily": "System",
-                    "fontSize": 16,
+                    "fontSize": 20,
                     "fontWeight": "300",
                     "marginTop": 7,
                   },
                   Object {
-                    "color": "#d9e1e8",
+                    "color": "#b3bcbb",
                   },
                   Object {},
                 ]
@@ -720,14 +723,14 @@ exports[`renders correctly 1`] = `
                 Array [
                   Object {
                     "backgroundColor": "rgba(255, 255, 255, 0)",
-                    "color": "red",
+                    "color": "black",
                     "fontFamily": "System",
-                    "fontSize": 16,
+                    "fontSize": 20,
                     "fontWeight": "300",
                     "marginTop": 7,
                   },
                   Object {
-                    "color": "#d9e1e8",
+                    "color": "#b3bcbb",
                   },
                   Object {},
                 ]
@@ -830,14 +833,14 @@ exports[`renders correctly 1`] = `
                 Array [
                   Object {
                     "backgroundColor": "rgba(255, 255, 255, 0)",
-                    "color": "red",
+                    "color": "black",
                     "fontFamily": "System",
-                    "fontSize": 16,
+                    "fontSize": 20,
                     "fontWeight": "300",
                     "marginTop": 7,
                   },
                   Object {
-                    "color": "#d9e1e8",
+                    "color": "#b3bcbb",
                   },
                   Object {},
                 ]
@@ -940,14 +943,14 @@ exports[`renders correctly 1`] = `
                 Array [
                   Object {
                     "backgroundColor": "rgba(255, 255, 255, 0)",
-                    "color": "red",
+                    "color": "black",
                     "fontFamily": "System",
-                    "fontSize": 16,
+                    "fontSize": 20,
                     "fontWeight": "300",
                     "marginTop": 7,
                   },
                   Object {
-                    "color": "#d9e1e8",
+                    "color": "#b3bcbb",
                   },
                   Object {},
                 ]
@@ -1050,14 +1053,14 @@ exports[`renders correctly 1`] = `
                 Array [
                   Object {
                     "backgroundColor": "rgba(255, 255, 255, 0)",
-                    "color": "red",
+                    "color": "black",
                     "fontFamily": "System",
-                    "fontSize": 16,
+                    "fontSize": 20,
                     "fontWeight": "300",
                     "marginTop": 7,
                   },
                   Object {
-                    "color": "#d9e1e8",
+                    "color": "#b3bcbb",
                   },
                   Object {},
                 ]
@@ -1171,14 +1174,14 @@ exports[`renders correctly 1`] = `
                 Array [
                   Object {
                     "backgroundColor": "rgba(255, 255, 255, 0)",
-                    "color": "red",
+                    "color": "black",
                     "fontFamily": "System",
-                    "fontSize": 16,
+                    "fontSize": 20,
                     "fontWeight": "300",
                     "marginTop": 7,
                   },
                   Object {
-                    "color": "#d9e1e8",
+                    "color": "#b3bcbb",
                   },
                   Object {},
                 ]
@@ -1281,14 +1284,14 @@ exports[`renders correctly 1`] = `
                 Array [
                   Object {
                     "backgroundColor": "rgba(255, 255, 255, 0)",
-                    "color": "red",
+                    "color": "black",
                     "fontFamily": "System",
-                    "fontSize": 16,
+                    "fontSize": 20,
                     "fontWeight": "300",
                     "marginTop": 7,
                   },
                   Object {
-                    "color": "#d9e1e8",
+                    "color": "#b3bcbb",
                   },
                   Object {},
                 ]
@@ -1391,14 +1394,14 @@ exports[`renders correctly 1`] = `
                 Array [
                   Object {
                     "backgroundColor": "rgba(255, 255, 255, 0)",
-                    "color": "red",
+                    "color": "black",
                     "fontFamily": "System",
-                    "fontSize": 16,
+                    "fontSize": 20,
                     "fontWeight": "300",
                     "marginTop": 7,
                   },
                   Object {
-                    "color": "#d9e1e8",
+                    "color": "#b3bcbb",
                   },
                   Object {},
                 ]
@@ -1501,14 +1504,14 @@ exports[`renders correctly 1`] = `
                 Array [
                   Object {
                     "backgroundColor": "rgba(255, 255, 255, 0)",
-                    "color": "red",
+                    "color": "black",
                     "fontFamily": "System",
-                    "fontSize": 16,
+                    "fontSize": 20,
                     "fontWeight": "300",
                     "marginTop": 7,
                   },
                   Object {
-                    "color": "#d9e1e8",
+                    "color": "#b3bcbb",
                   },
                   Object {},
                 ]
@@ -1611,14 +1614,14 @@ exports[`renders correctly 1`] = `
                 Array [
                   Object {
                     "backgroundColor": "rgba(255, 255, 255, 0)",
-                    "color": "red",
+                    "color": "black",
                     "fontFamily": "System",
-                    "fontSize": 16,
+                    "fontSize": 20,
                     "fontWeight": "300",
                     "marginTop": 7,
                   },
                   Object {
-                    "color": "#d9e1e8",
+                    "color": "#b3bcbb",
                   },
                   Object {},
                 ]
@@ -1721,14 +1724,14 @@ exports[`renders correctly 1`] = `
                 Array [
                   Object {
                     "backgroundColor": "rgba(255, 255, 255, 0)",
-                    "color": "red",
+                    "color": "black",
                     "fontFamily": "System",
-                    "fontSize": 16,
+                    "fontSize": 20,
                     "fontWeight": "300",
                     "marginTop": 7,
                   },
                   Object {
-                    "color": "#d9e1e8",
+                    "color": "#b3bcbb",
                   },
                   Object {},
                 ]
@@ -1831,14 +1834,14 @@ exports[`renders correctly 1`] = `
                 Array [
                   Object {
                     "backgroundColor": "rgba(255, 255, 255, 0)",
-                    "color": "red",
+                    "color": "black",
                     "fontFamily": "System",
-                    "fontSize": 16,
+                    "fontSize": 20,
                     "fontWeight": "300",
                     "marginTop": 7,
                   },
                   Object {
-                    "color": "#d9e1e8",
+                    "color": "#b3bcbb",
                   },
                   Object {},
                 ]
@@ -1952,14 +1955,14 @@ exports[`renders correctly 1`] = `
                 Array [
                   Object {
                     "backgroundColor": "rgba(255, 255, 255, 0)",
-                    "color": "red",
+                    "color": "black",
                     "fontFamily": "System",
-                    "fontSize": 16,
+                    "fontSize": 20,
                     "fontWeight": "300",
                     "marginTop": 7,
                   },
                   Object {
-                    "color": "#d9e1e8",
+                    "color": "#b3bcbb",
                   },
                   Object {},
                 ]
@@ -2062,14 +2065,14 @@ exports[`renders correctly 1`] = `
                 Array [
                   Object {
                     "backgroundColor": "rgba(255, 255, 255, 0)",
-                    "color": "red",
+                    "color": "black",
                     "fontFamily": "System",
-                    "fontSize": 16,
+                    "fontSize": 20,
                     "fontWeight": "300",
                     "marginTop": 7,
                   },
                   Object {
-                    "color": "#d9e1e8",
+                    "color": "#b3bcbb",
                   },
                   Object {},
                 ]
@@ -2172,14 +2175,14 @@ exports[`renders correctly 1`] = `
                 Array [
                   Object {
                     "backgroundColor": "rgba(255, 255, 255, 0)",
-                    "color": "red",
+                    "color": "black",
                     "fontFamily": "System",
-                    "fontSize": 16,
+                    "fontSize": 20,
                     "fontWeight": "300",
                     "marginTop": 7,
                   },
                   Object {
-                    "color": "#d9e1e8",
+                    "color": "#b3bcbb",
                   },
                   Object {},
                 ]
@@ -2282,14 +2285,14 @@ exports[`renders correctly 1`] = `
                 Array [
                   Object {
                     "backgroundColor": "rgba(255, 255, 255, 0)",
-                    "color": "red",
+                    "color": "black",
                     "fontFamily": "System",
-                    "fontSize": 16,
+                    "fontSize": 20,
                     "fontWeight": "300",
                     "marginTop": 7,
                   },
                   Object {
-                    "color": "#d9e1e8",
+                    "color": "#b3bcbb",
                   },
                   Object {},
                 ]
@@ -2392,14 +2395,14 @@ exports[`renders correctly 1`] = `
                 Array [
                   Object {
                     "backgroundColor": "rgba(255, 255, 255, 0)",
-                    "color": "red",
+                    "color": "black",
                     "fontFamily": "System",
-                    "fontSize": 16,
+                    "fontSize": 20,
                     "fontWeight": "300",
                     "marginTop": 7,
                   },
                   Object {
-                    "color": "#d9e1e8",
+                    "color": "#b3bcbb",
                   },
                   Object {},
                 ]
@@ -2502,14 +2505,14 @@ exports[`renders correctly 1`] = `
                 Array [
                   Object {
                     "backgroundColor": "rgba(255, 255, 255, 0)",
-                    "color": "red",
+                    "color": "black",
                     "fontFamily": "System",
-                    "fontSize": 16,
+                    "fontSize": 20,
                     "fontWeight": "300",
                     "marginTop": 7,
                   },
                   Object {
-                    "color": "#d9e1e8",
+                    "color": "#b3bcbb",
                   },
                   Object {},
                 ]
@@ -2612,14 +2615,14 @@ exports[`renders correctly 1`] = `
                 Array [
                   Object {
                     "backgroundColor": "rgba(255, 255, 255, 0)",
-                    "color": "red",
+                    "color": "black",
                     "fontFamily": "System",
-                    "fontSize": 16,
+                    "fontSize": 20,
                     "fontWeight": "300",
                     "marginTop": 7,
                   },
                   Object {
-                    "color": "#d9e1e8",
+                    "color": "#b3bcbb",
                   },
                   Object {},
                 ]
@@ -2733,14 +2736,14 @@ exports[`renders correctly 1`] = `
                 Array [
                   Object {
                     "backgroundColor": "rgba(255, 255, 255, 0)",
-                    "color": "red",
+                    "color": "black",
                     "fontFamily": "System",
-                    "fontSize": 16,
+                    "fontSize": 20,
                     "fontWeight": "300",
                     "marginTop": 7,
                   },
                   Object {
-                    "color": "#d9e1e8",
+                    "color": "#b3bcbb",
                   },
                   Object {},
                 ]
@@ -2843,14 +2846,14 @@ exports[`renders correctly 1`] = `
                 Array [
                   Object {
                     "backgroundColor": "rgba(255, 255, 255, 0)",
-                    "color": "red",
+                    "color": "black",
                     "fontFamily": "System",
-                    "fontSize": 16,
+                    "fontSize": 20,
                     "fontWeight": "300",
                     "marginTop": 7,
                   },
                   Object {
-                    "color": "#d9e1e8",
+                    "color": "#b3bcbb",
                   },
                   Object {},
                 ]
@@ -2953,14 +2956,14 @@ exports[`renders correctly 1`] = `
                 Array [
                   Object {
                     "backgroundColor": "rgba(255, 255, 255, 0)",
-                    "color": "red",
+                    "color": "black",
                     "fontFamily": "System",
-                    "fontSize": 16,
+                    "fontSize": 20,
                     "fontWeight": "300",
                     "marginTop": 7,
                   },
                   Object {
-                    "color": "#d9e1e8",
+                    "color": "#b3bcbb",
                   },
                   Object {},
                 ]
@@ -3063,14 +3066,14 @@ exports[`renders correctly 1`] = `
                 Array [
                   Object {
                     "backgroundColor": "rgba(255, 255, 255, 0)",
-                    "color": "red",
+                    "color": "black",
                     "fontFamily": "System",
-                    "fontSize": 16,
+                    "fontSize": 20,
                     "fontWeight": "300",
                     "marginTop": 7,
                   },
                   Object {
-                    "color": "#d9e1e8",
+                    "color": "#b3bcbb",
                   },
                   Object {},
                 ]
@@ -3173,14 +3176,14 @@ exports[`renders correctly 1`] = `
                 Array [
                   Object {
                     "backgroundColor": "rgba(255, 255, 255, 0)",
-                    "color": "red",
+                    "color": "black",
                     "fontFamily": "System",
-                    "fontSize": 16,
+                    "fontSize": 20,
                     "fontWeight": "300",
                     "marginTop": 7,
                   },
                   Object {
-                    "color": "#d9e1e8",
+                    "color": "#b3bcbb",
                   },
                   Object {},
                 ]
@@ -3283,14 +3286,14 @@ exports[`renders correctly 1`] = `
                 Array [
                   Object {
                     "backgroundColor": "rgba(255, 255, 255, 0)",
-                    "color": "red",
+                    "color": "black",
                     "fontFamily": "System",
-                    "fontSize": 16,
+                    "fontSize": 20,
                     "fontWeight": "300",
                     "marginTop": 7,
                   },
                   Object {
-                    "color": "#d9e1e8",
+                    "color": "#b3bcbb",
                   },
                   Object {},
                 ]
@@ -3393,14 +3396,14 @@ exports[`renders correctly 1`] = `
                 Array [
                   Object {
                     "backgroundColor": "rgba(255, 255, 255, 0)",
-                    "color": "red",
+                    "color": "black",
                     "fontFamily": "System",
-                    "fontSize": 16,
+                    "fontSize": 20,
                     "fontWeight": "300",
                     "marginTop": 7,
                   },
                   Object {
-                    "color": "#d9e1e8",
+                    "color": "#b3bcbb",
                   },
                   Object {},
                 ]
@@ -3431,7 +3434,7 @@ exports[`renders correctly 1`] = `
         }
       >
         <View
-          accessibilityLabel="today Sunday February 23 "
+          accessibilityLabel=" Sunday February 23 "
           accessibilityRole="button"
           accessible={true}
           focusable={true}
@@ -3503,9 +3506,6 @@ exports[`renders correctly 1`] = `
                   "width": 38,
                 },
                 Object {
-                  "backgroundColor": undefined,
-                },
-                Object {
                   "borderRadius": 17,
                 },
               ]
@@ -3517,15 +3517,14 @@ exports[`renders correctly 1`] = `
                 Array [
                   Object {
                     "backgroundColor": "rgba(255, 255, 255, 0)",
-                    "color": "red",
+                    "color": "black",
                     "fontFamily": "System",
-                    "fontSize": 16,
+                    "fontSize": 20,
                     "fontWeight": "300",
                     "marginTop": 7,
                   },
                   Object {
-                    "color": "white",
-                    "fontWeight": "500",
+                    "color": "#b3bcbb",
                   },
                   Object {},
                 ]
@@ -3628,11 +3627,14 @@ exports[`renders correctly 1`] = `
                 Array [
                   Object {
                     "backgroundColor": "rgba(255, 255, 255, 0)",
-                    "color": "red",
+                    "color": "black",
                     "fontFamily": "System",
-                    "fontSize": 16,
+                    "fontSize": 20,
                     "fontWeight": "300",
                     "marginTop": 7,
+                  },
+                  Object {
+                    "color": "#b3bcbb",
                   },
                   Object {},
                 ]
@@ -3735,11 +3737,14 @@ exports[`renders correctly 1`] = `
                 Array [
                   Object {
                     "backgroundColor": "rgba(255, 255, 255, 0)",
-                    "color": "red",
+                    "color": "black",
                     "fontFamily": "System",
-                    "fontSize": 16,
+                    "fontSize": 20,
                     "fontWeight": "300",
                     "marginTop": 7,
+                  },
+                  Object {
+                    "color": "#b3bcbb",
                   },
                   Object {},
                 ]
@@ -3759,7 +3764,7 @@ exports[`renders correctly 1`] = `
         }
       >
         <View
-          accessibilityLabel=" Wednesday February 26 "
+          accessibilityLabel="today Wednesday February 26 "
           accessibilityRole="button"
           accessible={true}
           focusable={true}
@@ -3831,6 +3836,9 @@ exports[`renders correctly 1`] = `
                   "width": 38,
                 },
                 Object {
+                  "backgroundColor": undefined,
+                },
+                Object {
                   "borderRadius": 17,
                 },
               ]
@@ -3842,11 +3850,15 @@ exports[`renders correctly 1`] = `
                 Array [
                   Object {
                     "backgroundColor": "rgba(255, 255, 255, 0)",
-                    "color": "red",
+                    "color": "black",
                     "fontFamily": "System",
-                    "fontSize": 16,
+                    "fontSize": 20,
                     "fontWeight": "300",
                     "marginTop": 7,
+                  },
+                  Object {
+                    "color": "black",
+                    "fontWeight": "500",
                   },
                   Object {},
                 ]
@@ -3949,9 +3961,9 @@ exports[`renders correctly 1`] = `
                 Array [
                   Object {
                     "backgroundColor": "rgba(255, 255, 255, 0)",
-                    "color": "red",
+                    "color": "black",
                     "fontFamily": "System",
-                    "fontSize": 16,
+                    "fontSize": 20,
                     "fontWeight": "300",
                     "marginTop": 7,
                   },
@@ -4056,9 +4068,9 @@ exports[`renders correctly 1`] = `
                 Array [
                   Object {
                     "backgroundColor": "rgba(255, 255, 255, 0)",
-                    "color": "red",
+                    "color": "black",
                     "fontFamily": "System",
-                    "fontSize": 16,
+                    "fontSize": 20,
                     "fontWeight": "300",
                     "marginTop": 7,
                   },
@@ -4163,9 +4175,9 @@ exports[`renders correctly 1`] = `
                 Array [
                   Object {
                     "backgroundColor": "rgba(255, 255, 255, 0)",
-                    "color": "red",
+                    "color": "black",
                     "fontFamily": "System",
-                    "fontSize": 16,
+                    "fontSize": 20,
                     "fontWeight": "300",
                     "marginTop": 7,
                   },

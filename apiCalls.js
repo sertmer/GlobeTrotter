@@ -14,7 +14,7 @@ export const getActivities = (lat, long) => {
 
 export const getAllTrips = () => {
   const query = {
-      "query": "{allTrips(userApiKey: \"b9aead4b955bccb5c57ef830580f3de5\") {id name origin originAbbrev originLat originLong tripdestinationSet {destination {location abbrev lat long} id startDate endDate activitySet {name date address category rating image lat long tripDestination { trip { name } destination { location abbrev } } } } } }"
+      "query": "{allTrips(userApiKey: \"b9aead4b955bccb5c57ef830580f3de5\") {id name origin originAbbrev originLat originLong tripdestinationSet {destination {location abbrev lat long} id startDate endDate activitySet {id name date address category rating image lat long tripDestination { trip { name } destination { location abbrev } } } } } }"
     };
 
   const options = {
@@ -147,7 +147,7 @@ export const addActivity = (id, name, date, address, category, rating, image, la
 
 export const deleteActivity = (activityId) => {
   const mutation = {
-    "query": `mutation {deleteActivity(userApiKey: \"b9aead4b955bccb5c57ef830580f3de5\", activityId: ${activityId}) {id name address date category rating image lat long}}`
+    "query": `mutation {deleteActivity(userApiKey: \"b9aead4b955bccb5c57ef830580f3de5\", activityId: ${activityId}) {id}}`
   };
 
   const options = {

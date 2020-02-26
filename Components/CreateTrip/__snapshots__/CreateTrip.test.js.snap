@@ -38,6 +38,8 @@ exports[`renders correctly 1`] = `
     >
       <TextInput
         allowFontScaling={true}
+        onChangeText={[Function]}
+        placeholder="Trip Name"
         rejectResponderTermination={true}
         style={
           Object {
@@ -49,6 +51,7 @@ exports[`renders correctly 1`] = `
           }
         }
         underlineColorAndroid="transparent"
+        value=""
       />
     </View>
     <Text
@@ -76,6 +79,8 @@ exports[`renders correctly 1`] = `
     >
       <TextInput
         allowFontScaling={true}
+        onChangeText={[Function]}
+        placeholder="City, Country"
         rejectResponderTermination={true}
         style={
           Object {
@@ -87,6 +92,7 @@ exports[`renders correctly 1`] = `
           }
         }
         underlineColorAndroid="transparent"
+        value=""
       />
     </View>
     <View

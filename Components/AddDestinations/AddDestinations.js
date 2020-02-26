@@ -31,13 +31,11 @@ export const AddDestinations = ({ navigation, route }) => {
 
   const handleDateError = (returnedTripData) => {
     if (returnedTripData.data.createDestination === null) {
-      console.log('handleDateError', returnedTripData.errors[0].message)
       setDateError(returnedTripData.errors[0].message)
       setError('')
     } else {
       navigation.navigate('Trips')
       handleTripsFetch()
-      console.log('date response', returnedTripData)
     }
   }
 
