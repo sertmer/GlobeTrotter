@@ -61,7 +61,6 @@ export const Maps = ({ route }) => {
   }
 
 
-
   return (
     <View style={styles.container}>
       <MapView style={styles.mapStyle}
@@ -72,23 +71,26 @@ export const Maps = ({ route }) => {
       {renderMarkers}
       </MapView>
       {!clickedActivity.description  ?
-        <ScrollView style={{width: '100%'}} contentContainerStyle={styles.activitiesContainer}>
-          <Text>Saved Activities</Text>
-          {savedActivities.map((activity, index) => {
-            return (
-              <View style={styles.activity} key={index}>
-                <Text>{activity.title}</Text>
-                <Text>{activity.address}</Text>
-                <Text>Yelp Score: {activity.rating}</Text>
-                <Image
-                  source={{ uri: activity.image }}
-                  style={styles.globe}
-                />
-              </View>
-            )
-          })
-        }
-        </ScrollView>
+        <View style={styles.activitiesContainer}>
+          <Text style={{fontSize: 30, textDecorationLine: 'underline'}}>Saved Activities</Text>
+          <ScrollView style={{width: '100%'}} contentContainerStyle={styles.scrollView}>
+            {savedActivities.map((activity, index) => {
+              return (
+                <View style={styles.activity} key={index}>
+                  <Text style={{fontWeight: 'bold'}}>{activity.title}</Text>
+                  <Text style={{textAlign: 'center'}}>{activity.address}</Text>
+                  <Text>Yelp Score: {activity.rating}</Text>
+                  <Image
+                    source={{uri: activity.image}}
+                    style={{height: 100, width: 100}}
+                    resizeMode='contain'
+                  />
+                </View>
+                )
+              })
+            }
+          </ScrollView>
+        </View>
       :
         <View style={styles.yesOrNoContainer}>
           <Text>
@@ -137,15 +139,20 @@ const styles = StyleSheet.create({
     borderTopColor: 'black',
     borderTopWidth: 1,
     height: '100%',
+    width: '100%'
+  },
+  scrollView: {
+    alignItems: 'center',
+    marginTop: 15,
+    width: '100%'
   },
   activity: {
     alignItems: 'center',
-    backgroundColor: 'red',
     justifyContent: 'center',
     width: '95%',
     backgroundColor: '#eff6f7',
     borderRadius: 5,
-    marginTop: 20,
+    marginBottom: 20,
     padding: 10,
     shadowColor: '#0D47A1',
     shadowOffset: { width: 1, height: 1 },
