@@ -1,4 +1,4 @@
-import { getAllTrips, createNewTrip, createNewDestination, deleteTrip, getActivities, addActivity } from './apiCalls';
+import { getAllTrips, createNewTrip, createNewDestination, deleteTrip, getActivities, addActivity, deleteActivity } from './apiCalls';
 
 describe('apiCalls', () => {
 
@@ -7,7 +7,7 @@ describe('apiCalls', () => {
 
     beforeEach(() => {
       mockQuery = {
-        "query": "{allTrips(userApiKey: \"b9aead4b955bccb5c57ef830580f3de5\") {id name origin originAbbrev originLat originLong tripdestinationSet {destination {location abbrev lat long} id startDate endDate activitySet {name date address category rating image lat long tripDestination { trip { name } destination { location abbrev } } } } } }"
+        "query": "{allTrips(userApiKey: \"b9aead4b955bccb5c57ef830580f3de5\") {id name origin originAbbrev originLat originLong tripdestinationSet {destination {location abbrev lat long} id startDate endDate activitySet {id name date address category rating image lat long tripDestination { trip { name } destination { location abbrev } } } } } }"
       };
       mockOptions = {
         method: 'POST',
@@ -400,4 +400,60 @@ describe('apiCalls', () => {
     expect(addActivity(mockId, mockName, mockDate, mockAddress, mockCategory, mockRating, mockImage, mockLat, mockLong )).rejects.toEqual(Error('error saving new activity'));
   });
 })
+});
+
+
+describe('deleteActivity', () => {
+  let mockResponse, mockOptions, mockQuery, activityId;
+
+  beforeEach(() => {
+    activityId = 3;
+    mockQuery = {
+      "query": `mutation {deleteActivity(userApiKey: \"b9aead4b955bccb5c57ef830580f3de5\", activityId: ${activityId}) {id}}`
+    };
+
+    mockOptions = {
+      method: 'POST',
+      body: JSON.stringify(mockQuery),
+      headers: {
+        'Content-Type': 'application/json',
+      }
+    };
+
+    mockResponse =
+      {
+        data: {
+          deleteActivity: {
+            id: 3
+          }
+        }
+      }
+
+    window.fetch = jest.fn().mockImplementation(() => {
+      return Promise.resolve({
+        ok: true,
+        json: () => Promise.resolve(mockResponse)
+      });
+    });
+  });
+
+  it('should call fetch with the correct URL & options', () => {
+    deleteActivity(activityId);
+
+    expect(window.fetch).toHaveBeenCalledWith('https://globe-trotter-api.herokuapp.com/graphql/', mockOptions);
+  });
+
+  it('should return an object with the deleted id', () => {
+    expect(deleteActivity(activityId)).resolves.toEqual(mockResponse);
+  });
+
+  it('should return an error message if Promise is rejected', () => {
+    window.fetch = jest.fn().mockImplementation(() => {
+      return Promise.resolve({ ok: false });
+    });
+
+    expect(deleteActivity(activityId)).rejects.toEqual(Error('error deleting activity'));
+  });
+
+
 });

@@ -3,14 +3,13 @@ import React, { useState } from 'react';
 import { StyleSheet, Image, View, Dimensions, Text, ScrollView, TouchableOpacity } from 'react-native';
 import MapView from 'react-native-maps';
 import { Marker } from 'react-native-maps';
-import { addActivity } from '../../apiCalls';
+import { addActivity, deleteActivity } from '../../apiCalls';
 
 export const Maps = ({ route }) => {
   const { dest, formattedMarkers, endDate, handleTripsFetch } = route.params
   let [ activities, setActivities ] = useState(formattedMarkers)
   let [ savedActivities, setSavedActivities ] = useState(dest.activitySet)
   let [ clickedActivity, setClickedActivity ] = useState('')
-
   const [ region, setRegion ] = useState({
     latitude: parseFloat(dest.destination.lat),
     longitude: parseFloat(dest.destination.long),
@@ -56,6 +55,14 @@ export const Maps = ({ route }) => {
     setClickedActivity('')
   }
 
+  const handleDeleteActivity = (actId) => {
+    deleteActivity(actId)
+      .then(data => {
+        setSavedActivities(savedActivities.filter(activity => activity.id !== actId ))
+      })
+    handleTripsFetch();
+  }
+
   return (
     <View style={styles.container}>
       <MapView style={styles.mapStyle}
@@ -84,6 +91,7 @@ export const Maps = ({ route }) => {
                     <TouchableOpacity 
                       activeOpacity={.8}
                       style={styles.delete}
+                      onPress={() => handleDeleteActivity(activity.id)}
                     >
                       <Text style={styles.btnText}>Delete</Text>
                     </TouchableOpacity>
