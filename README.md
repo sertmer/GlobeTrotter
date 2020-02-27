@@ -2,7 +2,20 @@
 
 **GlobeTrotter** is a mobile application that allows users to plan a trip. GlobeTrotter is an application used to plan multi-leg adventures and create day-by-day itineraries for each stop along the way. GlobeTrotter helps you collect all of the infomation about your trip into one convenient location.
 
-## Set up
+## Table of Contents
+<!--ts-->
+
+- [Table of Contents](#table-of-contents)
+- [Set Up](#set-up)
+- [Video](#video)
+- [Screenshots](#screenshots)
+- [Tech Stack and Team](#tech-stack)
+- [Goals](#goals)
+- [Agile Workflow](#project-board)
+
+<!--te-->
+
+## Set Up
 #### 1. Clone the repository
 ```
 git clone https://github.com/sertmer/GlobeTrotter
@@ -15,7 +28,7 @@ npm install
 ``` 
 npm start
 ```
-#### To Run on your phone:
+#### To run on your phone:
 1. On the webpage that loads when you `npm start`, scan the QR code with your camera app
 2. Download the Expo Client app from the app store
 
@@ -27,9 +40,18 @@ npm start
 1. run `npm start`
 2. On the expo webpage that opens up in your browser, click `run in web browser` from the left panel
 
-## Demo Video
+## Video
+`Coming Soon!`
 
-## Screenshots and Gifs
+## Screenshots
+<img src='https://user-images.githubusercontent.com/49926352/75401734-4999c200-58c0-11ea-8e8f-ba72265e6fe5.PNG' width='500'/>
+<img src='https://user-images.githubusercontent.com/49926352/75401743-4d2d4900-58c0-11ea-86b8-4cec3de8533f.PNG' width='500'/>
+<img src='https://user-images.githubusercontent.com/49926352/75401768-57e7de00-58c0-11ea-8038-27b3d139ba37.PNG' width='500'/>
+<img src='https://user-images.githubusercontent.com/49926352/75401772-5b7b6500-58c0-11ea-9ff1-87ec9d32426e.PNG' width='500'/>
+
+<img src='https://user-images.githubusercontent.com/49926352/75401793-6afaae00-58c0-11ea-9dc7-2c71db9b0f4d.jpeg' width='500'/>
+<img src='https://user-images.githubusercontent.com/49926352/75401797-6fbf6200-58c0-11ea-99ec-72bd7d541dcf.PNG' width='500'/>
+<img src='https://user-images.githubusercontent.com/49926352/75401804-751cac80-58c0-11ea-8b23-79fa8245821e.PNG' width='500'/>
 
 ## Tech Stack
 
