@@ -1,4 +1,5 @@
-# GlobeTrotter
+# GlobeTrotter 
+[![Build Status](https://travis-ci.org/sertmer/GlobeTrotter.svg?branch=master)](https://travis-ci.org/sertmer/GlobeTrotter)
 
 **GlobeTrotter** is a mobile application that allows users to plan multi-leg adventures and create day-by-day itineraries for each stop along the way. GlobeTrotter helps you collect all of the infomation about your trip into one convenient location.
 
