@@ -1,6 +1,6 @@
 # GlobeTrotter
 
-**GlobeTrotter** is a mobile application that allows users to plan a trip. GlobeTrotter is an application used to plan multi-leg adventures and create day-by-day itineraries for each stop along the way. GlobeTrotter helps you collect all of the infomation about your trip into one convenient location.
+**GlobeTrotter** is a mobile application that allows users to plan multi-leg adventures and create day-by-day itineraries for each stop along the way. GlobeTrotter helps you collect all of the infomation about your trip into one convenient location.
 
 ## Table of Contents
 <!--ts-->
